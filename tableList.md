@@ -26,7 +26,7 @@
 
 -   id | BIGINT | UNIQUE | AI | PK | NOTNULL | INDEX
 -   name | VARCHAR(50) | NOTNULL
--   icon | VARCHAR(255) | NOTNULL
+-   icon | VARCHAR(255) | NULL
 
 # table: dishes
 
