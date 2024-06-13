@@ -36,7 +36,7 @@
 -   name | VARCHAR(50) | NOTNULL
 -   slug | VARCHAR(150)| NOTNULL
 -   image | VARCHAR(255) | NOTNULL
--   ingridients | TEXT | NOTNULL
+-   ingredients | TEXT | NOTNULL
 -   price | DECIMAL(5,2) | NOTNULL
 -   visibility | TINYINT | DEFAULT(0)
 

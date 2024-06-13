@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('slug', 150);
-            $table->string('image', 30);
-            $table->string('image')->nullable();
-            $table->string('address');
-            $table->string('vat_number', 11);
+            $table->string('image');
+            $table->string('ingredients');
+            $table->decimal('price', 5, 2);
+            $table->boolean('visibility')->default(0);
             $table->timestamps();
         });
     }
