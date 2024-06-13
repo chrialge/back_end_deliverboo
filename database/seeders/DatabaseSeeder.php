@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Restaurant;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RestaurantSeeder;
 use Database\Seeders\TypeSeeder;
@@ -17,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            RestaurantSeeder::class,
+            Restaurant::class,
             TypeSeeder::class,
             DishSeeder::class,
             OrderSeeder::class,
