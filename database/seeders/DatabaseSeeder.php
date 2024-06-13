@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RestaurantSeeder;
 use Database\Seeders\TypeSeeder;
 use Database\Seeders\DishSeeder;
+use Database\Seeders\OrderSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RestaurantSeeder::class,
             TypeSeeder::class,
             DishSeeder::class,
+            OrderSeeder::class,
         ]);
     }
 }
