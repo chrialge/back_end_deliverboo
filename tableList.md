@@ -51,9 +51,9 @@
 -   restaurant_id | BIGINT | NOTNULL | FK
 -   customer_name | VARCHAR(50) | NOTNULL
 -   customer_lastname | VARCHAR(50) | NOTNULL
--   customer_address | VARCHAR(50) | NOTNULL
--   customer_phone_number| VARCHAR(50) | NOTNULL
--   customer_email | VARCHAR(50) | NOTNULL
+-   customer_address | VARCHAR(100) | NOTNULL
+-   customer_phone_number| VARCHAR(30) | NOTNULL
+-   customer_email | VARCHAR(255) | NOTNULL
 -   customer_note | TEXT | NULL
 -   total_price | DECIMAL(6,2) | NOTNULL
 -   status | VARCHAR(50) | NOTNULL
