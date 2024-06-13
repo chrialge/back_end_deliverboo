@@ -26,6 +26,7 @@
 
 -   id | BIGINT | UNIQUE | AI | PK | NOTNULL | INDEX
 -   name | VARCHAR(50) | NOTNULL
+-   slug | VARCHAR(150)| NOTNULL
 -   icon | VARCHAR(255) | NULL
 
 # table: dishes
@@ -33,6 +34,7 @@
 -   id | BIGINT | UNIQUE | AI | PK | NOTNULL | INDEX
 -   restaurant_id | BIGINT | NOTNULL | FK
 -   name | VARCHAR(50) | NOTNULL
+-   slug | VARCHAR(150)| NOTNULL
 -   image | VARCHAR(255) | NOTNULL
 -   ingridients | TEXT | NOTNULL
 -   price | DECIMAL(5,2) | NOTNULL
