@@ -1,7 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container py-5">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <h1>All Dishes</h1>
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-dark">
+                return dishes
+            </a>
+        </div>
+
+        @include('partials.validate')
 
         <form class="form-control bg-light p-4" action="{{ route('admin.dishes.update', $dish) }}" method="post"
             enctype="multipart/form-data">
@@ -43,14 +52,19 @@
 
 
             <!--Input for Visibility-->
-            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                <input type="radio" class="btn-check" name="visibility" id="visibility" autocomplete="off"
-                    value="1" />
-                <label class="btn btn-outline-primary" for="visibility">Visible</label>
-
-                <input type="radio" class="btn-check" name="visibility" id="visibility" autocomplete="off"
-                    value="0" />
-                <label class="btn btn-outline-primary" for="visibility">Unvisible</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="visibility" name="visibility"
+                    {{ old('visibility') == 1 ? 'checked' : '' }}>
+                <label class="form-check-label" for="visibility">
+                    Visible
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="0" id="visibility" name="visibility"
+                    {{ old('visibility') == 0 ? 'checked' : '' }}>
+                <label class="form-check-label" for="visibility">
+                    Unvisible
+                </label>
             </div>
 
             <!--Input for ingredients-->
@@ -61,7 +75,7 @@
             </div>
 
 
-            <button class="btn btn-primary" type="submit">Add dish</button>
+            <button class="btn btn-warning" type="submit">Add dish</button>
 
         </form>
     </div>
