@@ -1,7 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container py-5">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <h1>All Dishes</h1>
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-dark">
+                return dishes
+            </a>
+        </div>
+
+        @include('partials.validate')
 
         <form class="form-control bg-light p-4" action="{{ route('admin.dishes.update', $dish) }}" method="post"
             enctype="multipart/form-data">
@@ -61,7 +70,7 @@
             </div>
 
 
-            <button class="btn btn-primary" type="submit">Add dish</button>
+            <button class="btn btn-warning" type="submit">Add dish</button>
 
         </form>
     </div>

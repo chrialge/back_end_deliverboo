@@ -45,7 +45,7 @@ class DishController extends Controller
         //Creating new istance
         $dish = Dish::create($val_data);
 
-        return to_route('admin.dishes.index');
+        return to_route('admin.dishes.index')->with('message', "You have created $dish->name");
     }
 
     /**
@@ -62,6 +62,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
@@ -69,7 +70,19 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+
+        //Validation
+        $val_data = $request->validated();
+
+        //Creating a slug content
+        $slug = Str::slug($val_data['name'], '-');
+        $val_data['slug'] = $slug;
+
+
+        //Creating new istance
+        $dish->update($val_data);
+
+        return to_route('admin.dishes.index')->with('message', "You have updated $dish->name");
     }
 
     /**
@@ -77,6 +90,7 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+        return redirect()->back()->with('message', "You have delete $dish->name");
     }
 }
