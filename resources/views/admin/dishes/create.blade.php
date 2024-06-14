@@ -49,15 +49,21 @@
 
 
             <!--Input for Visibility-->
-            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                <input type="radio" class="btn-check" name="visibility" id="visibility" autocomplete="off"
-                    value="1" />
-                <label class="btn btn-outline-primary" for="visibility">Visible</label>
-
-                <input type="radio" class="btn-check" name="visibility" id="visibility" autocomplete="off"
-                    value="0" />
-                <label class="btn btn-outline-primary" for="visibility">Unvisible</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="visibility-1" name="visibility"
+                    {{ old('visibility') == 1 ? 'checked' : '' }}>
+                <label class="form-check-label" for="visibility-1">
+                    Visible
+                </label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="0" id="visibility-2" name="visibility"
+                    {{ old('visibility') == 0 ? 'checked' : '' }}>
+                <label class="form-check-label" for="visibility-2">
+                    Unvisible
+                </label>
+            </div>
+
 
             <!--Input for ingredients-->
             <div class="mb-3">
