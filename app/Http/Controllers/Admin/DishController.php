@@ -22,7 +22,6 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
