@@ -16,6 +16,8 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'slug', 'phone_number', 'image', 'address', 'vat_number', 'user_id'];
+
     /**
      * Get the user that owns the Restaurant
      *
@@ -26,14 +28,10 @@ class Restaurant extends Model
         return $this->belongsTo(User::class);
     }
 
-
-
-
     public function dishes(): HasMany
     {
         return $this->hasMany(Dish::class);
     }
-
 
     public function types(): BelongsToMany
     {
