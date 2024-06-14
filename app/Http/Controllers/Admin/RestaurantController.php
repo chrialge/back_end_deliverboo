@@ -59,7 +59,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.edit', compact('restaurant'));
     }
 
     /**
@@ -67,7 +67,17 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        //Validation
+        $val_data = $request->validated();
+
+        //Creating a slug content
+        $slug = Str::slug($val_data['name'], '-');
+        $val_data['slug'] = $slug;
+
+        //Creating new istance
+        $restaurant->update($val_data);
+
+        return to_route('admin.restaurants.index')->with('message', "You have updated $restaurant->name");
     }
 
     /**
@@ -75,6 +85,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->back()->with('message', "You have delete $restaurant->name");
     }
 }
