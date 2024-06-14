@@ -85,6 +85,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->back()->with('message', "You have delete $restaurant->name");
     }
 }
