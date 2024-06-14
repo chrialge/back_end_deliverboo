@@ -8,6 +8,7 @@ use App\Models\Restaurant;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
+
 class RestaurantSeeder extends Seeder
 {
     /**
@@ -18,6 +19,7 @@ class RestaurantSeeder extends Seeder
 
         $newRestaurant = new Restaurant();
         $newRestaurant->name = 'Ossi di seppia';
+
         $newRestaurant->slug = Str::slug($newRestaurant->name, '-');
         $newRestaurant->phone_number = '+393200256479';
         $newRestaurant->image = $faker->imageUrl(600, 300, 'restaurant', true, $newRestaurant->name, true, 'jpg');
