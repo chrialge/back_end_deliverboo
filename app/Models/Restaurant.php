@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Dish;
 use App\Models\Type;
+use App\Models\Order;
 
 class Restaurant extends Model
 {
@@ -27,7 +28,7 @@ class Restaurant extends Model
 
 
 
-    
+
     public function dishes(): HasMany
     {
         return $this->hasMany(Dish::class);
@@ -37,5 +38,15 @@ class Restaurant extends Model
     public function types(): BelongsToMany
     {
         return $this->belongsToMany(Type::class);
+    }
+
+    /**
+     * Get all of the restaurants for the Restaurant
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }
