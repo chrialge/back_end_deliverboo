@@ -29,7 +29,7 @@
 
                         <div class="col-md-6">
                             <input id="last_name" type="last_name"
-                                class="form-control @error('last_name') is-invalid @enderror" last_name="last_name"
+                                class="form-control @error('last_name') is-invalid @enderror" name="last_name"
                                 value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
 
                             @error('last_name')
