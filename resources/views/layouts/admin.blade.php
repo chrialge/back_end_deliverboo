@@ -53,6 +53,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.dishes.index') }}">{{ __('Dishes') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ route('admin.restaurants.index') }}">{{ __('Restaurants') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
