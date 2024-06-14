@@ -32,7 +32,14 @@
                             <td scope="row">{{ $dish->id }}</td>
                             <td scope="row">{{ $dish->name }}</td>
                             <td scope="row">{{ $dish->slug }}</td>
-                            <td scope="row">{{ $dish->image }}</td>
+                            <td scope="row">
+                                @if (Str::contains($dish->image, ['https://', 'http://']))
+                                    <img width="140" src="{{ $dish->image }}" alt="Image of dish: {{ $dish->title }}">
+                                @else
+                                    <img width="140" src="{{ asset('storage/' . $dish->image) }}"
+                                        alt="{{ $dish->title ? "Image of dish: $dish->title" : "don't image of the project" }}">
+                                @endif
+                            </td>
                             <td scope="row">{{ $dish->ingredients }}</td>
                             <td scope="row">{{ $dish->price }}</td>
                             <td scope="row">{{ $dish->visibility }}</td>

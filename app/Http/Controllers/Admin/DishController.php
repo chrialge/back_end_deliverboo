@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Dish\StoreDishRequest;
 use App\Http\Requests\Admin\Dish\UpdateDishRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class DishController extends Controller
@@ -37,6 +38,9 @@ class DishController extends Controller
         //Validation
         $val_data = $request->validated();
 
+        if ($request->has('image')) {
+            $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
+        }
         //Creating a slug content
         $slug = Str::slug($val_data['name'], '-');
         $val_data['slug'] = $slug;
@@ -78,6 +82,14 @@ class DishController extends Controller
         $slug = Str::slug($val_data['name'], '-');
         $val_data['slug'] = $slug;
 
+        if ($request->has('image')) {
+
+            if ($dish->image) {
+                Storage::disk('public')->delete($dish->image);
+            }
+            $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
+        }
+
 
         //Creating new istance
         $dish->update($val_data);
@@ -90,6 +102,9 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        if ($dish->image) {
+            Storage::disk('public')->delete($dish->image);
+        }
         $dish->delete();
         return redirect()->back()->with('message', "You have delete $dish->name");
     }
