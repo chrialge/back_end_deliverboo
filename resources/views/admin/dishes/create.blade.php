@@ -3,6 +3,15 @@
 @section('content')
     <div class="container">
 
+        <div class="d-flex align-items-center justify-content-between">
+            <h1>All Dishes</h1>
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-dark">
+                return dishes
+            </a>
+        </div>
+
+        @include('partials.validate')
+
         <form class="form-control bg-light p-4" action="{{ route('admin.dishes.store') }}" method="post"
             enctype="multipart/form-data">
             @csrf
