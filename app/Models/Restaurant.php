@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Dish;
+use App\Models\Type;
 
 class Restaurant extends Model
 {
@@ -29,5 +31,11 @@ class Restaurant extends Model
     public function dishes(): HasMany
     {
         return $this->hasMany(Dish::class);
+    }
+
+
+    public function types(): BelongsToMany
+    {
+        return $this->belongsToMany(Type::class);
     }
 }
