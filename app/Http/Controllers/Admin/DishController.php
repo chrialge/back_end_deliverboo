@@ -6,6 +6,8 @@ use App\Models\Dish;
 use App\Http\Requests\Admin\Dish\StoreDishRequest;
 use App\Http\Requests\Admin\Dish\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+
 
 class DishController extends Controller
 {
@@ -22,6 +24,8 @@ class DishController extends Controller
      */
     public function create()
     {
+
+        return view('admin.dishes.create');
     }
 
     /**
@@ -29,7 +33,19 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+        //dd($request->all());
+        //Validation
+        $val_data = $request->validated();
+
+        //Creating a slug content
+        $slug = Str::slug($val_data['name'], '-');
+        $val_data['slug'] = $slug;
+
+
+        //Creating new istance
+        $dish = Dish::create($val_data);
+
+        return to_route('admin.dishes.index');
     }
 
     /**
@@ -37,7 +53,8 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        //dd($dish);
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**
@@ -45,7 +62,6 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
     }
 
     /**
