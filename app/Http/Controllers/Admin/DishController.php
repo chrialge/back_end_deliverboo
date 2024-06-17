@@ -6,8 +6,10 @@ use App\Models\Dish;
 use App\Http\Requests\Admin\Dish\StoreDishRequest;
 use App\Http\Requests\Admin\Dish\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+
 
 
 class DishController extends Controller
@@ -17,7 +19,22 @@ class DishController extends Controller
      */
     public function index()
     {
-        return view('admin.dishes.index', ['dishes' => Dish::all()]);
+        $dishes = [];
+        // take user current
+        $user = Auth::getUser();
+        // dd($user->restaurants());
+        $restaurant = $user->restaurants()->find(1);
+        // dd($restaurant);
+
+        if ($restaurant) {
+            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderByDesc('id')->get()]);
+        } else {
+            return view('admin.dishes.index', compact('dishes'));
+        }
+        // take restaurants of the user current
+
+
+
     }
 
     /**
@@ -44,6 +61,18 @@ class DishController extends Controller
         //Creating a slug content
         $slug = Str::slug($val_data['name'], '-');
         $val_data['slug'] = $slug;
+
+        // take user current
+        $user = Auth::getUser();
+
+        // take restaurants of the user current
+        $restaurant = $user->restaurants();
+
+        // try result of restaurants id=1
+        // dd($restaurants->find(1)->id);
+
+        // printing restaurant_id
+        $val_data['restaurant_id'] = $restaurant->find(1)->id;
 
 
         //Creating new istance

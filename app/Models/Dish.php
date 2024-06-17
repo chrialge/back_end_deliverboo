@@ -12,7 +12,7 @@ class Dish extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','slug','image','ingredients', 'price','visibility'];
+    protected $fillable = ['name', 'slug', 'image', 'ingredients', 'price', 'visibility', 'restaurant_id'];
 
     public function restaurant(): BelongsTo
     {
