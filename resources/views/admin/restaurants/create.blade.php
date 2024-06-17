@@ -20,7 +20,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Restaurant name</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                    aria-describedby="nameHelper" placeholder="name" value="{{ old('name') }}" />
+                    aria-describedby="nameHelper" placeholder="name" value="{{ old('name') }}" required />
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -31,7 +31,7 @@
                 <label for="phone_number" class="form-label">Phone number</label>
                 <input type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
                     id="phone_number" aria-describedby="phone_numberHelper" placeholder="phone_number"
-                    value="{{ old('phone_number') }}" />
+                    value="{{ old('phone_number') }}" required />
                 @error('phone_number')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -51,7 +51,8 @@
             <div class="mb-3">
                 <label for="address" class="form-label">Restaurant address</label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" name="address"
-                    id="address" aria-describedby="addressHelper" placeholder="address" value="{{ old('address') }}" />
+                    id="address" aria-describedby="addressHelper" placeholder="address" value="{{ old('address') }}"
+                    required />
                 @error('address')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -62,7 +63,7 @@
                 <label for="vat_number" class="form-label">Restaurant vat_number</label>
                 <input type="text" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                     id="vat_number" aria-describedby="vat_numberHelper" placeholder="vat_number"
-                    value="{{ old('vat_number') }}" />
+                    value="{{ old('vat_number') }}" required />
                 @error('vat_number')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
