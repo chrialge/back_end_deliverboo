@@ -64,7 +64,7 @@
 
             <!-- Input for VAT number-->
             <div class="mb-3">
-                <label for="vat_number" class="form-label">Restaurant vat_number</label>
+                <label for="vat_number" class="form-label">Restaurant VAT number</label>
                 <input type="text" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                     id="vat_number" aria-describedby="vat_numberHelper" placeholder="vat_number"
                     value="{{ old('vat_number', $restaurant->vat_number) }}" required />
@@ -73,7 +73,7 @@
                 @enderror
             </div>
 
-            <button class="btn btn-warning" type="submit">Add dish</button>
+            <button class="btn btn-warning" type="submit">Edit</button>
 
         </form>
     </div>

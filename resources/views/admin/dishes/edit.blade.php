@@ -6,7 +6,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <h1>All Dishes</h1>
             <a href="{{ route('admin.dishes.index') }}" class="btn btn-dark">
-                return dishes
+                return to dishes
             </a>
         </div>
 
@@ -53,11 +53,11 @@
 
             <!--Input for Visibility-->
             <div class="mb-3">
-                <label for="visibility" class="form-label">Vsibility</label>
+                <label for="visibility" class="form-label">Visibility</label>
                 <select class="form-select form-select-lg" name="visibility" id="visibility" required>
                     <option selected disabled>Select one</option>
-                    <option value="0" {{ old('visibility') == 0 ? 'selected' : '' }}>Visible</option>
-                    <option value="1" {{ old('visibility') == 1 ? 'selected' : '' }}>Unvisible</option>
+                    <option value="0" {{ old('visibility') == 0 ? 'selected' : '' }}>YES</option>
+                    <option value="1" {{ old('visibility') == 1 ? 'selected' : '' }}>NO</option>
                 </select>
             </div>
 
@@ -69,7 +69,7 @@
             </div>
 
 
-            <button class="btn btn-warning" type="submit">Add dish</button>
+            <button class="btn btn-warning" type="submit">Save</button>
 
         </form>
     </div>

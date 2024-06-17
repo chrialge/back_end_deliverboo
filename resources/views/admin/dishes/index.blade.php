@@ -102,8 +102,7 @@
                     @empty
 
                         <tr class="">
-                            <td scope="row">Sorry i don't have collection 😭😭😭😭😭</td>
-
+                            <td scope="row">Nothing to display here! 😭😭😭😭😭</td>
                         </tr>
                     @endforelse
 

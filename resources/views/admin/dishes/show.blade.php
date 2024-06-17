@@ -37,7 +37,7 @@
                     <img width="100%" src="{{ $dish->image }}" alt="Image of dish: {{ $dish->title }}">
                 @else
                     <img width="100% src="{{ asset('storage/' . $dish->image) }}"
-                        alt="{{ $dish->title ? "Image of dish: $dish->title" : "don't image of the project" }}">
+                        alt="{{ $dish->title ? "Image of dish: $dish->title" : 'Image not available' }}">
                 @endif
             </div>
             <div class="ingredients  py-4">

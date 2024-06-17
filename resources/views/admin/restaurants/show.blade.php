@@ -24,7 +24,7 @@
 
             <div class="address d-flex align-items-center gap-2">
                 <h4 class="primary_text">
-                    P.IVA:
+                    VAT number
                 </h4>
                 <span>{{ $restaurant->vat_number }}</span>
             </div>
@@ -41,11 +41,9 @@
                     <img width="100%" src="{{ $restaurant->image }}" alt="Image of restaurant: {{ $restaurant->title }}">
                 @else
                     <img width="100% src="{{ asset('storage/' . $restaurant->image) }}"
-                        alt="{{ $restaurant->title ? "Image of restaurant: $restaurant->title" : "don't image of the project" }}">
+                        alt="{{ $restaurant->title ? "Image of restaurant: $restaurant->title" : 'Image not available' }}">
                 @endif
             </div>
-
-
 
         </div>
     </div>
