@@ -47,16 +47,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.restaurants.index') }}">
+                                {{ __('Restaurants') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.dishes.index') }}">{{ __('Dishes') }}</a>
+                            <a class="nav-link" href="{{ route('admin.dishes.index') }}">
+                                {{ __('Dishes') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ route('admin.restaurants.index') }}">{{ __('Restaurants') }}</a>
-                        </li>
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
