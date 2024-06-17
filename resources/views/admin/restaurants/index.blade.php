@@ -49,18 +49,18 @@
                             <td scope="row">
 
                                 <a href="{{ route('admin.restaurants.show', $restaurant) }}" class="btn btn-dark">
-                                    view
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
 
-                                <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-dark">
-                                    edit
+                                <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-warning">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
 
                                 {{-- modal for action delete --}}
                                 <!-- Modal trigger button -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#modalId-{{ $restaurant->id }}">
-                                    Delete
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
 
                                 <!-- Modal Body -->
