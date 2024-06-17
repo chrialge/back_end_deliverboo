@@ -26,11 +26,11 @@
 <body>
     <div id="app">
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md light_shadow py-0">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
-                        <h2>
+                <a class="navbar-brand d-flex align-items-center p-0" href="{{ url('/') }}">
+                    <div class="logo">
+                        <h2 class="mb-0">
                             <i class="fa-solid fa-utensils"></i>
                             Deliverboo
                         </h2>
@@ -48,7 +48,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            {{-- <a class="nav-link primary_text fs-4 header_link"
+                                href="{{ url('/') }}">{{ __('Home') }}</a> --}}
                         </li>
                     </ul>
 
@@ -57,11 +58,13 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link primary_text fs-5 header_link py-3"
+                                    href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link primary_text fs-5 header_link py-3 ms-3"
+                                        href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
