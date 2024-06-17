@@ -42,22 +42,22 @@
                             </td>
                             <td scope="row">{{ $dish->ingredients }}</td>
                             <td scope="row">{{ $dish->price }}</td>
-                            <td scope="row">{{ $dish->visibility }}</td>
-                            <td scope="row">
+                            <td scope="row">{{ $dish->visibility == 0 ? 'yes' : 'no' }}</td>
+                            <td scope="row d-flex gap-2 flex-wrap">
 
                                 <a href="{{ route('admin.dishes.show', $dish) }}" class="btn btn-dark">
-                                    view
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
 
-                                <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-dark">
-                                    edit
+                                <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
 
                                 {{-- modal for action delete --}}
                                 <!-- Modal trigger button -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#modalId-{{ $dish->id }}">
-                                    Delete
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
 
                                 <!-- Modal Body -->
