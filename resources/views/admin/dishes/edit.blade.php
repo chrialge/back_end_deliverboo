@@ -52,13 +52,19 @@
 
 
             <!--Input for Visibility-->
-            <div class="mb-3">
-                <label for="visibility" class="form-label">Vsibility</label>
-                <select class="form-select form-select-lg" name="visibility" id="visibility">
-                    <option selected disabled>Select one</option>
-                    <option value="0" {{ old('visibility') == 0 ? 'selected' : '' }}>Visible</option>
-                    <option value="1" {{ old('visibility') == 1 ? 'selected' : '' }}>Unvisible</option>
-                </select>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="visibility" name="visibility"
+                    {{ old('visibility') == 1 ? 'checked' : '' }}>
+                <label class="form-check-label" for="visibility">
+                    Visible
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="0" id="visibility" name="visibility"
+                    {{ old('visibility') == 0 ? 'checked' : '' }}>
+                <label class="form-check-label" for="visibility">
+                    Unvisible
+                </label>
             </div>
 
             <!--Input for ingredients-->
