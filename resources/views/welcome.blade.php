@@ -3,7 +3,7 @@
     <div class="content">
         <div class="container px-0">
             <h1 class="pt-5 text-center">
-                Welcome to Deliverboo!
+                Welcome to Deliver<span class="primary_text">Boo</span>!
             </h1>
             <p class="text-center fs-3 mb-5">
                 The premier food delivery service in the Eternal City. Partner with us to expand your
@@ -13,7 +13,7 @@
             <div class="row py-5">
                 <div class="col align-self-center">
                     <h3 class="pb-2">
-                        Why Partner with Deliverboo?
+                        Why Partner with Deliver<span class="primary_text">Boo</span>?
                     </h3>
                     <ul class="list-unstyled">
                         <li>
@@ -48,7 +48,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col">
-                    <img src="{{ url('/img/deliverboo-3.jpg') }}" alt="" class="img_shadow">
+                    <img src="{{ url('/img/deliverboo-3.jpg') }}" alt="" class="light_shadow">
                 </div>
                 <!-- /.col -->
             </div>
@@ -56,7 +56,7 @@
 
             <div class="row py-5">
                 <div class="col">
-                    <img src="{{ url('/img/deliverboo-4.jpg') }}" alt="" class="img_shadow">
+                    <img src="{{ url('/img/deliverboo-4.jpg') }}" alt="" class="light_shadow">
                 </div>
                 <!-- /.col -->
                 <div class="col align-self-center pl-5">
@@ -102,56 +102,41 @@
             <div class="container py-5">
 
                 <h3 class="text-center pt-5">
-                    Join the Deliverboo Community
+                    Join the Deliver<span class="primary_text">boo</span> Community
                 </h3>
 
                 <div class="row pt-3">
-                    <div class="col py-3">
-                        <h5>
-                            Sign up today and become part of the Deliverboo network.
-                        </h5>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col">
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col"></div>
-                    <!-- /.col -->
-                    <div class="col py-3">
-                        <h5>
+                    <div class="col text-center d-flex">
+                        <p class="border-bottom p-3">
+                            Sign up today and become part of the Deliver<span class="primary_text">boo</span> network.
+                        </p>
+                        <p class="border border-top-0  p-3">
                             Gain access to a larger customer base and watch your business grow.
-                        </h5>
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col py-3">
-                        <h5>
+                        </p>
+                        <p class="border-bottom  p-3">
                             Our team is here to support you every step of the way.
-                        </h5>
+                        </p>
                     </div>
-                    <!-- /.col -->
-                    <div class="col"></div>
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
             </div>
             <!-- /.container -->
 
-            <h3>
-                Get Started
-            </h3>
-            <p>
-                Ready to take your restaurant to the next level? Click the button below to register and start showcasing
-                your delicious dishes on Deliverboo!
-                <a href="" class="text-decoration-none text-primary">Register now</a>
-            </p>
+            <div class="text-center">
+                <h3>
+                    Get Started
+                </h3>
+                <p class="mb-4">
+                    Ready to take your restaurant to the next level?
+                    <br>Click the button below to register and start showcasing
+                    your delicious dishes on Deliver<span class="primary_text">boo</span>!
+                </p>
+                <a href="" class="button-85">Register now</a>
+            </div>
             <h5 class="text-center py-5">
-                Thank you for choosing Deliverboo. Let's create unforgettable dining experiences together!
+                Thank you for choosing Deliver<span class="primary_text">boo</span>. Let's create unforgettable dining
+                experiences together!
             </h5>
         </div>
     </div>
