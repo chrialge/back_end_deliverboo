@@ -18,6 +18,7 @@ class DishSeeder extends Seeder
         $newDish =  new Dish();
         $newDish->name = 'Pizza Margherita';
         $newDish->slug = Str::slug($newDish->name, '-');
+        $newDish->restaurant_id = 1;
         $newDish->image = $faker->imageUrl(600, 300, 'Dish', true, $newDish->name, true, 'jpg');
         $newDish->ingredients = "Call'e crabittu, Mazzamineddu, Farina, Acqua, Salsa di pomodoro di Maracalagonis, basilico, Olio EVO DOCG";
         $newDish->price = 6.50;

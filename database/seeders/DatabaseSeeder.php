@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Restaurant;
 use Illuminate\Database\Seeder;
+use Database\Seeders\UserSeeder;
 use Database\Seeders\RestaurantSeeder;
 use Database\Seeders\TypeSeeder;
 use Database\Seeders\DishSeeder;
@@ -19,10 +20,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            UserSeeder::class,
             RestaurantSeeder::class,
             TypeSeeder::class,
             DishSeeder::class,
             OrderSeeder::class,
+
         ]);
     }
 }
