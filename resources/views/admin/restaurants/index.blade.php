@@ -35,7 +35,15 @@
                             <td scope="row">{{ $restaurant->name }}</td>
                             <td scope="row">{{ $restaurant->slug }}</td>
                             <td scope="row">{{ $restaurant->phone_number }}</td>
-                            <td scope="row">{{ $restaurant->image }}</td>
+                            <td scope="row">
+                                @if (Str::contains($restaurant->image, ['https://', 'http://']))
+                                    <img width="140" src="{{ $restaurant->image }}"
+                                        alt="Image of restaurant: {{ $restaurant->title }}">
+                                @else
+                                    <img width="140" src="{{ asset('storage/' . $restaurant->image) }}"
+                                        alt="{{ $restaurant->title ? "Image of restaurant: $restaurant->title" : "don't image of the project" }}">
+                                @endif
+                            </td>
                             <td scope="row">{{ $restaurant->address }}</td>
                             <td scope="row">{{ $restaurant->vat_number }}</td>
                             <td scope="row">

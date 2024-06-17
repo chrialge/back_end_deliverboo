@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Restaurant\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -39,6 +40,10 @@ class RestaurantController extends Controller
         $slug = Str::slug($val_data['name'], '-');
         $val_data['slug'] = $slug;
         $val_data['user_id'] = Auth::id();
+
+        if ($request->has('image')) {
+            $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
+        }
 
         //Creating new istance
         $restaurant = Restaurant::create($val_data);
@@ -74,6 +79,14 @@ class RestaurantController extends Controller
         $slug = Str::slug($val_data['name'], '-');
         $val_data['slug'] = $slug;
 
+        if ($request->has('image')) {
+
+            if ($restaurant->image) {
+                Storage::disk('public')->delete($restaurant->image);
+            }
+            $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
+        }
+
         //Creating new istance
         $restaurant->update($val_data);
 
@@ -85,6 +98,9 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        if ($restaurant->image) {
+            Storage::disk('public')->delete($restaurant->image);
+        }
         $restaurant->delete();
         return redirect()->back()->with('message', "You have delete $restaurant->name");
     }
