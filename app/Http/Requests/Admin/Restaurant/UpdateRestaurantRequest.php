@@ -22,7 +22,7 @@ class UpdateRestaurantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|max:50|unique:restaurants',
+            'name' => 'required|min:3|max:50',
             'phone_number' => 'required|min:3|max:20',
             'image' => 'nullable|image',
             'address' => 'required',
