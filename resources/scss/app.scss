@@ -1,5 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
 
-.img_shadow {
+:root {
+    --deliverboo-primary: rgba(142, 121, 248, 1);
+    --deliverboo-secondary: rgba(165, 132, 247, 1);
+    --deliverboo-tertiary: rgba(206, 95, 164, 1);
+    --deliverboo-dark: rgba(109, 72, 178, 1);
+    --deliverboo-light: rgba(233, 190, 239, 1);
+
+}
+
+.light_shadow {
     box-shadow: rgba(142, 121, 248, 1) 10px 8px 24px;
+}
+
+.primary_text {
+    color: var(--deliverboo-primary);
+}
+
+.header_link:hover {
+    color: var(--deliverboo-light);
+    background-color: var(--deliverboo-secondary);
+    transition: 0.4s ease-in-out;
+}
+
+.logo {
+    text-shadow: 1px 1px 2px var(--deliverboo-secondary);
+    color: var(--deliverboo-primary);
 }
