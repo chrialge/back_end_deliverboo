@@ -132,7 +132,7 @@
                     <br>Click the button below to register and start showcasing
                     your delicious dishes on Deliver<span class="primary_text">boo</span>!
                 </p>
-                <a href="" class="button-85">Register now</a>
+                <a href="{{ route('register') }}" class="button-85">Register now</a>
             </div>
             <h5 class="text-center py-5">
                 Thank you for choosing Deliver<span class="primary_text">boo</span>. Let's create unforgettable dining
