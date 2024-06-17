@@ -22,7 +22,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Dish name</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                    aria-describedby="nameHelper" placeholder="name" value="{{ old('name', $dish->name) }}" />
+                    aria-describedby="nameHelper" placeholder="name" value="{{ old('name', $dish->name) }}" required />
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -44,7 +44,7 @@
                 <label for="price" class="form-label">Price</label>
                 <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror"
                     name="price" id="price" aria-describedby="priceHelper" placeholder="price"
-                    value="{{ old('price', $dish->price) }}" />
+                    value="{{ old('price', $dish->price) }}" required />
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -52,19 +52,13 @@
 
 
             <!--Input for Visibility-->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="visibility" name="visibility"
-                    {{ old('visibility') == 1 ? 'checked' : '' }}>
-                <label class="form-check-label" for="visibility">
-                    Visible
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="0" id="visibility" name="visibility"
-                    {{ old('visibility') == 0 ? 'checked' : '' }}>
-                <label class="form-check-label" for="visibility">
-                    Unvisible
-                </label>
+            <div class="mb-3">
+                <label for="visibility" class="form-label">Vsibility</label>
+                <select class="form-select form-select-lg" name="visibility" id="visibility" required>
+                    <option selected disabled>Select one</option>
+                    <option value="0" {{ old('visibility') == 0 ? 'selected' : '' }}>Visible</option>
+                    <option value="1" {{ old('visibility') == 1 ? 'selected' : '' }}>Unvisible</option>
+                </select>
             </div>
 
             <!--Input for ingredients-->
