@@ -55,11 +55,14 @@
                                 href="{{ route('admin.restaurants.index') }}">
                                 {{ __('Restaurants') }}</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link primary_text fs-5 header_link py-3"
                                 href="{{ route('admin.dishes.index') }}">
                                 {{ __('Dishes') }}</a>
-                        </li>
+                        </li> 
+
+
 
 
                     </ul>
