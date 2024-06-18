@@ -31,7 +31,7 @@ class RestaurantSeeder extends Seeder
             $newRestaurant = new Restaurant();
             $newRestaurant->name = $name;
             $newRestaurant->slug = Str::slug($name, '-');
-            $newRestaurant->phone_number = '+39 340' . $faker->randomNumber(7, true);
+            $newRestaurant->phone_number = '340' . $faker->randomNumber(7, true);
             $newRestaurant->user_id = 1;
             $newRestaurant->image = $faker->imageUrl(640, 480, 'food', true, 'restaurant');
             $newRestaurant->address = 'Via ' . $faker->streetName . ' ' . $faker->numberBetween(1, 100);
