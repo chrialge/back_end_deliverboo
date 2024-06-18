@@ -16,13 +16,27 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            'Italiana',
-            'Giapponese',
-            'Cinese',
-            'Peruviana',
-            'Messicana',
-            'Brasiliana',
-            'Pizzeria',
+            'Pizza', //0
+            'Sushi', //1
+            'Dessert', //2
+            'Poke', //3
+            'Healthy', //4
+            'Hamburger', //5
+            'Kebab', //6
+            'Sandwich', //7
+            'Italiano', //8
+            'Americano', //9
+            'Giapponese', //10
+            'Cinese', //11
+            'Francese', //12
+            'Argentino', //13
+            'Brasiliano', //14
+            'Peruviano', //15
+            'Spagnolo', //16
+            'Portoghese', //17
+            'Thailandese', //18
+            'Libanese', //19
+            'Indiano', //20
         ];
 
         foreach ($types as $type) {
