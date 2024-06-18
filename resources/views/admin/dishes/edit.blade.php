@@ -42,9 +42,9 @@
             <!-- Input for price-->
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror"
-                    name="price" id="price" aria-describedby="priceHelper" placeholder="price"
-                    value="{{ old('price', $dish->price) }}" required />
+                <input type="number" step="0.01" min="0.00"
+                    class="form-control @error('price') is-invalid @enderror" name="price" id="price"
+                    aria-describedby="priceHelper" placeholder="price" value="{{ old('price', $dish->price) }}" required />
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -53,12 +53,18 @@
 
             <!--Input for Visibility-->
             <div class="mb-3">
-                <label for="visibility" class="form-label">Visibility</label>
-                <select class="form-select form-select-lg" name="visibility" id="visibility" required>
-                    <option selected disabled>Select one</option>
-                    <option value="0" {{ old('visibility') == 0 ? 'selected' : '' }}>YES</option>
-                    <option value="1" {{ old('visibility') == 1 ? 'selected' : '' }}>NO</option>
-                </select>
+                <label for="visibility" class="form-label">Visibility*</label>
+                <div class="form-check">
+                    <input name="visibility" class="form-check-input" type="checkbox" value="0" id="visibility-0"
+                        {{ old('visibility') == 0 ? 'checked' : '' }} />
+                    <label class="form-check-label" for="visibility-0">Visible</label>
+                </div>
+                <div class="form-check">
+                    <input name="visibility" class="form-check-input" type="checkbox" value="1" id="visibility-1"
+                        {{ old('visibility') == 1 ? 'checked' : '' }} />
+                    <label class="form-check-label" for="visibility-1">Unvisible</label>
+                </div>
+
             </div>
 
             <!--Input for ingredients-->

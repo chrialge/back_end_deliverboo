@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class RestaurantController extends Controller
 {
@@ -56,7 +57,10 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        return view('admin.restaurants.show', compact('restaurant'));
+        if (Gate::allows('restaurant-checker', $restaurant)) {
+            return view('admin.restaurants.show', compact('restaurant'));
+        }
+        abort(403, "Don't try entry in other restaurant");
     }
 
     /**
@@ -64,7 +68,10 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurants.edit', compact('restaurant'));
+        if (Gate::allows('restaurant-checker', $restaurant)) {
+            return view('admin.restaurants.edit', compact('restaurant'));
+        }
+        abort(403, "Don't try entry in other restaurant");
     }
 
     /**

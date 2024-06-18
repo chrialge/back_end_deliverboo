@@ -18,7 +18,7 @@
 
             <!-- Input for name-->
             <div class="mb-3">
-                <label for="name" class="form-label">Dish name</label>
+                <label for="name" class="form-label">Dish name*</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
                     aria-describedby="nameHelper" placeholder="name" value="{{ old('name') }}" required />
                 @error('name')
@@ -28,7 +28,7 @@
 
             <!-- Input for image-->
             <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">Image(optional)</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image" aria-describedby="imageHelper" placeholder="image" value="{{ old('image') }}" />
                 @error('image')
@@ -38,10 +38,10 @@
 
             <!-- Input for price-->
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror"
-                    name="price" id="price" aria-describedby="priceHelper" placeholder="price"
-                    value="{{ old('price') }}" required />
+                <label for="price" class="form-label">Price*</label>
+                <input type="number" step="0.01" min="0.00"
+                    class="form-control @error('price') is-invalid @enderror" name="price" id="price"
+                    aria-describedby="priceHelper" placeholder="price" value="{{ old('price') }}" required />
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -50,20 +50,29 @@
 
             <!--Input for Visibility-->
             <div class="mb-3">
-                <label for="visibility" class="form-label">Vsibility</label>
-                <select class="form-select form-select-lg" name="visibility" id="visibility" required>
-                    <option selected disabled>Select one</option>
-                    <option value="0" {{ old('visibility') == 0 ? 'selected' : '' }}>Visible</option>
-                    <option value="1" {{ old('visibility') == 1 ? 'selected' : '' }}>Unvisible</option>
-                </select>
+                <label for="visibility" class="form-label">Visibility*</label>
+                <div class="form-check">
+                    <input name="visibility" class="form-check-input" type="checkbox" value="0" id="visibility-0"
+                        {{ old('visibility') == 0 ? 'checked' : '' }} />
+                    <label class="form-check-label" for="visibility-0">Visible</label>
+                </div>
+                <div class="form-check">
+                    <input name="visibility" class="form-check-input" type="checkbox" value="1" id="visibility-1"
+                        {{ old('visibility') == 1 ? 'checked' : '' }} />
+                    <label class="form-check-label" for="visibility-1">Unvisible</label>
+                </div>
+
             </div>
 
 
             <!--Input for ingredients-->
             <div class="mb-3">
-                <label for="ingredients" class="form-label">Ingredients</label>
+                <label for="ingredients" class="form-label">Ingredients*</label>
                 <textarea class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" id="ingredients"
                     rows="5">{{ old('ingredients') }}</textarea>
+                @error('ingredients')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
 

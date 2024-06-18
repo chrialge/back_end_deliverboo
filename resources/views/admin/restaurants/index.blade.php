@@ -4,9 +4,9 @@
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
             <h1>All restaurants</h1>
-            <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">
+            {{-- <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">
                 Add restaurant
-            </a>
+            </a> --}}
         </div>
 
         @include('partials.session')
@@ -52,13 +52,13 @@
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
 
-                                <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-warning">
+                                {{-- <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-warning">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </a>
+                                </a> --}}
 
                                 {{-- modal for action delete --}}
                                 <!-- Modal trigger button -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#modalId-{{ $restaurant->id }}">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
@@ -97,7 +97,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </td>
 
 

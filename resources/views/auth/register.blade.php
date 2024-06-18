@@ -98,10 +98,11 @@
                             <input type="text" class="form-control @error('name_restaurant') is-invalid @enderror"
                                 name="name_restaurant" id="name_restaurant" aria-describedby="nameHelper"
                                 placeholder="Ossi di seppia" value="{{ old('name_restaurant') }}" required />
+                            @error('name_restaurant')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                        @error('name_restaurant')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+
                     </div>
 
                     <!-- Input for phone number -->
@@ -113,11 +114,12 @@
                             <input type="number" class="form-control @error('phone_number') is-invalid @enderror"
                                 name="phone_number" id="phone_number" aria-describedby="phone_numberHelper"
                                 placeholder="3202345654" value="{{ old('phone_number') }}" required />
+                            @error('phone_number')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        @error('phone_number')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+
                     </div>
 
 
@@ -128,11 +130,12 @@
                             <input type="text" class="form-control @error('address') is-invalid @enderror"
                                 name="address" id="address" aria-describedby="addressHelper"
                                 placeholder="via della repubblica, 5" value="{{ old('address') }}" required />
+                            @error('address')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        @error('address')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+
                     </div>
 
                     <!-- Input for VAT number-->
@@ -144,11 +147,33 @@
                                 class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                                 id="vat_number" aria-describedby="vat_numberHelper" placeholder="12345678901"
                                 value="{{ old('vat_number') }}" required />
+
+                            @error('vat_number')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        @error('vat_number')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                    </div>
+
+                    <div class="mb-4 row">
+                        <label for="vat_number" class="col-md-4 col-form-label text-md-right">Type cousine*</label>
+
+                        <div class="col-md-6">
+                            @foreach ($types as $type)
+                                <div class="form-check">
+                                    <input name="types[]" class="form-check-input" type="checkbox"
+                                        value="{{ $type->id }}" id="type-{{ $type->id }}"
+                                        {{ in_array($type->id, old('types', [])) ? 'checked' : '' }} />
+                                    <label class="form-check-label" for="type-{{ $type->id }}">
+                                        {{ $type->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+
+
+
+                        </div>
+
                     </div>
 
 

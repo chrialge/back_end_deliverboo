@@ -10,7 +10,7 @@ use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Gate;
 
 
 class DishController extends Controller
@@ -89,7 +89,10 @@ class DishController extends Controller
     public function show(Dish $dish)
     {
         //dd($dish);
-        return view('admin.dishes.show', compact('dish'));
+        if (Gate::allows('dish-checker', $dish)) {
+            return view('admin.dishes.show', compact('dish'));
+        }
+        abort(403, "Don't try to enter in other menu");
     }
 
     /**
@@ -97,7 +100,10 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.dishes.edit', compact('dish'));
+        if (Gate::allows('dish-checker', $dish)) {
+            return view('admin.dishes.edit', compact('dish'));
+        }
+        abort(403, "Don't try to enter in other menu");
     }
 
     /**

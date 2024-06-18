@@ -45,6 +45,12 @@
                 @endif
             </div>
 
+            <ul>
+                @foreach ($restaurant->types as $type)
+                    <li>{{ $type->name }}</li>
+                @endforeach
+            </ul>
+
         </div>
     </div>
 @endsection
