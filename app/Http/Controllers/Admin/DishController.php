@@ -6,6 +6,7 @@ use App\Models\Dish;
 use App\Http\Requests\Admin\Dish\StoreDishRequest;
 use App\Http\Requests\Admin\Dish\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -19,17 +20,18 @@ class DishController extends Controller
      */
     public function index()
     {
+
         $dishes = [];
         // take user current
         $user = Auth::getUser();
         // dd($user->restaurants());
-        $restaurant = $user->restaurants()->find(1);
+        $restaurant = $user->restaurants()->where('user_id', $user->id)->first();
         // dd($restaurant);
 
         if ($restaurant) {
             return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderByDesc('id')->get()]);
         } else {
-            return view('admin.dishes.index', compact('dishes'));
+            return redirect()->back()->with('message', "Sorry you haven't restaurants registered");
         }
         // take restaurants of the user current
 
@@ -66,13 +68,13 @@ class DishController extends Controller
         $user = Auth::getUser();
 
         // take restaurants of the user current
-        $restaurant = $user->restaurants();
+        $restaurant = $user->restaurants()->where('user_id', $user->id)->first();
 
         // try result of restaurants id=1
         // dd($restaurants->find(1)->id);
 
         // printing restaurant_id
-        $val_data['restaurant_id'] = $restaurant->find(1)->id;
+        $val_data['restaurant_id'] = $restaurant->id;
 
 
         //Creating new istance
