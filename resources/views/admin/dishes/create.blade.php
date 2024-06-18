@@ -79,5 +79,7 @@
             <button class="btn btn-primary" type="submit">Add dish</button>
 
         </form>
+
+        <script src="{{ asset('js/visibility_toogle.js') }}"></script>
     </div>
 @endsection
