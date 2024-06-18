@@ -72,6 +72,9 @@
                 <label for="ingredients" class="form-label">Ingredients</label>
                 <textarea class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" id="ingredients"
                     rows="5">{{ old('ingredients', $dish->ingredients) }}</textarea>
+                @error('ingredients')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
 
