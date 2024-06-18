@@ -3,17 +3,17 @@
     <div class="content">
         <div class="container px-0">
             <h1 class="pt-5 text-center">
-                Welcome to Deliver<span class="primary_text">Boo</span>!
+                Welcome to Delive<span class="primary_text">Boo</span>!
             </h1>
             <p class="text-center fs-3 mb-5">
-                The premier food delivery service in the Eternal City. Partner with us to expand your
+                The premier food Delivey service in the Eternal City. Partner with us to expand your
                 restaurant's reach and delight customers across Rome with your delicious dishes.
             </p>
 
             <div class="row py-5">
                 <div class="col align-self-center">
                     <h3 class="pb-2">
-                        Why Partner with Deliver<span class="primary_text">Boo</span>?
+                        Why Partner with Delive<span class="primary_text">Boo</span>?
                     </h3>
                     <ul class="list-unstyled">
                         <li>
@@ -28,7 +28,7 @@
                                 Boost Your Sales:
                             </strong>
                             <br>
-                            Increase your revenue with online orders and delivery services.
+                            Increase your revenue with online orders and Delivey services.
                         </li>
                         <li>
                             <strong class="primary_text">
@@ -48,7 +48,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col">
-                    <img src="{{ url('/img/deliverboo-3.jpg') }}" alt="" class="light_shadow">
+                    <img src="{{ url('/img/Deliveboo-3.jpg') }}" alt="" class="light_shadow">
                 </div>
                 <!-- /.col -->
             </div>
@@ -56,7 +56,7 @@
 
             <div class="row py-5">
                 <div class="col">
-                    <img src="{{ url('/img/deliverboo-4.jpg') }}" alt="" class="light_shadow">
+                    <img src="{{ url('/img/Deliveboo-4.jpg') }}" alt="" class="light_shadow">
                 </div>
                 <!-- /.col -->
                 <div class="col align-self-center pl-5">
@@ -83,7 +83,7 @@
                                 Receive Orders:
                             </strong>
                             <br>
-                            Get notified of new orders and prepare them for delivery.
+                            Get notified of new orders and prepare them for Delivey.
                         </li>
                         <li>
                             <strong class="primary_text">
@@ -102,13 +102,13 @@
             <div class="container py-5">
 
                 <h3 class="text-center pt-5">
-                    Join the Deliver<span class="primary_text">boo</span> Community
+                    Join the Delive<span class="primary_text">boo</span> Community
                 </h3>
 
                 <div class="row pt-3">
                     <div class="col text-center d-flex">
                         <p class="border-bottom p-3">
-                            Sign up today and become part of the Deliver<span class="primary_text">boo</span> network.
+                            Sign up today and become part of the Delive<span class="primary_text">boo</span> network.
                         </p>
                         <p class="border border-top-0  p-3">
                             Gain access to a larger customer base and watch your business grow.
@@ -130,12 +130,12 @@
                 <p class="mb-4">
                     Ready to take your restaurant to the next level?
                     <br>Click the button below to register and start showcasing
-                    your delicious dishes on Deliver<span class="primary_text">boo</span>!
+                    your delicious dishes on Delive<span class="primary_text">boo</span>!
                 </p>
                 <a href="{{ route('register') }}" class="button-85">Register now</a>
             </div>
             <h5 class="text-center py-5">
-                Thank you for choosing Deliver<span class="primary_text">boo</span>. Let's create unforgettable dining
+                Thank you for choosing Delive<span class="primary_text">boo</span>. Let's create unforgettable dining
                 experiences together!
             </h5>
         </div>
