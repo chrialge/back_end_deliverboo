@@ -60,7 +60,7 @@ class RestaurantController extends Controller
         if (Gate::allows('restaurant-checker', $restaurant)) {
             return view('admin.restaurants.show', compact('restaurant'));
         }
-        abort(403, "Don't try entry in other restaurant");
+        abort(403, "Don't try to entry into another restaurant");
     }
 
     /**
@@ -71,7 +71,7 @@ class RestaurantController extends Controller
         if (Gate::allows('restaurant-checker', $restaurant)) {
             return view('admin.restaurants.edit', compact('restaurant'));
         }
-        abort(403, "Don't try entry in other restaurant");
+        abort(403, "Don't try to entry into another restaurant");
     }
 
     /**

@@ -92,7 +92,7 @@ class DishController extends Controller
         if (Gate::allows('dish-checker', $dish)) {
             return view('admin.dishes.show', compact('dish'));
         }
-        abort(403, "Don't try to enter in other menu");
+        abort(403, "Don't try to enter into another dish");
     }
 
     /**
@@ -103,7 +103,7 @@ class DishController extends Controller
         if (Gate::allows('dish-checker', $dish)) {
             return view('admin.dishes.edit', compact('dish'));
         }
-        abort(403, "Don't try to enter in other menu");
+        abort(403, "Don't try to enter into another dish");
     }
 
     /**

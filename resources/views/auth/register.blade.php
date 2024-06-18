@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 deliverboo_text">
                 <h1 class="my-4 text-center">Register</h1>
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-4 row">
@@ -135,6 +135,20 @@
                             @enderror
                         </div>
 
+
+                    </div>
+
+                    <!-- Input for image-->
+                    <div class="mb-4 row">
+                        <label for="image" class="col-md-4 col-form-label text-md-right">Image(optional)</label>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                name="image" id="image" aria-describedby="imageHelper" placeholder="image"
+                                value="{{ old('image') }}" />
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                     </div>
 

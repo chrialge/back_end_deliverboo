@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredUserController extends Controller
 {
@@ -39,7 +40,7 @@ class RegisteredUserController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-
+            'image' => 'image|nullable',
             'name_restaurant' => 'required|min:3|max:50',
             'phone_number' => 'required|min:3|max:20',
             'address' => 'required',
@@ -71,7 +72,9 @@ class RegisteredUserController extends Controller
             $newRestaurant->phone_number = $request->phone_number;
             $newRestaurant->address = $request->address;
             $newRestaurant->vat_number = $request->vat_number;
-
+            if ($request->has('image')) {
+                $newRestaurant['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
+            }
             $newRestaurant->save();
             $newRestaurant->types()->attach($val_data['types']);
         }
