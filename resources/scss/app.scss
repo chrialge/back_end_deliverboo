@@ -91,3 +91,13 @@
         background-position: 0 0;
     }
 }
+
+.small_visible {
+    display: block;
+    color: red;
+    padding-top: 0.3rem;
+}
+
+.small_invisible {
+    display: none;
+}

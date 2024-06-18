@@ -61,10 +61,6 @@
                                 href="{{ route('admin.dishes.index') }}">
                                 {{ __('Dishes') }}</a>
                         </li>
-
-
-
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
