@@ -18,4 +18,19 @@ class RestaurantController extends Controller
             'restaurants' => $restaurants,
         ]);
     }
+    public function show($id)
+    {
+        $restaurant = Restaurant::all()->where('id', $id)->first();
+        if ($restaurant) {
+            return response()->json([
+                'success' => true,
+                'response' => $restaurant,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => '404 Sorry nothing found here!',
+            ]);
+        }
+    }
 }
