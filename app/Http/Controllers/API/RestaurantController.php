@@ -35,9 +35,13 @@ class RestaurantController extends Controller
         }
     }
 
-    public function filter($types)
+    public function filter(Request $request)
     {
-
-        $restaurant = Restaurant::with('dishes', 'types')->where('types', $types)->first();
+        $ids = $request->get('numbers', []);
+        return response()->json([
+            'success' => true,
+            'received_data' => $ids,
+        ]);
+        /*  $restaurant = Restaurant::with('dishes', 'types')->where('types', $types)->first(); */
     }
 }
