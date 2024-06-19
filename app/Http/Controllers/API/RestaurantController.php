@@ -18,9 +18,10 @@ class RestaurantController extends Controller
             'restaurants' => $restaurants,
         ]);
     }
-    public function show($slug)
+    public function show($slug, $id)
     {
-        $restaurant = Restaurant::with('dishes', 'types')->where('slug', $slug)->first();
+        $restaurant = Restaurant::with('dishes', 'types')->where('slug', $slug)->where('id', $id)->get();
+
         if ($restaurant) {
             return response()->json([
                 'success' => true,
@@ -32,5 +33,11 @@ class RestaurantController extends Controller
                 'response' => '404 Sorry nothing found here!',
             ]);
         }
+    }
+
+    public function filter($types)
+    {
+
+        $restaurant = Restaurant::with('dishes', 'types')->where('types', $types)->first();
     }
 }
