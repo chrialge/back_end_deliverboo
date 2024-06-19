@@ -37,11 +37,16 @@ class RestaurantController extends Controller
 
     public function filter(Request $request)
     {
-        $ids = $request->get('numbers', []);
+        $types = $request->query('types');
+        // Accesso al primo elemento -> E' un array non ua stringa
+        $firstType = $types[0];
+
+        //Questa selezione non va bene, errore in console, bisogna fare le join con le altre tabelle
+        //$restaurants = Restaurant::with('dishes', 'types')->whereIn('types', $firstType)->first();
+
         return response()->json([
             'success' => true,
-            'received_data' => $ids,
+            'received_data' => $types,
         ]);
-        /*  $restaurant = Restaurant::with('dishes', 'types')->where('types', $types)->first(); */
     }
 }

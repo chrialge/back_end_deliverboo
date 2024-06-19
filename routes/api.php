@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('restaurants', [RestaurantController::class, 'index']);
 Route::get('restaurants/{restaurant:slug}/{id}', [RestaurantController::class, 'show']);
-Route::get('restaurants/{types}', [RestaurantController::class, 'filter']);
+
+//NON è UNA ROUTE DI DINAMICA MA SONO PARAMETRI GET
+Route::get('filter', [RestaurantController::class, 'filter']);
 
 Route::get('types', [TypeController::class, 'index']);
