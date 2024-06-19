@@ -12,7 +12,7 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::with('dishes', 'types')->orderByDesc('id')->paginate(6); //da passare anche orders in futuro
+        $restaurants = Restaurant::with('dishes', 'types')->orderByDesc('id')->paginate(10); //da passare anche orders in futuro
         return response()->json([
             'success' => true,
             'restaurants' => $restaurants,
