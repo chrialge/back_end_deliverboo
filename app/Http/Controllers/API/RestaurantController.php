@@ -51,23 +51,29 @@ class RestaurantController extends Controller
         WHERE types.id IN (1,3)
         GROUP BY restaurants.id
         HAVING COUNT(types.id) = 2; */
+        if ($types) {
+            $restaurants = Restaurant::with('types', 'dishes')->select(['restaurants.*'])
+                ->join('restaurant_type', 'restaurants.id', '=', 'restaurant_type.restaurant_id')
+                ->join('types', 'restaurant_type.type_id', '=', 'types.id')
+                ->whereIn('types.id', $types)
+                ->groupBy('restaurants.id')
+                ->havingRaw('COUNT(types.id) =' . count($types))->paginate(10);
+            return response()->json([
+                'success' => true,
+                'received_data' => $restaurants,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'received_data' => "Non c'e nessun ristorante che corrisponde con le tipologie richieste"
+            ]);
+        }
 
-        $restaurants = Restaurant::with('types', 'dishes')->select(['restaurants.*'])
-            ->join('restaurant_type', 'restaurants.id', '=', 'restaurant_type.restaurant_id')
-            ->join('types', 'restaurant_type.type_id', '=', 'types.id')
-            ->whereIn('types.id', $types)
-            ->groupBy('restaurants.id')
-            ->havingRaw('COUNT(types.id) =' . count($types))->paginate(10);
 
-        return response()->json([
-            'success' => true,
-            'received_data' => $restaurants,
-        ]);
+
         // if ($restaurants->data == []) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'received_data' => 'Non ce nessun ristorante che corrisponde con le tipologie richieste'
-        //     ]);
+
+        //    
         // } else {
 
         // }
