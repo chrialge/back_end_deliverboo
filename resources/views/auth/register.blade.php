@@ -67,7 +67,6 @@
                     </div>
                     <!-- /.e-mail -->
 
-
                     <div class="mb-4 row">
                         <label for="password" class="col-md-4 col-form-label text-md-right">
                             Password <span class="text-secondary">*</span>
