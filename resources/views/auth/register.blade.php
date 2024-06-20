@@ -171,8 +171,9 @@
                             <input type="number" minlength="11" maxlength="11"
                                 class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                                 id="vat_number" aria-describedby="vat_numberHelper" placeholder="12345678901"
-                                value="{{ old('vat_number') }}" required />
-
+                                value="{{ old('vat_number') }}" required onkeyup='check_vat_number()' />
+                            <small id="vat_number_error" class="small_invisible">Il Vat Number deve essere di 11 cifre
+                                numeriche</small>
                             @error('vat_number')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -188,7 +189,8 @@
                             <div class="col d-flex">
                                 <div class="form-check">
                                     <input name="types[]" class="form-check-input" type="checkbox"
-                                        value="{{ $type->id }}" id="type-{{ $type->id }}"
+                                        onclick="check_types()" value="{{ $type->id }}"
+                                        id="type-{{ $type->id }}"
                                         {{ in_array($type->id, old('types', [])) ? 'checked' : '' }} />
                                     <label class="form-check-label" for="type-{{ $type->id }}">
                                         {{ $type->name }}
@@ -198,10 +200,13 @@
                             <!-- /.col -->
                         @endforeach
                     </div>
+                    <small id="types_error" class="small_invisible">Devi selezionare almeno un tipo!</small>
+
 
                     <div class="mb-4 row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-dark">
+                            <button onclick="check_types()" id="register-submit-button" type="submit"
+                                class="btn btn-dark">
                                 {{ __('Registrati') }}
                             </button>
                         </div>

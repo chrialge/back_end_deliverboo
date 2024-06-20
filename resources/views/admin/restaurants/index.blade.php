@@ -33,10 +33,13 @@
                                 @if (Str::contains($restaurant->image, ['https://', 'http://']))
                                     <img width="140" src="{{ $restaurant->image }}"
                                         alt="Image of restaurant: {{ $restaurant->title }}">
-                                @else
+                                @elseif (!empty($restaurant->image))
                                     <img width="140" src="{{ asset('storage/' . $restaurant->image) }}"
-                                        alt="{{ $restaurant->title ? "Image of restaurant: $restaurant->title" : "don't image of the project" }}">
+                                        alt="{{ $restaurant->title ? 'Image of restaurant: ' . $restaurant->title : "don't image of the project" }}">
+                                @else
+                                    <div width="140">Nothing to print</div>
                                 @endif
+
                             </td>
                             <td scope="row">{{ $restaurant->address }}</td>
                             <td scope="row">{{ $restaurant->vat_number }}</td>

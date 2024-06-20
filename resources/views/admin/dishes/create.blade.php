@@ -42,10 +42,11 @@
                 <label for="price" class="form-label">Prezzo <span class="text-secondary">*</span></label>
                 <input type="number" step="0.01" min="0.00"
                     class="form-control @error('price') is-invalid @enderror" name="price" id="price"
-                    aria-describedby="priceHelper" placeholder="price" value="{{ old('price') }}" required />
+                    aria-describedby="priceHelper" placeholder="price" value="{{ old('price') }}" required onkeyup="check_price()"/>
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
+                <small id="price_error" class="small_invisible">Il prezzo deve essere un numero non negativo!</small>
             </div>
 
             <!--Input for Visibility-->

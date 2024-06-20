@@ -128,7 +128,7 @@
     </div>
     <!-- /#app -->
 
-    <script src="{{ asset('js/password_checker.js') }}"></script>
+    <script src="{{ asset('js/validation_checker.js') }}"></script>
 
 </body>
 
