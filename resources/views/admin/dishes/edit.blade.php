@@ -75,7 +75,7 @@
                 <textarea class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" id="ingredients"
                     rows="5">{{ old('ingredients', $dish->ingredients) }}</textarea>
                 @error('ingredients')
-                    <div class="text-danger">{{ $message }}</div>
+                    <div class="text-danger" required>{{ $message }}</div>
                 @enderror
             </div>
 
