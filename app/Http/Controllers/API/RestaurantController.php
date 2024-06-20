@@ -37,8 +37,8 @@ class RestaurantController extends Controller
 
     public function filter(Request $request)
     {
-        //$types = $request->query('types');
-        $types = [1,2];
+        $types = $request->query('types');
+        // $types = [1,2];
         // Accesso al primo elemento -> E' un array non ua stringa
         //$firstType = $types[0];
 
@@ -57,12 +57,19 @@ class RestaurantController extends Controller
             ->join('types', 'restaurant_type.type_id', '=', 'types.id')
             ->whereIn('types.id', $types)
             ->groupBy('restaurants.id')
-            ->havingRaw('COUNT(types.id) =' . count($types))->get();
-
+            ->havingRaw('COUNT(types.id) =' . count($types))->paginate(10);
 
         return response()->json([
             'success' => true,
             'received_data' => $restaurants,
         ]);
+        // if ($restaurants->data == []) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'received_data' => 'Non ce nessun ristorante che corrisponde con le tipologie richieste'
+        //     ]);
+        // } else {
+
+        // }
     }
 }
