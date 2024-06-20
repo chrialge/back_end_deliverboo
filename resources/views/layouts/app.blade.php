@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
     <div id="app">
 
         <nav class="navbar navbar-expand-md light_shadow py-0">
@@ -34,7 +35,7 @@
                     <div class="logo">
                         <h2 class="mb-0">
                             <i class="fa-solid fa-utensils"></i>
-                            DeliveBoo
+                            DeliveBoo for work
                         </h2>
                     </div>
                 </a>
@@ -52,7 +53,7 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link primary_text fs-5 header_link py-3"
-                                href="http://localhost:5174/">{{ __('Torna ai ristoranti') }}</a>
+                                href="http://localhost:5174/">{{ __('Ordina') }}</a>
                         </li>
                     </ul>
                     <!-- /home link -->
