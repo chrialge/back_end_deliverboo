@@ -68,7 +68,7 @@
             <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredienti <span class="text-secondary">*</span></label>
                 <textarea class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" id="ingredients"
-                    rows="5">{{ old('ingredients') }}</textarea>
+                    rows="5" required>{{ old('ingredients') }}</textarea>
                 @error('ingredients')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
