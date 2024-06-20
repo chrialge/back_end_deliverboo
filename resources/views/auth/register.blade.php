@@ -10,14 +10,15 @@
                     @csrf
 
                     <div class="mb-4 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">
+                        <label for="name" class="col-md-4 col-form-label text-md-right" type="text" minlength="1">
                             Nome <span class="text-secondary">*</span>
                         </label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                                placeholder="Mario">
+                            <input onkeyup="check_name()" id="name" type="text"
+                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Mario">
+                            <small id="name_error" class="small_invisible">La password non coincide</small>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -218,5 +219,7 @@
         </div>
         <!-- /.row -->
     </div>
+    <script src="{{ asset('js/validation_checker.js') }}"></script>
+
     <!-- /.container -->
 @endsection
