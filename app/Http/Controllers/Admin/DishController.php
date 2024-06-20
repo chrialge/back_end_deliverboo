@@ -20,7 +20,6 @@ class DishController extends Controller
      */
     public function index()
     {
-
         $dishes = [];
         // take user current
         $user = Auth::getUser();
@@ -34,9 +33,6 @@ class DishController extends Controller
             return redirect()->back()->with('message', "Sorry you haven't restaurants registered");
         }
         // take restaurants of the user current
-
-
-
     }
 
     /**
@@ -44,7 +40,6 @@ class DishController extends Controller
      */
     public function create()
     {
-
         return view('admin.dishes.create');
     }
 
@@ -111,6 +106,9 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
+        if (Gate::allows('restaurant-checker', $dish)) {
+            return view('admin.restaurants.show', compact('restaurant'));
+        }
 
         //Validation
         $val_data = $request->validated();
@@ -139,6 +137,9 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        if (Gate::allows('restaurant-checker', $dish)) {
+            return view('admin.restaurants.show', compact('restaurant'));
+        }
         if ($dish->image) {
             Storage::disk('public')->delete($dish->image);
         }
