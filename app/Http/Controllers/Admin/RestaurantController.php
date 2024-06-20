@@ -80,28 +80,27 @@ class RestaurantController extends Controller
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
         if (Gate::allows('restaurant-checker', $restaurant)) {
-            return view('admin.restaurants.update', compact('restaurant'));
-        }
+            //Validation
+            $val_data = $request->validated();
 
-        //Validation
-        $val_data = $request->validated();
+            //Creating a slug content
+            $slug = Str::slug($val_data['name'], '-');
+            $val_data['slug'] = $slug;
 
-        //Creating a slug content
-        $slug = Str::slug($val_data['name'], '-');
-        $val_data['slug'] = $slug;
+            if ($request->has('image')) {
 
-        if ($request->has('image')) {
-
-            if ($restaurant->image) {
-                Storage::disk('public')->delete($restaurant->image);
+                if ($restaurant->image) {
+                    Storage::disk('public')->delete($restaurant->image);
+                }
+                $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
             }
-            $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
+
+            //Creating new istance
+            $restaurant->update($val_data);
+
+            return to_route('admin.restaurants.index')->with('message', "You have updated $restaurant->name");
         }
-
-        //Creating new istance
-        $restaurant->update($val_data);
-
-        return to_route('admin.restaurants.index')->with('message', "You have updated $restaurant->name");
+        abort(403, "Don't try to entry into another restaurant");
     }
 
     /**
@@ -110,12 +109,13 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
         if (Gate::allows('restaurant-checker', $restaurant)) {
-            return view('admin.restaurants.show', compact('restaurant'));
+
+
+            if ($restaurant->image) {
+                Storage::disk('public')->delete($restaurant->image);
+            }
+            $restaurant->delete();
+            return redirect()->back()->with('message', "You have delete $restaurant->name");
         }
-        if ($restaurant->image) {
-            Storage::disk('public')->delete($restaurant->image);
-        }
-        $restaurant->delete();
-        return redirect()->back()->with('message', "You have delete $restaurant->name");
     }
 }
