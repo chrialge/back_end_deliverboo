@@ -48,8 +48,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            {{-- <a class="nav-link primary_text fs-4 header_link"
-                                href="{{ url('/') }}">{{ __('Home') }}</a> --}}
+                            <a class="nav-link primary_text fs-5 header_link py-3"
+                                href="http://localhost:5174/">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
