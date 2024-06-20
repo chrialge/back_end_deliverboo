@@ -79,6 +79,10 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
+        if (Gate::allows('restaurant-checker', $restaurant)) {
+            return view('admin.restaurants.update', compact('restaurant'));
+        }
+
         //Validation
         $val_data = $request->validated();
 
@@ -105,6 +109,9 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        if (Gate::allows('restaurant-checker', $restaurant)) {
+            return view('admin.restaurants.show', compact('restaurant'));
+        }
         if ($restaurant->image) {
             Storage::disk('public')->delete($restaurant->image);
         }
