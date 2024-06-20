@@ -2,24 +2,6 @@ function isNumber(value) {
     return typeof value === 'number' && !isNaN(value);
 }
 
-let check_name = function check_name() {
-    let nameElement = document.getElementById('name');
-    let nameValue = nameElement.value.trim(); // Rimuove spazi bianchi iniziali e finali
-
-    let errorElement = document.getElementById("name_error");
-
-    if (nameValue.length > 0) {
-        errorElement.classList.remove("small_visible");
-        errorElement.classList.add("small_invisible");
-        nameElement.style.borderColor = "";
-        return true;
-    } else {
-        errorElement.classList.remove("small_invisible");
-        errorElement.classList.add("small_visible");
-        nameElement.style.borderColor = "red";
-        return false;
-    }
-}
 
 //psw checker
 let check_pw = function check_pw() {
@@ -95,7 +77,7 @@ let check_types = function check_types() {
 };
 
 
-// Aggiungi un listener per il pulsante di submit
+
 document.getElementById('register-submit-button').addEventListener('click', function (event) {
     
     // Controllo della password

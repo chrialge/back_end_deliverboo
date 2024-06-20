@@ -18,7 +18,6 @@
                             <input onkeyup="check_name()" id="name" type="text"
                                 class="form-control @error('name') is-invalid @enderror" name="name"
                                 value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Mario">
-                            <small id="name_error" class="small_invisible">La password non coincide</small>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
