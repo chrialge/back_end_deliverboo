@@ -24,17 +24,18 @@ class DishSeeder extends Seeder
             'Parmigiana di Melanzane', 'Polenta', 'Ossobuco', 'Saltimbocca alla Romana', 'Pasta alla Norma',
             'Zuppa di Pesce', 'Cannoli Siciliani', 'Bistecca alla Fiorentina', 'Gnocchi di Patate'
         ];
-
-        foreach ($dishNames as $key => $name) {
-            $newDish = new Dish();
-            $newDish->name = $name;
-            $newDish->slug = Str::slug($name, '-');
-            $newDish->restaurant_id = $key + 1;
-            $newDish->image = $faker->imageUrl(600, 300, 'Dish', true, $name, true, 'jpg');
-            $newDish->ingredients = $faker->words(6, true);
-            $newDish->price = $faker->randomFloat(2, 5, 20);  // Prezzo compreso tra 5 e 20 euro
-            $newDish->visibility = $faker->boolean;
-            $newDish->save();
+        for ($i = 1; $i <= 20; $i++) {
+            foreach ($dishNames as $key => $name) {
+                $newDish = new Dish();
+                $newDish->name = $name;
+                $newDish->slug = Str::slug($name, '-');
+                $newDish->restaurant_id = $i;
+                $newDish->image = $faker->imageUrl(600, 300, 'Dish', true, $name, true, 'jpg');
+                $newDish->ingredients = $faker->words(6, true);
+                $newDish->price = $faker->randomFloat(2, 5, 20);  // Prezzo compreso tra 5 e 20 euro
+                $newDish->visibility = $faker->boolean;
+                $newDish->save();
+            }
         }
     }
 }
