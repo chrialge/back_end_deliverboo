@@ -23,7 +23,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Ossi di seppia',
                 'user_id' => 1,
-                'image' => 'https://lh3.googleusercontent.com/p/AF1QipNUHJsAFUP4NhMx97TbfPnbXsTAhsZrSMzrB3Yp=s1360-w1360-h1020',
+                'image' => 'https://media-cdn.tripadvisor.com/media/photo-f/06/13/cd/d5/venite-a-provare-le-nostre.jpg',
                 'types' => [
                     5, 9
                 ]
@@ -39,7 +39,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Ristorante Il Ponte',
                 'user_id' => 3,
-                'image' => 'https://wips.plug.it/scips/PXDCrfObfIHiqjtoXhX7sA/img.italiaonline.it/0WO5p000003GZBCGA4_14290485.png?a=rr&w=135&h=135&ssl=1',
+                'image' => 'https://media-cdn.tripadvisor.com/media/photo-s/06/70/4e/17/il-ponte.jpg',
                 'types' => [
                     1, 9
                 ]
@@ -47,7 +47,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Pizzeria Bella Napoli',
                 'user_id' => 4,
-                'image' => 'https://lh3.googleusercontent.com/p/AF1QipMRuJdjXDIO-nva62P6mqLZ6Olgas7guB7Lcvy3=s1360-w1360-h1020-rw',
+                'image' => 'https://media-cdn.tripadvisor.com/media/photo-s/03/f9/35/44/bella-napoli.jpg',
                 'types' => [
                     1, 9
                 ]
@@ -127,7 +127,7 @@ class RestaurantSeeder extends Seeder
             [
                 'name' => 'Beirut',
                 'user_id' => 14,
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCFI5guZKWFkssr6G91LA5vmrhP0yZarX0t32glG-eVcpPUgomXj2NVh31lsSsbH228zQ&usqp=CAU',
+                'image' => 'https://qul.imgix.net/0f4454e0-1743-43d4-a768-4af41a7edeba/169776_landscape.jpg',
                 'types' => [
                     20
                 ]
