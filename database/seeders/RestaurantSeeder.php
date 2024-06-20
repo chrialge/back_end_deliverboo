@@ -28,6 +28,7 @@ class RestaurantSeeder extends Seeder
         ];
 
         foreach ($restaurantNames as $key => $name) {
+            $number = rand(2, 4);
             $newRestaurant = new Restaurant();
             $newRestaurant->name = $name;
             $newRestaurant->slug = Str::slug($name, '-');
@@ -37,6 +38,7 @@ class RestaurantSeeder extends Seeder
             $newRestaurant->address = 'Via ' . $faker->streetName . ' ' . $faker->numberBetween(1, 100);
             $newRestaurant->vat_number = $faker->randomNumber(5, true) . $faker->randomNumber(6, true); //randomNumber ha un massimo d 10 numeri generabili, quindi ne concateno 2 per ottemerme 11. Volendo c'è anche il faker per il VAT italiano ma restituisce anche il IT all'inizio, dovremmo modificare la tabella 
             $newRestaurant->save();
+            $newRestaurant->types()->attach([1, $number]);
         }
     }
 }
