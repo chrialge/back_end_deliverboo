@@ -2,12 +2,6 @@
 
 @section('content')
     <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
-            <h1>All restaurants</h1>
-            {{-- <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">
-                Add restaurant
-            </a> --}}
-        </div>
 
         @include('partials.session')
 
@@ -15,25 +9,25 @@
             <table class="table table-primary">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">User_id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Slug</th>
-                        <th scope="col">Phone_number</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">VAT number</th>
-                        <th scope="col">Action</th>
+                        {{-- <th scope="col">ID</th>
+                        <th scope="col">User_id</th> --}}
+                        <th scope="col">Nome</th>
+                        {{-- <th scope="col">Slug</th> --}}
+                        <th scope="col">Numero di telefono</th>
+                        <th scope="col">Immagine</th>
+                        <th scope="col">Indirizzo</th>
+                        <th scope="col">Partita IVA</th>
+                        <th scope="col">Azioni</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($restaurants as $restaurant)
                         <tr class="">
-                            <td scope="row">{{ $restaurant->id }}</td>
-                            <td scope="row">{{ $restaurant->user_id }}</td>
+                            {{-- <td scope="row">{{ $restaurant->id }}</td>
+                            <td scope="row">{{ $restaurant->user_id }}</td> --}}
                             <td scope="row">{{ $restaurant->name }}</td>
-                            <td scope="row">{{ $restaurant->slug }}</td>
+                            {{--  <td scope="row">{{ $restaurant->slug }}</td> --}}
                             <td scope="row">{{ $restaurant->phone_number }}</td>
                             <td scope="row">
                                 @if (Str::contains($restaurant->image, ['https://', 'http://']))
@@ -100,14 +94,11 @@
                                 </div> --}}
                             </td>
 
-
-
                         </tr>
                     @empty
 
                         <tr class="">
-                            <td scope="row">Sorry i don't have collection 😭😭😭😭😭</td>
-
+                            <td scope="row">Nessun ristorante da mostrare qua 😭😭😭😭😭</td>
                         </tr>
                     @endforelse
 

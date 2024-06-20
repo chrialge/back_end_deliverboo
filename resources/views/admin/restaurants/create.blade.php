@@ -4,9 +4,9 @@
     <div class="container">
 
         <div class="d-flex align-items-center justify-content-between">
-            <h1>All Restaurants</h1>
+            <h1>Aggiungi Ristorante</h1>
             <a href="{{ route('admin.restaurants.index') }}" class="btn btn-dark">
-                return to restaurant
+                Torna ai ristoranti
             </a>
         </div>
 
@@ -18,7 +18,7 @@
 
             <!-- Input for name-->
             <div class="mb-3">
-                <label for="name" class="form-label">Restaurant name</label>
+                <label for="name" class="form-label">Nome</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
                     aria-describedby="nameHelper" placeholder="name" value="{{ old('name') }}" required />
                 @error('name')
@@ -28,7 +28,7 @@
 
             <!-- Input for phone number -->
             <div class="mb-3">
-                <label for="phone_number" class="form-label">Phone number</label>
+                <label for="phone_number" class="form-label">Numero di telefono</label>
                 <input type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
                     id="phone_number" aria-describedby="phone_numberHelper" placeholder="phone_number"
                     value="{{ old('phone_number') }}" required />
@@ -39,7 +39,7 @@
 
             <!-- Input for image-->
             <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">Immagine</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image" aria-describedby="imageHelper" placeholder="image" value="{{ old('image') }}" />
                 @error('image')
@@ -49,7 +49,7 @@
 
             <!-- Input for address-->
             <div class="mb-3">
-                <label for="address" class="form-label">Restaurant address</label>
+                <label for="address" class="form-label">Indirizzo</label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" name="address"
                     id="address" aria-describedby="addressHelper" placeholder="address" value="{{ old('address') }}"
                     required />
@@ -60,7 +60,7 @@
 
             <!-- Input for VAT number-->
             <div class="mb-3">
-                <label for="vat_number" class="form-label">Restaurant VAT number</label>
+                <label for="vat_number" class="form-label">Partita IVA</label>
                 <input type="text" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                     id="vat_number" aria-describedby="vat_numberHelper" placeholder="vat_number"
                     value="{{ old('vat_number') }}" required />
@@ -69,7 +69,7 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary" type="submit">Add restaurant</button>
+            <button class="btn btn-primary" type="submit">Aggiungi ristorante</button>
 
         </form>
     </div>
