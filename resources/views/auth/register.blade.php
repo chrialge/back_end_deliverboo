@@ -4,12 +4,15 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-8 deliverboo_text">
-                <h1 class="my-4 text-center">Register</h1>
+                <h1 class="mt-4 text-center">Registrati</h1>
+                <div class="text-center text-secondary pb-4">* campo obbligatorio</div>
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-4 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-right">
+                            Nome <span class="text-secondary">*</span>
+                        </label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -26,7 +29,9 @@
                     <!-- /.name -->
 
                     <div class="mb-4 row">
-                        <label for="last_name" class="col-md-4 col-form-label text-md-right">Last name*</label>
+                        <label for="last_name" class="col-md-4 col-form-label text-md-right">
+                            Cognome <span class="text-secondary">*</span>
+                        </label>
 
                         <div class="col-md-6">
                             <input id="last_name" type="last_name"
@@ -44,8 +49,9 @@
                     <!-- /.last_name -->
 
                     <div class="mb-4 row">
-                        <label for="email"
-                            class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-right">
+                            Indirizzo E-Mail <span class="text-secondary">*</span>
+                        </label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -63,7 +69,9 @@
 
 
                     <div class="mb-4 row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right">
+                            Password <span class="text-secondary">*</span>
+                        </label>
 
                         <div class="col-md-6">
                             <input id="password" type="password"
@@ -80,20 +88,23 @@
                     <!-- /.password -->
 
                     <div class="mb-4 row">
-                        <label for="password-confirm"
-                            class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">
+                            Conferma Password <span class="text-secondary">*</span>
+                        </label>
 
                         <div class="col-md-6" id="error_message">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                                 required autocomplete="new-password" placeholder="********" onkeyup='check_pw();'>
-                            <small id="password_error" class="small_invisible">The password doesn't match</small>
+                            <small id="password_error" class="small_invisible">La password non coincide</small>
                         </div>
                     </div>
                     <!-- /.passwod_confirm -->
 
                     <!-- Input for name-->
                     <div class="mb-4 row">
-                        <label for="name_restaurant" class="col-md-4 col-form-label text-md-right">Name Restaurant*</label>
+                        <label for="name_restaurant" class="col-md-4 col-form-label text-md-right">
+                            Nome Ristorante <span class="text-secondary">*</span>
+                        </label>
                         <div class="col-md-6">
                             <input type="text" class="form-control @error('name_restaurant') is-invalid @enderror"
                                 name="name_restaurant" id="name_restaurant" aria-describedby="nameHelper"
@@ -107,8 +118,9 @@
 
                     <!-- Input for phone number -->
                     <div class="mb-4 row">
-                        <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone
-                            number(optional)</label>
+                        <label for="phone_number" class="col-md-4 col-form-label text-md-right">
+                            Numero di telefono
+                        </label>
 
                         <div class="col-md-6">
                             <input type="number" class="form-control @error('phone_number') is-invalid @enderror"
@@ -118,14 +130,13 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
-
                     </div>
-
 
                     <!-- Input for address-->
                     <div class="mb-4 row">
-                        <label for="address" class="col-md-4 col-form-label text-md-right">Address(optional)</label>
+                        <label for="address" class="col-md-4 col-form-label text-md-right">
+                            Indirizzo
+                        </label>
                         <div class="col-md-6">
                             <input type="text" class="form-control @error('address') is-invalid @enderror"
                                 name="address" id="address" aria-describedby="addressHelper"
@@ -134,27 +145,28 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
-
                     </div>
 
                     <!-- Input for image-->
                     <div class="mb-4 row">
-                        <label for="image" class="col-md-4 col-form-label text-md-right">Image(optional)</label>
+                        <label for="image" class="col-md-4 col-form-label text-md-right">
+                            Immagine
+                        </label>
                         <div class="col-md-6">
                             <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                name="image" id="image" aria-describedby="imageHelper" placeholder="image"
+                                name="image" id="image" aria-describedby="imageHelper"
                                 value="{{ old('image') }}" />
                             @error('image')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
                     </div>
 
                     <!-- Input for VAT number-->
                     <div class="mb-4 row">
-                        <label for="vat_number" class="col-md-4 col-form-label text-md-right">VAT Number*</label>
+                        <label for="vat_number" class="col-md-4 col-form-label text-md-right">
+                            Partita IVA <span class="text-secondary">*</span>
+                        </label>
 
                         <div class="col-md-6">
                             <input type="number" minlength="11" maxlength="11"
@@ -169,11 +181,12 @@
 
                     </div>
 
-                    <div class="mb-4 row">
-                        <label for="vat_number" class="col-md-4 col-form-label text-md-right">Type cousine*</label>
-
-                        <div class="col-md-6">
-                            @foreach ($types as $type)
+                    <div class="col-md-4 col-form-label pb-1">
+                        Seleziona almeno un tipo di cucina
+                    </div>
+                    <div class="mb-4 row row-cols-6">
+                        @foreach ($types as $type)
+                            <div class="col d-flex">
                                 <div class="form-check">
                                     <input name="types[]" class="form-check-input" type="checkbox"
                                         value="{{ $type->id }}" id="type-{{ $type->id }}"
@@ -182,19 +195,15 @@
                                         {{ $type->name }}
                                     </label>
                                 </div>
-                            @endforeach
-
-
-
-                        </div>
-
+                            </div>
+                            <!-- /.col -->
+                        @endforeach
                     </div>
-
 
                     <div class="mb-4 row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-dark">
-                                {{ __('Register') }}
+                                {{ __('Registrati') }}
                             </button>
                         </div>
                     </div>
