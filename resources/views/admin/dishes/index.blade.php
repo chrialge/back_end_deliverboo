@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
-            <h1>All Dishes</h1>
+            <h1>Piatti</h1>
             <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">
-                Add dish
+                Aggiungi Piatto
             </a>
         </div>
 
@@ -15,23 +15,23 @@
             <table class="table table-primary">
                 <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">name</th>
-                        <th scope="col">slug</th>
-                        <th scope="col">image</th>
-                        <th scope="col">ingredients</th>
-                        <th scope="col">price</th>
-                        <th scope="col">visibility</th>
-                        <th scope="col">action</th>
+                        {{-- <th scope="col">id</th> --}}
+                        <th scope="col">Nome</th>
+                        {{-- <th scope="col">slug</th> --}}
+                        <th scope="col">Immagine</th>
+                        <th scope="col">Ingredienti</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Visibile</th>
+                        <th scope="col">Azioni</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($dishes as $dish)
                         <tr class="">
-                            <td scope="row">{{ $dish->id }}</td>
+                            {{-- <td scope="row">{{ $dish->id }}</td> --}}
                             <td scope="row">{{ $dish->name }}</td>
-                            <td scope="row">{{ $dish->slug }}</td>
+                            {{-- <td scope="row">{{ $dish->slug }}</td> --}}
                             <td scope="row">
                                 @if (Str::contains($dish->image, ['https://', 'http://']))
                                     <img width="140" src="{{ $dish->image }}" alt="Image of dish: {{ $dish->title }}">
@@ -42,7 +42,7 @@
                             </td>
                             <td scope="row">{{ $dish->ingredients }}</td>
                             <td scope="row">{{ $dish->price }}</td>
-                            <td scope="row">{{ $dish->visibility == 0 ? 'yes' : 'no' }}</td>
+                            <td scope="row">{{ $dish->visibility == 0 ? 'Si' : 'No' }}</td>
                             <td scope="row d-flex gap-2 flex-wrap">
 
                                 <a href="{{ route('admin.dishes.show', $dish) }}" class="btn btn-dark">
@@ -70,18 +70,18 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="modalTitleId-{{ $dish->id }}">
-                                                    Attention!!⚡⚡ Deleting: {{ $dish->name }}
+                                                    Attenzione!!⚡⚡ Cancellerai: {{ $dish->name }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                You are about to dlete this record. This operation is
-                                                DESCTRUCTIVE!💣💣💣
+                                                Stai per cancellare questo dato. Questa operazione sarà
+                                                DISTRUTTIVA E IRRECUPERABILE!💣💣💣
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    Close
+                                                    Chiudi
                                                 </button>
                                                 <form action="{{ route('admin.dishes.destroy', $dish) }}" method="post">
                                                     @csrf
@@ -95,14 +95,11 @@
                                     </div>
                                 </div>
                             </td>
-
-
-
                         </tr>
                     @empty
 
                         <tr class="">
-                            <td scope="row">Nothing to display here! 😭😭😭😭😭</td>
+                            <td scope="row">Nessun piatto disponibile! 😭😭😭😭😭</td>
                         </tr>
                     @endforelse
 

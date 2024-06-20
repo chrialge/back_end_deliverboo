@@ -3,46 +3,46 @@
     <div class="content">
         <div class="container px-0">
             <h1 class="pt-5 text-center">
-                Welcome to Delive<span class="primary_text">Boo</span>!
+                Benvenuto su Delive<span class="primary_text">Boo</span>!
             </h1>
             <p class="text-center fs-3 mb-5">
-                The premier food Delivey service in the Eternal City. Partner with us to expand your
-                restaurant's reach and delight customers across Rome with your delicious dishes.
+                Il servizio di consegna cibo di prima qualità nella Città Eterna. Collabora con noi per espandere la portata
+                del tuo ristorante e deliziare i clienti di tutta Roma con i tuoi piatti deliziosi.
             </p>
 
             <div class="row py-5">
                 <div class="col align-self-center">
                     <h3 class="pb-2">
-                        Why Partner with Delive<span class="primary_text">Boo</span>?
+                        Perchè lavorare con Delive<span class="primary_text">Boo</span>?
                     </h3>
                     <ul class="list-unstyled">
                         <li>
                             <strong class="primary_text">
-                                Expand Your Reach:
+                                Espandi la tua portata:
                             </strong>
                             <br>
-                            Connect with thousands of hungry customers in Rome.
+                            Conntettiti con centinaia di persone affamate a Roma.
                         </li>
                         <li>
                             <strong class="primary_text">
-                                Boost Your Sales:
+                                Aumenta le tue vendite:
                             </strong>
                             <br>
-                            Increase your revenue with online orders and Delivey services.
+                            Aumenta i tuoi ricavi con gli ordini online e i servizi di consegna..
                         </li>
                         <li>
                             <strong class="primary_text">
-                                User-Friendly Interface:
+                                Interfaccia facile da usare:
                             </strong>
                             <br>
-                            Easily manage your menu, orders, and promotions.
+                            Gestisci facilmente il tuo menu, gli ordini e le promozioni.
                         </li>
                         <li>
                             <strong class="primary_text">
-                                Marketing Support:
+                                Supporto Marketing:
                             </strong>
                             <br>
-                            Benefit from exclusive marketing campaigns and promotions.
+                            Beneficia di campagne di marketing e promozioni esclusive.
                         </li>
                     </ul>
                 </div>
@@ -61,36 +61,36 @@
                 <!-- /.col -->
                 <div class="col align-self-center pl-5">
                     <h3>
-                        How It Works
+                        Come funziona
                     </h3>
                     <ul class="list-unstyled">
                         <li>
                             <strong class="primary_text">
-                                Sign Up:
+                                Registazione:
                             </strong>
                             <br>
-                            Register your restaurant and create an account.
+                            Registrati il tuo ristorante e crea un account.
                         </li>
                         <li>
                             <strong class="primary_text">
-                                List Your Menu:
+                                Elenca il tuo menu:
                             </strong>
                             <br>
-                            Upload your dishes, customize your menu, and set prices.
+                            Carica i tuoi piatti, personalizza il tuo menu e imposta i prezzi.
                         </li>
                         <li>
                             <strong class="primary_text">
-                                Receive Orders:
+                                Ricevi ordini:
                             </strong>
                             <br>
-                            Get notified of new orders and prepare them for Delivey.
+                            Ricevi notifiche di nuovi ordini e preparali per la consegna.
                         </li>
                         <li>
                             <strong class="primary_text">
-                                Track Performance:
+                                Controlla le performance:
                             </strong>
                             <br>
-                            Monitor your sales and customer feedback in real-time.
+                            Monitora le tue vendite e il feedback dei clienti in tempo reale.
                         </li>
                     </ul>
 
@@ -102,19 +102,19 @@
             <div class="container py-5">
 
                 <h3 class="text-center pt-5">
-                    Join the Delive<span class="primary_text">boo</span> Community
+                    Unisciti alla Delive<span class="primary_text">boo</span> Community
                 </h3>
 
                 <div class="row pt-3">
                     <div class="col text-center d-flex">
                         <p class="border-bottom p-3">
-                            Sign up today and become part of the Delive<span class="primary_text">boo</span> network.
+                            Iscriviti oggi e diventa parte di Delive<span class="primary_text">boo</span> network.
                         </p>
                         <p class="border border-top-0  p-3">
-                            Gain access to a larger customer base and watch your business grow.
+                            Guadagna accesso a una base clienti più ampia e guarda crescere il tuo business.
                         </p>
                         <p class="border-bottom  p-3">
-                            Our team is here to support you every step of the way.
+                            Il nostro team è qui per supportarti in ogni passo del percorso.
                         </p>
                     </div>
                     <!-- /.col -->
@@ -125,18 +125,19 @@
 
             <div class="text-center">
                 <h3>
-                    Get Started
+                    Inizia
                 </h3>
                 <p class="mb-4">
-                    Ready to take your restaurant to the next level?
-                    <br>Click the button below to register and start showcasing
-                    your delicious dishes on Delive<span class="primary_text">boo</span>!
+                    Pronto a portare il tuo ristorante al livello successivo?
+                    <br>
+                    Fai clic sul pulsante qui sotto per registrarti e iniziare a mostrare i tuoi piatti deliziosi su
+                    Delive<span class="primary_text">boo</span>!
                 </p>
-                <a href="{{ route('register') }}" class="button-85">Register now</a>
+                <a href="{{ route('register') }}" class="button-85">Registrati qui</a>
             </div>
             <h5 class="text-center py-5">
-                Thank you for choosing Delive<span class="primary_text">boo</span>. Let's create unforgettable dining
-                experiences together!
+                Grazie per aver scelto Delive<span class="primary_text">boo</span>. Creiamo insieme esperienze culinarie
+                indimenticabili!
             </h5>
         </div>
     </div>

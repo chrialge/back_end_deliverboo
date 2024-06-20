@@ -24,93 +24,129 @@
 </head>
 
 <body>
+
     <div id="app">
 
         <nav class="navbar navbar-expand-md light_shadow py-0 mb-5">
+
             <div class="container">
+
                 <a class="navbar-brand d-flex align-items-center p-0" href="{{ url('/') }}">
                     <div class="logo">
                         <h2 class="mb-0">
                             <i class="fa-solid fa-utensils"></i>
-                            Deliveboo
+                            DeliveBoo for work
                         </h2>
                     </div>
-                    {{-- config('app.name', 'Laravel') --}}
                 </a>
+                <!-- /logo -->
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- /collapse button -->
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
-                        </li> --}}
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link primary_text fs-5 header_link py-3"
+                                    href="http://localhost:5174/">{{ __('Ordina') }}</a>
+                            </li>
+                        </ul>
+                        <!-- /home link -->
+
                         <li class="nav-item">
                             <a class="nav-link primary_text fs-5 header_link py-3"
                                 href="{{ route('admin.restaurants.index') }}">
-                                {{ __('Restaurants') }}</a>
+                                {{ __('Ristorante') }}</a>
                         </li>
+                        <!-- /restaurants link -->
 
                         <li class="nav-item">
                             <a class="nav-link primary_text fs-5 header_link py-3"
                                 href="{{ route('admin.dishes.index') }}">
-                                {{ __('Dishes') }}</a>
+                                {{ __('Menù') }}</a>
                         </li>
+                        <!-- /dishes link -->
+
                     </ul>
+                    <!-- /nav -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link primary_text fs-5 header_link py-3"
-                                    href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
+                            <!-- /login link -->
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
+                                <!-- /register link -->
                             @endif
                         @else
                             <li class="nav-item dropdown">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle primary_text fs-5 header_link py-3"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+                                <!-- /dropdown -->
 
                                 <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item primary_text fs-5 header_link py-3"
-                                        href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                        href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}
+                                    </a>
+                                    <!-- /dashbard -->
                                     <a class="dropdown-item primary_text fs-5 header_link py-3"
-                                        href="{{ url('profile') }}">{{ __('Profile') }}</a>
+                                        href="{{ url('profile') }}">{{ __('Profilo') }}
+                                    </a>
+                                    <!-- /profile -->
                                     <a class="dropdown-item primary_text fs-5 header_link py-3"
                                         href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Esci') }}
                                     </a>
-
+                                    <!-- /logout -->
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
+                                <!-- /dropdwn menu-->
+
                             </li>
                         @endguest
+
                     </ul>
+                    <!-- /navbar righ-side-->
+
                 </div>
+                <!-- /.collapse -->
+
             </div>
+            <!-- /container -->
+
         </nav>
+        <!-- /navbar -->
 
         <main class="">
             @yield('content')
         </main>
+        <!-- /main content -->
+
     </div>
+    <!-- /#app -->
+
 </body>
 
 </html>
