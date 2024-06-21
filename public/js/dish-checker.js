@@ -1,15 +1,16 @@
 const checkbox = document.getElementById('visibility-toggle');
 //Imposto dei valori di default
-checkbox.checked = false;
+/* checkbox.checked = false;
 checkbox.value = '0';
-
+ */
 console.log('Prima del ckick', checkbox.value);
-checkbox.addEventListener('click', function () {
+checkbox.addEventListener('change', function () {
     if (this.checked) {
         
         this.value = '1'; // Imposta il valore a 1 se la checkbox è selezionata
         console.log('Dopo ckick', checkbox.value);
-    } else {
+    }
+    if ((!this.checked)) {
         
         this.value = '0'; // Imposta il valore a 0 se la checkbox non è selezionata
         console.log('Dopo ckick', checkbox.value);
@@ -93,7 +94,7 @@ function check_ingredients() {
 
 
 //verifiche prima di inviare il form
-document.getElementById('register-submit-button').addEventListener('click', function (event) {
+document.getElementById('dish-submit-button').addEventListener('click', function (event) {
     // Controllo del nome
     if (!check_name()) {
         event.preventDefault();
@@ -105,7 +106,7 @@ document.getElementById('register-submit-button').addEventListener('click', func
     }
 
     // Controllo degli ingredienti
-    if (!check_types()) {
+    if (!check_ingredients()) {
         event.preventDefault();
     }
 
