@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('customer_name', 50);
             $table->string('customer_lastname', 50);
+            $table->string('slug', 150);
             $table->string('customer_address', 100);
             $table->string('customer_phone_number', 30);
             $table->string('customer_email');

@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Dish;
+use App\Models\Order;
+
 use App\Models\Restaurant;
 
 // use Illuminate\Support\Facades\Gate;
@@ -30,6 +32,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('dish-checker', function (User $user, Dish $dish) {
             $restaurant = $user->restaurants()->first();
             return $restaurant->id === $dish->restaurant_id;
+        });
+
+        Gate::define('orders-checker', function (User $user, Order $order) {
+            $restaurant = $user->restaurants()->first();
+            return $restaurant->id === $order->restaurant_id;
         });
 
         Gate::define('restaurant-checker', function (User $user, Restaurant $restaurant) {
