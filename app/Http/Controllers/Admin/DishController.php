@@ -111,6 +111,12 @@ class DishController extends Controller
             //Validation
             $val_data = $request->validated();
 
+            // true se la checkbox è selezionata, false altrimenti
+            $visibility = $request->has('visibility');
+
+
+            //dd($visibility);
+            //if($val_data->)
             //Creating a slug content
             $slug = Str::slug($val_data['name'], '-');
             $val_data['slug'] = $slug;
@@ -124,8 +130,11 @@ class DishController extends Controller
             }
 
 
-            //Creating new istance
-            $dish->update($val_data);
+            //Updating new istance
+
+            $dish->update([
+                'visibility' => $visibility,
+            ]);
 
             return to_route('admin.dishes.index')->with('message', "You have updated $dish->name");
         }
