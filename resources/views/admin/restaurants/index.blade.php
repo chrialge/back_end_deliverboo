@@ -5,6 +5,8 @@
 
         @include('partials.session')
 
+        <a href="{{ route('admin.restaurants.create') }}" class="btn btn primary">add</a>
+
         <div class="table-responsive">
             <table class="table table-primary">
                 <thead>
