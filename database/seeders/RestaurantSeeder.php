@@ -173,20 +173,27 @@ class RestaurantSeeder extends Seeder
                 ]
             ],
             [
-                'name' => 'Ristorante La Dolce Vita',
+                'name' => 'Bua',
                 'user_id' => 20,
-                'image' => 'https://backend.squisitalia.it/img/foto/locali/16172_1.jpg',
+                'image' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/ed/3c/43/front-store.jpg?w=600&h=-1&s=1',
                 'types' => [
-                    9
+                    19
                 ]
-            ]
+            ],
+
         ];
 
 
         foreach ($restaurantNames as $restaurant) {
             $newRestaurant = new Restaurant();
             $newRestaurant->name = $restaurant['name'];
-            $newRestaurant->slug = Str::slug($restaurant['name'], '-');
+            $slug_checker = Restaurant::where('name', $newRestaurant->name)->count();
+            if ($slug_checker) {
+                $slug = Str::slug($newRestaurant->name, '-') . '-' . $slug_checker + 1;
+            } else {
+                $slug = Str::slug($newRestaurant->name, '-');
+            }
+            $newRestaurant->slug = $slug;
             $newRestaurant->phone_number = '340' . $faker->randomNumber(7, true);
             $newRestaurant->user_id = $restaurant['user_id'];
             $newRestaurant->image = $restaurant['image'];

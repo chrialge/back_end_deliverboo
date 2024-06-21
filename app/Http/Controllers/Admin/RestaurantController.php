@@ -38,7 +38,13 @@ class RestaurantController extends Controller
         $val_data = $request->validated();
 
         //Creating a slug content
-        $slug = Str::slug($val_data['name'], '-');
+        $slug_checker = Restaurant::where('name', $val_data['name'])->count();
+        if ($slug_checker) {
+            $slug = Str::slug($val_data['name'], '-') . '-' . $slug_checker + 1;
+        } else {
+            $slug = Str::slug($val_data['name'], '-');
+        }
+
         $val_data['slug'] = $slug;
         $val_data['user_id'] = Auth::id();
 

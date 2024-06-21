@@ -67,7 +67,13 @@ class RegisteredUserController extends Controller
         if ($request->has('name_restaurant')) {
             $newRestaurant = new Restaurant();
             $newRestaurant->name = $request->name_restaurant;
-            $newRestaurant->slug = Str::slug($newRestaurant->name, '-');
+            $slug_checker = Restaurant::where('name', $newRestaurant->name)->count();
+            if ($slug_checker) {
+                $slug = Str::slug($newRestaurant->name, '-') . '-' . $slug_checker + 1;
+            } else {
+                $slug = Str::slug($newRestaurant->name, '-');
+            }
+            $newRestaurant->slug = $slug;
             $newRestaurant->user_id = Auth::id();
             $newRestaurant->phone_number = $request->phone_number;
             $newRestaurant->address = $request->address;
