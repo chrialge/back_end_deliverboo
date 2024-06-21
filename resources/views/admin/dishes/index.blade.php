@@ -37,12 +37,12 @@
                                     <img width="140" src="{{ $dish->image }}" alt="Image of dish: {{ $dish->title }}">
                                 @else
                                     <img width="140" src="{{ asset('storage/' . $dish->image) }}"
-                                        alt="{{ $dish->title ? "Image of dish: $dish->title" : "don't image of the project" }}">
+                                        alt="{{ $dish->title ? "Image of dish: $dish->title" : "don't image of the dish" }}">
                                 @endif
                             </td>
                             <td scope="row">{{ $dish->ingredients }}</td>
                             <td scope="row">{{ $dish->price }}</td>
-                            <td scope="row">{{ $dish->visibility == 0 ? 'Si' : 'No' }}</td>
+                            <td scope="row">{{ $dish->visibility == 1 ? 'Si' : 'No' }}</td>
                             <td scope="row d-flex gap-2 flex-wrap">
 
                                 <a href="{{ route('admin.dishes.show', $dish) }}" class="btn btn-dark">

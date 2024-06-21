@@ -38,6 +38,7 @@ class RestaurantController extends Controller
     public function filter(Request $request)
     {
         $types = $request->query('types');
+        
         // $types = [1,2];
         // Accesso al primo elemento -> E' un array non ua stringa
         //$firstType = $types[0];
@@ -51,6 +52,7 @@ class RestaurantController extends Controller
         WHERE types.id IN (1,3)
         GROUP BY restaurants.id
         HAVING COUNT(types.id) = 2; */
+
         if ($types) {
             $restaurants = Restaurant::with('types', 'dishes')->select(['restaurants.*'])
                 ->join('restaurant_type', 'restaurants.id', '=', 'restaurant_type.restaurant_id')
