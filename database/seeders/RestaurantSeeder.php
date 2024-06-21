@@ -133,7 +133,7 @@ class RestaurantSeeder extends Seeder
                 ]
             ],
             [
-                'name' => 'Paticceria il Duomo',
+                'name' => 'Pasticceria il Duomo',
                 'user_id' => 15,
                 'image' => 'https://lh3.googleusercontent.com/p/AF1QipOhcQgsLwCp5RX1khZMOkk-GaljyFYWShHR3KGx=s1360-w1360-h1020',
                 'types' => [
@@ -161,7 +161,7 @@ class RestaurantSeeder extends Seeder
                 'user_id' => 18,
                 'image' => 'https://www.valdifassa.com/wp-content/uploads/2016/05/Vecchio-mulino.jpg',
                 'types' => [
-                    5, 9
+                    9
                 ]
             ],
             [
@@ -169,7 +169,7 @@ class RestaurantSeeder extends Seeder
                 'user_id' => 19,
                 'image' => 'https://www.ristoranteilpescatore.it/assets/img/gallery/home/01.jpg',
                 'types' => [
-                    5, 9
+                    9
                 ]
             ],
             [
@@ -177,7 +177,7 @@ class RestaurantSeeder extends Seeder
                 'user_id' => 20,
                 'image' => 'https://backend.squisitalia.it/img/foto/locali/16172_1.jpg',
                 'types' => [
-                    5, 9
+                    9
                 ]
             ]
         ];
