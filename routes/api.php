@@ -5,7 +5,7 @@ use App\Http\Controllers\API\TypeController;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,4 +28,11 @@ Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show'
 //NON è UNA ROUTE DI DINAMICA MA SONO PARAMETRI GET
 Route::get('filter', [RestaurantController::class, 'filter']);
 
+//Rotta per ottenere i types da stampare in pagina
 Route::get('types', [TypeController::class, 'index']);
+
+//Definisco la rotta per la transazione e la faccio gestire al metodo
+Route::post('/process-payment', [PaymentController::class, 'managePayment']);
+
+//Definisco la rotta per ottenere il token e il suo metodo
+Route::get('/token', [PaymentController::class, 'getToken']);
