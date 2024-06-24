@@ -35,7 +35,7 @@ class OrderController extends Controller
     {
 
         $val_data = $request->validated();
-        
+        $prova = $val_data['customer_name'];
         //$order =  Order::create($val_data);
 
         //$infoCustomer = $request->input();
@@ -69,7 +69,7 @@ class OrderController extends Controller
         ]; */
 
         //Creo un istanza order per popolare la tabella con i dati che mi sono stati inviati
-/*         $newOrder = new Order();
+        $newOrder = new Order();
         $newOrder->restaurant_id = $val_data['restaurant_id'];
         $newOrder->slug = "diocane";
         $newOrder->customer_name = $val_data['customer_name'];
@@ -79,11 +79,11 @@ class OrderController extends Controller
         $newOrder->customer_email = $val_data['customer_email'];
         $newOrder->customer_note = $val_data['customer_note'];
         $newOrder->total_price = $val_data['total_price'];
-        $newOrder->status = $val_data['order_status'];
-        $newOrder->save(); */
+        $newOrder->status =1;
+        $newOrder->save(); 
 
-/* 
-        foreach ($cartItems as $dish) {
+
+       /* foreach ($cartItems as $dish) {
             //dd($dish); // Controlla i dati qui
             $newOrder->dishes()->attach($dish['object']['id'], [
                 'quantity' => $dish['quantity'],
