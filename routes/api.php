@@ -36,3 +36,5 @@ Route::post('process-payment', [PaymentController::class, 'managePayment']);
 
 //Definisco la rotta per ottenere il token e il suo metodo
 Route::get('pay/token', [PaymentController::class, 'getToken']);
+
+Route::post('add-order', [OrderController::class, 'store']);

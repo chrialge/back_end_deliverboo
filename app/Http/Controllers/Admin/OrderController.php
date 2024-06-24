@@ -16,6 +16,23 @@ class OrderController extends Controller
     public function index()
     {
 
+        return view('admin.orders.index', ['orders' => Order::all()]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('admin.orders.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreOrderRequest $request)
+    {
+
         //$infoCustomer = $request->input();
 
         //Creo un array di default per i tentativi
@@ -68,77 +85,8 @@ class OrderController extends Controller
                 'price_per_unit' => $dish['price_per_unit']
             ]);
         }
-        dd($newOrder->dishes);
+        //dd($newOrder->dishes);
         return view('admin.orders.index', ['orders' => Order::all()]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin.orders.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreOrderRequest $request)
-    {
-
-        //$infoCustomer = $request->input();
-
-        //Creo un array di default per i tentativi
-        $infoCustomer = [
-            'restaurant_id' => 2,
-            'customer_name' => 'Giacomo',
-            'customer_last_name' => 'Marongiu',
-            'customer_address' => 'Via Alghero 9',
-            'customer_phone_number' => '327454545',
-            'customer_email' => 'giacomo@example.it',
-            'customer_note' => 'Ben cotta',
-            'total_price' => 22.22,
-            'order_status' => 1,
-        ];
-        dd($infoCustomer);
-
-        //Arrai di default che ipotizza un carrello
-        $cartItems = [
-            [
-                'object' => ['id' => 4],
-                'quantity' => 2,
-                'price_per_unit' => 22.30
-            ],
-            [
-                'object' => ['id' => 1],
-                'quantity' => 3,
-                'price_per_unit' => 44,
-                00
-            ]
-        ];
-
-        //Creo un istanza order per popolare la tabella con i dati che mi sono stati inviati
-        $newOrder = new Order();
-        $newOrder->restaurant_id = $infoCustomer['restaurant_id'];
-        $newOrder->customer_name = $infoCustomer['customer_name'];
-        $newOrder->customer_last_name = $infoCustomer['customer_last_name'];
-        $newOrder->customer_address = $infoCustomer['customer_address'];
-        $newOrder->customer_phone_number = $infoCustomer['customer_phone_number'];
-        $newOrder->customer_email = $infoCustomer['customer_email'];
-        $newOrder->customer_note = $infoCustomer['customer_note'];
-        $newOrder->total_price = $infoCustomer['total_price'];
-        $newOrder->status = $infoCustomer['order_status'];
-        $newOrder->save();
-
-
-        foreach ($cartItems as $dish) {
-            dd($dish); // Controlla i dati qui
-            $newOrder->dishes()->attach($dish['object']['id'], [
-                'quantity' => $dish['quantity'],
-                'price_per_unit' => $dish['price_per_unit']
-            ]);
-        }
-
     }
 
     /**
