@@ -30,6 +30,11 @@ class StoreOrderRequest extends FormRequest
             'customer_email' => 'required|email',
             'customer_note' => 'nullable|',
             'total_price' => 'required|numeric',
+            'cartItems' => 'nullable|array',
+/*             'cartItems.*.object.id' => 'required|integer',
+            'cartItems.*.quantity' => 'required|integer',
+            'cartItems.*.price_per_unit' => 'required|numeric' */
+            
         ];
     }
 }

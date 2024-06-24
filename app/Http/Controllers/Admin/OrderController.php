@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Order\StoreOrderRequest;
 use App\Http\Requests\Admin\Order\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -33,10 +34,14 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
 
-        //$infoCustomer = $request->input();
+        $val_data = $request->validated();
+        
+        //$order =  Order::create($val_data);
 
+        //$infoCustomer = $request->input();
+        //dd($val_data);
         //Creo un array di default per i tentativi
-        $infoCustomer = [
+        /*$infoCustomer = [
             'restaurant_id' => 2,
             'customer_name' => 'Ciro',
             'customer_last_name' => 'Marongiu',
@@ -44,13 +49,13 @@ class OrderController extends Controller
             'customer_phone_number' => '327454545',
             'customer_email' => 'giacomo@example.it',
             'customer_note' => 'Ben cotta',
-            'total_price' => 22.22,
+            'total_price' => 22.22 ,
             'order_status' => 1,
-        ];
+        ]; */
         //dd($infoCustomer);
 
         //Arrai di default che ipotizza un carrello
-        $cartItems = [
+/*         $cartItems = [
             [
                 'object' => ['id' => 4],
                 'quantity' => 2,
@@ -61,32 +66,41 @@ class OrderController extends Controller
                 'quantity' => 3,
                 'price_per_unit' => 44.00
             ]
-        ];
+        ]; */
 
         //Creo un istanza order per popolare la tabella con i dati che mi sono stati inviati
-        $newOrder = new Order();
-        $newOrder->restaurant_id = $infoCustomer['restaurant_id'];
+/*         $newOrder = new Order();
+        $newOrder->restaurant_id = $val_data['restaurant_id'];
         $newOrder->slug = "diocane";
-        $newOrder->customer_name = $infoCustomer['customer_name'];
-        $newOrder->customer_lastname = $infoCustomer['customer_last_name'];
-        $newOrder->customer_address = $infoCustomer['customer_address'];
-        $newOrder->customer_phone_number = $infoCustomer['customer_phone_number'];
-        $newOrder->customer_email = $infoCustomer['customer_email'];
-        $newOrder->customer_note = $infoCustomer['customer_note'];
-        $newOrder->total_price = $infoCustomer['total_price'];
-        $newOrder->status = $infoCustomer['order_status'];
-        $newOrder->save();
+        $newOrder->customer_name = $val_data['customer_name'];
+        $newOrder->customer_lastname = $val_data['customer_lastname'];
+        $newOrder->customer_address = $val_data['customer_address'];
+        $newOrder->customer_phone_number = $val_data['customer_phone_number'];
+        $newOrder->customer_email = $val_data['customer_email'];
+        $newOrder->customer_note = $val_data['customer_note'];
+        $newOrder->total_price = $val_data['total_price'];
+        $newOrder->status = $val_data['order_status'];
+        $newOrder->save(); */
 
-
+/* 
         foreach ($cartItems as $dish) {
             //dd($dish); // Controlla i dati qui
             $newOrder->dishes()->attach($dish['object']['id'], [
                 'quantity' => $dish['quantity'],
                 'price_per_unit' => $dish['price_per_unit']
             ]);
-        }
+        }  */
         //dd($newOrder->dishes);
-        return view('admin.orders.index', ['orders' => Order::all()]);
+        //return view('admin.orders.index', compact('val_data'));
+
+
+         return response()->json([
+            'success' => true,
+            'data' => $val_data
+        ]); 
+
+
+
     }
 
     /**
