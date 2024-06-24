@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
+use App\Http\Controllers\Controller;
 
 //Gestione chiamata APi
 use Illuminate\Http\Request;
@@ -14,8 +15,8 @@ class PaymentController extends Controller
         $gateway = new Gateway([
             'environment' => 'sandbox',
             'merchantId' => 'k7hty5rbd7vhxpms',
-            'publicKey' => 'z3mftxysm53qfs6m',
-            'privateKey' => 'b49ef59f4e036c34775592ff6e6bda0f'
+            'publicKey' => 'ymvbwnsbmdp58hf6',
+            'privateKey' => 'a350ae6bd10dc5715f64807dd583bc9b'
         ]);
 
         //Assegno alla mia variabile l'input che mi arriva lato client nella mia request di Laravel
@@ -48,8 +49,8 @@ class PaymentController extends Controller
         $gateway = new Gateway([
             'environment' => 'sandbox',
             'merchantId' => 'k7hty5rbd7vhxpms',
-            'publicKey' => 'z3mftxysm53qfs6m',
-            'privateKey' => 'b49ef59f4e036c34775592ff6e6bda0f'
+            'publicKey' => 'ymvbwnsbmdp58hf6',
+            'privateKey' => 'a350ae6bd10dc5715f64807dd583bc9b'
         ]);
 
         //Utilizzo i metodi di BF per generare un token
