@@ -45,12 +45,11 @@ class PaymentController extends Controller
     {
         //Attraverso le mie credenziali genere un instanza gateway di BT 
         $gateway = new Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'k7hty5rbd7vhxpms',
-            'publicKey' => 'ymvbwnsbmdp58hf6',
-            'privateKey' => 'a350ae6bd10dc5715f64807dd583bc9b'
+            'environment' => env('BRAINTREE_ENV'),
+            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
+            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+            'privateKey' => env('BRAINTREE_PRIVATE_KEY')
         ]);
-
         //Token di default
         //$token = "sandbox_9q3q5vsf_k7hty5rbd7vhxpms";
 

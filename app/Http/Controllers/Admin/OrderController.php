@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\Admin\Order\StoreOrderRequest;
 use App\Http\Requests\Admin\Order\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
@@ -38,7 +39,11 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        //dd($order);
+/*         if (Gate::allows('order-checker', $order)) {
+ */            return view('admin.orders.show', compact('order'));
+/*         }
+        abort(403, "Don't try to enter into another order"); */
     }
 
     /**
