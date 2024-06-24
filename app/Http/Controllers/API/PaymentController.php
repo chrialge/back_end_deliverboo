@@ -13,10 +13,10 @@ class PaymentController extends Controller
     public function managePayment(Request $request)
     {
         $gateway = new Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'k7hty5rbd7vhxpms',
-            'publicKey' => 'ymvbwnsbmdp58hf6',
-            'privateKey' => 'a350ae6bd10dc5715f64807dd583bc9b'
+            'environment' => env('BRAINTREE_ENV'),
+            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
+            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+            'privateKey' => env('BRAINTREE_PRIVATE_KEY')
         ]);
 
         //Assegno alla mia variabile l'input che mi arriva lato client nella mia request di Laravel
@@ -35,11 +35,9 @@ class PaymentController extends Controller
 
         //Se la transazione fa a buon fine
         if ($newTransaction->success) {
-            //restitutisco una risposta json al client 
-            return response()->json($newTransaction->transaction);
+            return response()->json(['success' => true, 'transaction' => $newTransaction->transaction]);
         } else {
-            //Se no errore
-            return response()->json(['error' => $newTransaction->message], 500);
+            return response()->json(['success' => false, 'message' => $newTransaction->message, 'transaction' => $newTransaction], 500);
         }
     }
 
@@ -52,6 +50,9 @@ class PaymentController extends Controller
             'publicKey' => 'ymvbwnsbmdp58hf6',
             'privateKey' => 'a350ae6bd10dc5715f64807dd583bc9b'
         ]);
+
+        //Token di default
+        //$token = "sandbox_9q3q5vsf_k7hty5rbd7vhxpms";
 
         //Utilizzo i metodi di BF per generare un token
         $token = $gateway->clientToken()->generate();
