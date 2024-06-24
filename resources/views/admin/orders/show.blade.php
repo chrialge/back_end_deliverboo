@@ -44,12 +44,14 @@
                 <h4 class="primary_text">
                     Piatti ordinati:
                 </h4>
-                @foreach ($order->dishes as $dish)
+                <ul>
                     @foreach ($order->dishes as $dish)
                         <li>{{ $dish->name }} - Quantità: {{ $dish->pivot->quantity }} - Prezzo per unità:
                             €{{ $dish->pivot->price_per_unit }}</li>
                     @endforeach {{ dd($dish) }}
-                @endforeach
+                </ul>
+
+
 
             </div>
 
