@@ -28,7 +28,7 @@
                 <span>{{ $order->customer_lastname }}</span>
             </div>
 
-                        <div class="price d-flex align-items-center gap-2">
+            <div class="price d-flex align-items-center gap-2">
                 <h4 class="primary_text">
                     Indirzzo Acquirente:
                 </h4>
@@ -40,7 +40,18 @@
                 </h4>
                 <span>{{ $order->total_price }} $</span>
             </div>
+            <div class="price d-flex align-items-center gap-2">
+                <h4 class="primary_text">
+                    Piatti ordinati:
+                </h4>
+                @foreach ($order->dishes as $dish)
+                    @foreach ($order->dishes as $dish)
+                        <li>{{ $dish->name }} - Quantità: {{ $dish->pivot->quantity }} - Prezzo per unità:
+                            €{{ $dish->pivot->price_per_unit }}</li>
+                    @endforeach {{ dd($dish) }}
+                @endforeach
 
+            </div>
 
         </div>
     </div>
