@@ -18,7 +18,7 @@ class Order extends Model
      */
     public function dishes(): BelongsToMany
     {
-        return $this->belongsToMany(Dish::class);
+        return $this->belongsToMany(Dish::class, 'dish_order')->withPivot('quantity','price_per_unit')->withTimestamps();
     }
 
     /**

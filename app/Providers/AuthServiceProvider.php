@@ -29,15 +29,17 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // $this->registerPolicies();
+/*         Gate::define('order-checker', function (User $user, Order $order) {
+            $restaurant = $user->restaurants()->first();
+            dd($restaurant, $order);
+            return $restaurant->id === $order->restaurant_id;
+        }); */
+
         Gate::define('dish-checker', function (User $user, Dish $dish) {
             $restaurant = $user->restaurants()->first();
             return $restaurant->id === $dish->restaurant_id;
         });
 
-        Gate::define('orders-checker', function (User $user, Order $order) {
-            $restaurant = $user->restaurants()->first();
-            return $restaurant->id === $order->restaurant_id;
-        });
 
         Gate::define('restaurant-checker', function (User $user, Restaurant $restaurant) {
             return $user->id === $restaurant->user_id;
