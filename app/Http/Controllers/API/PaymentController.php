@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Http\Controllers\Controller;
 
 //Gestione chiamata APi
@@ -21,11 +22,11 @@ class PaymentController extends Controller
 
         //Assegno alla mia variabile l'input che mi arriva lato client nella mia request di Laravel
         $clientNonce = $request->input('paymentMethodNonce');
-
+        $total = $request->input('total_price');
         //Creo un array associativo seguendo la struttua di BrainTree per la mia transazione
         //Utilizzo il metodo transaction di Gateway per accedere ai dati e sale per effettuare una transazione
         $newTransaction = $gateway->transaction()->sale([
-            'amount' => '10.00',
+            'amount' => $total,
             'paymentMethodNonce' => $clientNonce,
             'options' => [
                 'submitForSettlement' => true
@@ -33,7 +34,7 @@ class PaymentController extends Controller
         ]);
 
 
-        //Se la transazione fa a buon fine
+        //Se la transazione va a buon fine
         if ($newTransaction->success) {
             return response()->json(['success' => true, 'transaction' => $newTransaction->transaction]);
         } else {
@@ -55,8 +56,13 @@ class PaymentController extends Controller
 
         //Utilizzo i metodi di BF per generare un token
         $token = $gateway->clientToken()->generate();
-        
+        if ($token) {
+            return response()->json([
+                'success' => true,
+                'clientToken' => $token
+            ]);
+        }
         //Lo restituisco
-        return response()->json(['clientToken' => $token]);
+
     }
 }
