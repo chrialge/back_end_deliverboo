@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mailable', function () {
+    $order = Order::all();
 
+    return new App\Mail\OrderShippedMd($order->last());
+});
 
 
 Route::middleware(['auth', 'verified'])
@@ -33,7 +38,6 @@ Route::middleware(['auth', 'verified'])
         Route::resource('/dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
         Route::resource('/restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
         Route::resource('/orders', OrderController::class);
-
     });
 
 Route::middleware('auth')->group(function () {

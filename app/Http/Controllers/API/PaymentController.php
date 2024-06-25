@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Http\Controllers\Controller;
 
 //Gestione chiamata APi
@@ -29,8 +30,13 @@ class PaymentController extends Controller
 
         //Utilizzo i metodi di BF per generare un token
         $token = $gateway->clientToken()->generate();
-        
+        if ($token) {
+            return response()->json([
+                'success' => true,
+                'clientToken' => $token
+            ]);
+        }
         //Lo restituisco
-        return response()->json(['clientToken' => $token]);
+
     }
 }

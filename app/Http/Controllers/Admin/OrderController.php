@@ -6,10 +6,12 @@ use App\Models\Order;
 use App\Http\Requests\Admin\Order\StoreOrderRequest;
 use App\Http\Requests\Admin\Order\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
+use App\Mail\OrderShippedMd;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 use Braintree\Gateway;
 
 class OrderController extends Controller
@@ -110,6 +112,7 @@ class OrderController extends Controller
         if ($newTransaction->success) {
 
             // creo un nuovo ordine
+
             $order = Order::create($val_data);
 
             // inserisco nella tabella pivot i dati della correlazione order e piatti
@@ -121,21 +124,13 @@ class OrderController extends Controller
                 ]);
             }
 
-            return response()->json([
-                'success' => true,
-                'transaction' => $newTransaction->transaction,
-                'order' => $order,
-            ]);
-        } 
-        //Altrimenti restituisco un messaggio di errore
-        else {
-            return response()->json([
-                'success' => false,
-                'message' => $newTransaction->message,
-                'transaction' => $newTransaction
-            ], 500);
-        }
-
+        Mail::to($val_data['customer_email'])->send(new OrderShippedMd($order));
+        // Mail::to('chrialge99@gmail.com')->send(new OrderShippedMd($order));
+        // in caso i dati hanno la giusta validazione mando un messaggio di successo
+        return response()->json([
+            'success' => true,
+            'message' => 'ha avuto successo il pagamento'
+        ]);
     }
 
     /**
