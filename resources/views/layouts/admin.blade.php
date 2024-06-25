@@ -60,20 +60,20 @@
                         </ul>
                         <!-- /home link -->
 
+                        
                         <li class="nav-item">
                             <a class="nav-link primary_text fs-5 header_link py-3"
-                                href="{{ route('admin.restaurants.index') }}">
-                                {{ __('Ristorante') }}</a>
-                        </li>
-                        <!-- /restaurants link -->
-
-                        <li class="nav-item">
-                            <a class="nav-link primary_text fs-5 header_link py-3"
-                                href="{{ route('admin.dishes.index') }}">
-                                {{ __('Menù') }}</a>
+                            href="{{ route('admin.dishes.index') }}">
+                            {{ __('Menù') }}</a>
                         </li>
                         <!-- /dishes link -->
-
+                        
+                        <li class="nav-item">
+                            <a class="nav-link primary_text fs-5 header_link py-3"
+                                href="{{ route('admin.orders.index') }}">
+                                {{ __('Storico Ordini') }}</a>
+                        </li>
+                        <!-- /restaurants link -->
                     </ul>
                     <!-- /nav -->
 
