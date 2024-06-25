@@ -22,19 +22,17 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'restaurant_id' => 'required|integer',
-            'customer_name' => 'required|min:3',
-            'customer_lastname' => 'required|min:3',
-            'customer_address' => 'required|min:6',
-            'customer_phone_number' => 'required|integer',
-            'customer_email' => 'required|email',
-            'customer_note' => 'nullable|',
-            'total_price' => 'required|numeric',
-            'cartItems' => 'nullable|array',
-/*             'cartItems.*.object.id' => 'required|integer',
+            // 'restaurant_id' => 'required|integer',
+            // 'customer_name' => 'required|min:3',
+            // 'customer_lastname' => 'required|min:3',
+            // 'customer_address' => 'required|min:6',
+            // 'customer_phone_number' => 'required|integer',
+            // 'customer_email' => 'required|email',
+            // 'customer_note' => 'nullable|',
+            // 'total_price' => 'required|numeric',
+            // 'cartItems' => 'nullable',
+            /*             'cartItems.*.object.id' => 'required|integer',
             'cartItems.*.quantity' => 'required|integer',
-            'cartItems.*.price_per_unit' => 'required|numeric' */
-            
-        ];
+            'cartItems.*.price_per_unit' => 'required|numeric' */];
     }
 }

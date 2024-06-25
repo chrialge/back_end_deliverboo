@@ -8,6 +8,8 @@ use App\Http\Requests\Admin\Order\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -31,76 +33,70 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOrderRequest $request)
+    public function store(Request $request)
     {
 
-        $val_data = $request->validated();
-        $prova = $val_data['customer_name'];
-        //$order =  Order::create($val_data);
-
-        //$infoCustomer = $request->input();
-        //dd($val_data);
-        //Creo un array di default per i tentativi
-        /*$infoCustomer = [
-            'restaurant_id' => 2,
-            'customer_name' => 'Ciro',
-            'customer_last_name' => 'Marongiu',
-            'customer_address' => 'Via Alghero 9',
-            'customer_phone_number' => '327454545',
-            'customer_email' => 'giacomo@example.it',
-            'customer_note' => 'Ben cotta',
-            'total_price' => 22.22 ,
-            'order_status' => 1,
-        ]; */
-        //dd($infoCustomer);
-
-        //Arrai di default che ipotizza un carrello
-/*         $cartItems = [
-            [
-                'object' => ['id' => 4],
-                'quantity' => 2,
-                'price_per_unit' => 22.30
-            ],
-            [
-                'object' => ['id' => 1],
-                'quantity' => 3,
-                'price_per_unit' => 44.00
-            ]
-        ]; */
-
-        //Creo un istanza order per popolare la tabella con i dati che mi sono stati inviati
-        $newOrder = new Order();
-        $newOrder->restaurant_id = $val_data['restaurant_id'];
-        $newOrder->slug = "diocane";
-        $newOrder->customer_name = $val_data['customer_name'];
-        $newOrder->customer_lastname = $val_data['customer_lastname'];
-        $newOrder->customer_address = $val_data['customer_address'];
-        $newOrder->customer_phone_number = $val_data['customer_phone_number'];
-        $newOrder->customer_email = $val_data['customer_email'];
-        $newOrder->customer_note = $val_data['customer_note'];
-        $newOrder->total_price = $val_data['total_price'];
-        $newOrder->status =1;
-        $newOrder->save(); 
+        // controlla i dati mandati dal form
+        $val_data = $request->all();
 
 
-       /* foreach ($cartItems as $dish) {
-            //dd($dish); // Controlla i dati qui
-            $newOrder->dishes()->attach($dish['object']['id'], [
-                'quantity' => $dish['quantity'],
-                'price_per_unit' => $dish['price_per_unit']
+
+
+
+
+        $validator = Validator::make($val_data, [
+            'restaurant_id' => 'required|integer',
+            'customer_name' => 'required|min:3',
+            'customer_lastname' => 'required|min:3',
+            'customer_address' => 'required|min:6',
+            'customer_phone_number' => 'required|integer',
+            'customer_email' => 'required|email',
+            'customer_note' => 'nullable|',
+            'total_price' => 'required|numeric',
+            'cartItems' => 'nullable',
+        ]);
+
+
+
+        //in caso si fallisce un campo si rimanda indietro la lista di errori
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => true,
+                'errors' => $validator->errors(),
             ]);
-        }  */
-        //dd($newOrder->dishes);
-        //return view('admin.orders.index', compact('val_data'));
+        }
 
+        // si rachhiude il check di tutte gli ordini con lo stesso nome e cognome per il consumatore
+        $slug_checker = Order::where('customer_name', $val_data['customer_name'])->where(
+            'customer_lastname',
+            $val_data['customer_lastname']
+        )->count();
 
-         return response()->json([
+        // se ci sono corrispondenze si crea uno slug uunivoco
+        if ($slug_checker) {
+            $slug =  $val_data['customer_name'] . $val_data['customer_lastname'] . '-' . $slug_checker + 1;
+        } else {
+            $slug =  $val_data['customer_name'] . $val_data['customer_lastname'];
+        }
+        $val_data['slug'] = $slug;
+
+        // creo un nuovo ordine
+        $order =  Order::create($val_data);
+
+        // inserisco nella tabella pivot i dati della correlazione order e piatti
+        foreach ($val_data['cartItems'] as $dish) {
+            //dd($dish); // Controlla i dati qui
+            $order->dishes()->attach($dish['object']['id'], [
+                'quantity' => $dish['quantity'],
+                'price_per_unit' => $dish['object']['price'],
+            ]);
+        }
+
+        // in caso i dati hanno la giusta validazione mando un messaggio di successo
+        return response()->json([
             'success' => true,
-            'data' => $val_data
-        ]); 
-
-
-
+            'message' => 'puoi procedere al pagamento'
+        ]);
     }
 
     /**
@@ -109,7 +105,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //dd($order);
-/*         if (Gate::allows('order-checker', $order)) {
+        /*         if (Gate::allows('order-checker', $order)) {
  */
         return view('admin.orders.show', compact('order'));
         /*         }
