@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Braintree\Gateway;
 
 class OrderController extends Controller
 {
@@ -39,10 +40,10 @@ class OrderController extends Controller
         // controlla i dati mandati dal form
         $val_data = $request->all();
 
-
-
-
-
+/*         return response()->json([
+            'success' => true,
+            'data' => $val_data
+        ]); */
 
         $validator = Validator::make($val_data, [
             'restaurant_id' => 'required|integer',
@@ -74,29 +75,67 @@ class OrderController extends Controller
 
         // se ci sono corrispondenze si crea uno slug uunivoco
         if ($slug_checker) {
-            $slug =  $val_data['customer_name'] . $val_data['customer_lastname'] . '-' . $slug_checker + 1;
+            $slug = $val_data['customer_name'] . $val_data['customer_lastname'] . '-' . $slug_checker + 1;
         } else {
-            $slug =  $val_data['customer_name'] . $val_data['customer_lastname'];
+            $slug = $val_data['customer_name'] . $val_data['customer_lastname'];
         }
         $val_data['slug'] = $slug;
 
-        // creo un nuovo ordine
-        $order =  Order::create($val_data);
+        //***********  PAGAMENTO *****************
+        //Se la validazione va a buon fine gestisco il pagamento
 
-        // inserisco nella tabella pivot i dati della correlazione order e piatti
-        foreach ($val_data['cartItems'] as $dish) {
-            //dd($dish); // Controlla i dati qui
-            $order->dishes()->attach($dish['object']['id'], [
-                'quantity' => $dish['quantity'],
-                'price_per_unit' => $dish['object']['price'],
+        $gateway = new Gateway([
+            'environment' => env('BRAINTREE_ENV'),
+            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
+            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+            'privateKey' => env('BRAINTREE_PRIVATE_KEY')
+        ]);
+
+        //Assegno alla mia variabile l'input che mi arriva lato client nella mia request di Laravel
+        $clientNonce = $request->input('paymentMethodNonce');
+
+        //Creo un array associativo seguendo la struttua di BrainTree per la mia transazione
+        //Utilizzo il metodo transaction di Gateway per accedere ai dati e sale per effettuare una transazione
+        $total_price = $val_data['total_price'];
+        $newTransaction = $gateway->transaction()->sale([
+            'amount' => $total_price,
+            'paymentMethodNonce' => $clientNonce,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+        //Fine pagamento 
+
+        //Se la transazione fa a buon fine
+        if ($newTransaction->success) {
+
+            // creo un nuovo ordine
+            $order = Order::create($val_data);
+
+            // inserisco nella tabella pivot i dati della correlazione order e piatti
+            foreach ($val_data['cartItems'] as $dish) {
+                //dd($dish); // Controlla i dati qui
+                $order->dishes()->attach($dish['object']['id'], [
+                    'quantity' => $dish['quantity'],
+                    'price_per_unit' => $dish['object']['price'],
+                ]);
+            }
+
+            return response()->json([
+                'success' => true,
+                'transaction' => $newTransaction->transaction,
+                'order' => $order,
             ]);
+        } 
+        //Altrimenti restituisco un messaggio di errore
+        else {
+            return response()->json([
+                'success' => false,
+                'message' => $newTransaction->message,
+                'transaction' => $newTransaction
+            ], 500);
         }
 
-        // in caso i dati hanno la giusta validazione mando un messaggio di successo
-        return response()->json([
-            'success' => true,
-            'message' => 'puoi procedere al pagamento'
-        ]);
     }
 
     /**
@@ -106,7 +145,7 @@ class OrderController extends Controller
     {
         //dd($order);
         /*         if (Gate::allows('order-checker', $order)) {
- */
+         */
         return view('admin.orders.show', compact('order'));
         /*         }
                 abort(403, "Don't try to enter into another order"); */

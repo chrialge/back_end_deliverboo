@@ -32,7 +32,7 @@ Route::get('filter', [RestaurantController::class, 'filter']);
 Route::get('types', [TypeController::class, 'index']);
 
 //Definisco la rotta per la transazione e la faccio gestire al metodo
-Route::post('process-payment', [PaymentController::class, 'managePayment']);
+/* Route::post('process-payment', [PaymentController::class, 'managePayment']); */
 
 //Definisco la rotta per ottenere il token e il suo metodo
 Route::get('pay/token', [PaymentController::class, 'getToken']);

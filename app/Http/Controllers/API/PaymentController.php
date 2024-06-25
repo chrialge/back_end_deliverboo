@@ -10,36 +10,10 @@ use Braintree\Gateway;
 
 class PaymentController extends Controller
 {
-    public function managePayment(Request $request)
+/*     public function managePayment(Request $request)
     {
-        $gateway = new Gateway([
-            'environment' => env('BRAINTREE_ENV'),
-            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
-            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
-            'privateKey' => env('BRAINTREE_PRIVATE_KEY')
-        ]);
 
-        //Assegno alla mia variabile l'input che mi arriva lato client nella mia request di Laravel
-        $clientNonce = $request->input('paymentMethodNonce');
-
-        //Creo un array associativo seguendo la struttua di BrainTree per la mia transazione
-        //Utilizzo il metodo transaction di Gateway per accedere ai dati e sale per effettuare una transazione
-        $newTransaction = $gateway->transaction()->sale([
-            'amount' => '10.00',
-            'paymentMethodNonce' => $clientNonce,
-            'options' => [
-                'submitForSettlement' => true
-            ]
-        ]);
-
-
-        //Se la transazione fa a buon fine
-        if ($newTransaction->success) {
-            return response()->json(['success' => true, 'transaction' => $newTransaction->transaction]);
-        } else {
-            return response()->json(['success' => false, 'message' => $newTransaction->message, 'transaction' => $newTransaction], 500);
-        }
-    }
+    } */
 
     public function getToken(Request $request)
     {
