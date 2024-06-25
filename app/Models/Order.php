@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['slug','restaurant_id','customer_name','customer_lastname','customer_address','customer_phone_number','customer_email','customer_note','total_price', 'status'];
+    protected $fillable = ['slug', 'restaurant_id', 'customer_name', 'customer_lastname', 'customer_address', 'customer_phone_number', 'customer_email', 'customer_note', 'total_price', 'status'];
 
     /**
      * The roles that belong to the Order
@@ -19,7 +19,7 @@ class Order extends Model
      */
     public function dishes(): BelongsToMany
     {
-        return $this->belongsToMany(Dish::class, 'dish_order')->withPivot('quantity','price_per_unit')->withTimestamps();
+        return $this->belongsToMany(Dish::class, 'dish_order')->withPivot('quantity', 'price_per_unit')->withTimestamps();
     }
 
     /**
