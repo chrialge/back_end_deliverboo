@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Dish;
 
 class RestaurantController extends Controller
 {
@@ -18,7 +19,18 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return view('admin.restaurants.index', ['restaurants' => Restaurant::where('user_id', Auth::id())->orderByDesc('id')->get()]);
+
+        // take user current
+        $user = Auth::getUser();
+        // dd($user->restaurants());
+        $restaurant = $user->restaurants()->where('user_id', $user->id)->first();
+        // dd($restaurant);
+
+        if ($restaurant) {
+            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderByDesc('id')->get()]);
+        } else {
+            return redirect()->back()->with('message', "Sorry you haven't restaurants registered");
+        }
     }
 
     /**
