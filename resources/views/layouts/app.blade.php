@@ -28,7 +28,7 @@
 
     <div id="app">
 
-        <nav class="navbar navbar-expand-md light_shadow py-0">
+        <nav class="navbar navbar-expand-md light_shadow py-3">
 
             <div class="container">
 
@@ -53,7 +53,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link primary_text fs-5 header_link py-3"
+                            <a class="nav-link primary_text fs-5 header_link "
                                 href="http://localhost:5174/">{{ __('Ordina') }}</a>
                         </li>
                     </ul>
@@ -64,20 +64,20 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link primary_text fs-5 header_link py-3"
+                                <a class="nav-link primary_text fs-5 header_link "
                                     href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             <!-- /login link -->
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link primary_text fs-5 header_link py-3 ms-3"
+                                    <a class="nav-link primary_text fs-5 header_link  ms-3"
                                         href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                                 <!-- /register link -->
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle primary_text fs-5 header_link py-3"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle primary_text fs-5 header_link "
                                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -85,16 +85,15 @@
                                 <!-- /dropdwn nav -->
 
                                 <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item primary_text fs-5 header_link py-3"
+                                    <a class="dropdown-item primary_text fs-5 header_link "
                                         href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}
                                     </a>
                                     <!-- /dashbard -->
-                                    <a class="dropdown-item primary_text fs-5 header_link py-3"
+                                    <a class="dropdown-item primary_text fs-5 header_link "
                                         href="{{ url('profile') }}">{{ __('Profilo') }}
                                     </a>
                                     <!-- /profile -->
-                                    <a class="dropdown-item primary_text fs-5 header_link py-3"
-                                        href="{{ route('logout') }}"
+                                    <a class="dropdown-item primary_text fs-5 header_link " href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Esci') }}
