@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between pb-3">
             <h1>Piatti</h1>
             <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">
                 Aggiungi Piatto
@@ -12,27 +12,27 @@
         @include('partials.session')
 
         <div class="table-responsive">
-            <table class="table table-primary">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         {{-- <th scope="col">id</th> --}}
-                        <th scope="col">Nome</th>
+                        <th scope="col" class="bg-dark text-white py-3">Nome</th>
                         {{-- <th scope="col">slug</th> --}}
-                        <th scope="col">Immagine</th>
-                        <th scope="col">Ingredienti</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Visibile</th>
-                        <th scope="col">Azioni</th>
+                        <th scope="col" class="bg-dark text-white py-3">Immagine</th>
+                        {{-- <th scope="col">Ingredienti</th> --}}
+                        <th scope="col" class="bg-dark text-white py-3">Prezzo</th>
+                        <th scope="col" class="bg-dark text-white py-3">Visibile</th>
+                        <th scope="col" class="bg-dark text-white py-3">Azioni</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($dishes as $dish)
                         <tr class="">
-                            {{-- <td scope="row">{{ $dish->id }}</td> --}}
+                            {{-- <td>{{ $dish->id }}</td> --}}
                             <td scope="row">{{ $dish->name }}</td>
                             {{-- <td scope="row">{{ $dish->slug }}</td> --}}
-                            <td scope="row">
+                            <td>
                                 @if (Str::contains($dish->image, ['https://', 'http://']))
                                     <img width="140" src="{{ $dish->image }}" alt="Image of dish: {{ $dish->title }}">
                                 @else
@@ -40,16 +40,16 @@
                                         alt="{{ $dish->title ? "Image of dish: $dish->title" : "don't image of the dish" }}">
                                 @endif
                             </td>
-                            <td scope="row">{{ $dish->ingredients }}</td>
-                            <td scope="row">{{ $dish->price }}</td>
-                            <td scope="row">{{ $dish->visibility == 1 ? 'Si' : 'No' }}</td>
+                            {{-- <td>{{ $dish->ingredients }}</td> --}}
+                            <td>{{ $dish->price }}</td>
+                            <td>{{ $dish->visibility == 1 ? 'Si' : 'No' }}</td>
                             <td scope="row d-flex gap-2 flex-wrap">
 
-                                <a href="{{ route('admin.dishes.show', $dish) }}" class="btn btn-dark">
+                                <a href="{{ route('admin.dishes.show', $dish) }}" class="btn btn-dark mb-1">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
 
-                                <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning">
+                                <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning mb-1">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
 
@@ -99,7 +99,7 @@
                     @empty
 
                         <tr class="">
-                            <td scope="row">Nessun piatto disponibile! 😭😭😭😭😭</td>
+                            <td>Nessun piatto disponibile! 😭😭😭😭😭</td>
                         </tr>
                     @endforelse
 
@@ -107,6 +107,7 @@
             </table>
         </div>
 
+        {{ $dishes->links('pagination::bootstrap-5') }}
 
     </div>
 @endsection

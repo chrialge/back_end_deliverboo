@@ -11,6 +11,7 @@
 
 .light_shadow {
     box-shadow: rgba(142, 121, 248, 1) 10px 8px 24px;
+    width: 100%;
 }
 
 .primary_text {
@@ -100,4 +101,10 @@
 
 .small_invisible {
     display: none;
+}
+
+.col{
+    @media(max-width: 1000px) {
+        width: 100%;
+    }
 }

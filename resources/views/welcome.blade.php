@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="content">
-        <div class="container px-0">
+        <div class="container ">
             <h1 class="pt-5 text-center">
                 Benvenuto su Delive<span class="primary_text">Boo</span>!
             </h1>
@@ -10,8 +10,8 @@
                 del tuo ristorante e deliziare i clienti di tutta Roma con i tuoi piatti deliziosi.
             </p>
 
-            <div class="row py-5">
-                <div class="col align-self-center">
+            <div class="row py-5 row-cols-1 row-cols-md-2 mb-3">
+                <div class="col align-self-center text-center">
                     <h3 class="pb-2">
                         Perchè lavorare con Delive<span class="primary_text">Boo</span>?
                     </h3>
@@ -48,18 +48,18 @@
                 </div>
                 <!-- /.col -->
                 <div class="col">
-                    <img src="{{ url('/img/Deliveboo-3.jpg') }}" alt="" class="light_shadow">
+                    <img src="{{ url('/img/Deliveboo-3.jpg') }}" class="light_shadow">
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
 
-            <div class="row py-5">
-                <div class="col">
+            <div class="row py-5 row-cols-1 row-cols-lg-2">
+                <div class="col mb-3">
                     <img src="{{ url('/img/Deliveboo-4.jpg') }}" alt="" class="light_shadow">
                 </div>
                 <!-- /.col -->
-                <div class="col align-self-center pl-5">
+                <div class="col align-self-center pl-5 text-center ">
                     <h3>
                         Come funziona
                     </h3>
@@ -105,14 +105,18 @@
                     Unisciti alla Delive<span class="primary_text">boo</span> Community
                 </h3>
 
-                <div class="row pt-3">
-                    <div class="col text-center d-flex">
+                <div class="row pt-3 row-cols-1 row-cols-md-3 d-flex">
+                    <div class="col text-center">
                         <p class="border-bottom p-3">
                             Iscriviti oggi e diventa parte di Delive<span class="primary_text">boo</span> network.
                         </p>
+                    </div>
+                    <div class="col text-center">
                         <p class="border border-top-0  p-3">
                             Guadagna accesso a una base clienti più ampia e guarda crescere il tuo business.
                         </p>
+                    </div>
+                    <div class="col text-center">
                         <p class="border-bottom  p-3">
                             Il nostro team è qui per supportarti in ogni passo del percorso.
                         </p>
@@ -133,10 +137,11 @@
                     Fai clic sul pulsante qui sotto per registrarti e iniziare a mostrare i tuoi piatti deliziosi su
                     Delive<span class="primary_text">boo</span>!
                 </p>
-                <a href="{{ route('register') }}" class="button-85">Registrati qui</a>
+                <a href="{{ route('register') }}" class="button-85 my-2">Registrati qui</a>
             </div>
             <h5 class="text-center py-5">
-                Grazie per aver scelto Delive<span class="primary_text">boo</span>. Creiamo insieme esperienze culinarie
+                Grazie per aver scelto Delive<span class="primary_text">boo</span>. Creiamo insieme esperienze
+                culinarie
                 indimenticabili!
             </h5>
         </div>
