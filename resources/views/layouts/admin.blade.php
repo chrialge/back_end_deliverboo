@@ -28,9 +28,9 @@
 
     <div id="app">
 
-        <nav class="navbar navbar-expand-md light_shadow py-0 mb-5">
+        <nav class="navbar navbar-expand-md light_shadow p-0 mb-5">
 
-            <div class="container">
+            <div class="container py-3">
 
                 <a class="navbar-brand d-flex align-items-center p-0" href="{{ url('/') }}">
                     <div class="logo">
@@ -45,7 +45,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" style="width: 20px"></span>
                 </button>
                 <!-- /collapse button -->
 
@@ -54,23 +54,21 @@
                     <ul class="navbar-nav me-auto">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link primary_text fs-5 header_link py-3"
+                                <a class="nav-link primary_text fs-5 header_link "
                                     href="http://localhost:5174/">{{ __('Ordina') }}</a>
                             </li>
                         </ul>
                         <!-- /home link -->
 
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link primary_text fs-5 header_link py-3"
-                            href="{{ route('admin.dishes.index') }}">
-                            {{ __('Menù') }}</a>
+                            <a class="nav-link primary_text fs-5 header_link " href="{{ route('admin.dishes.index') }}">
+                                {{ __('Menù') }}</a>
                         </li>
                         <!-- /dishes link -->
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link primary_text fs-5 header_link py-3"
-                                href="{{ route('admin.orders.index') }}">
+                            <a class="nav-link primary_text fs-5 header_link " href="{{ route('admin.orders.index') }}">
                                 {{ __('Storico Ordini') }}</a>
                         </li>
                         <!-- /restaurants link -->

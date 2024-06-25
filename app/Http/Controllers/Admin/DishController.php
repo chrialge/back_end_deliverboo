@@ -28,7 +28,7 @@ class DishController extends Controller
         // dd($restaurant);
 
         if ($restaurant) {
-            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderByDesc('id')->get()]);
+            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderByDesc('id')->paginate(8)]);
         } else {
             return redirect()->back()->with('message', "Sorry you haven't restaurants registered");
         }
@@ -140,7 +140,7 @@ class DishController extends Controller
         }
     }
 
-    
+
     /**
      * Remove the specified resource from storage.
      */
