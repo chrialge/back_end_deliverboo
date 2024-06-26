@@ -105,19 +105,19 @@
                     Unisciti alla Delive<span class="primary_text">boo</span> Community
                 </h3>
 
-                <div class="row pt-3 row-cols-1 row-cols-md-3 d-flex">
-                    <div class="col text-center">
-                        <p class="border-bottom p-3">
+                <div class="row pt-3 row-cols-1 row-cols-md-3 d-flex gx-2">
+                    <div class="col text-center border-bottom pb-3 pt-1" style="max-height: 85px">
+                        <p>
                             Iscriviti oggi e diventa parte di Delive<span class="primary_text">boo</span> network.
                         </p>
                     </div>
-                    <div class="col text-center">
-                        <p class="border border-top-0  p-3">
+                    <div class="col text-center border-bottom pb-3 pt-1">
+                        <p class=" m-0">
                             Guadagna accesso a una base clienti più ampia e guarda crescere il tuo business.
                         </p>
                     </div>
-                    <div class="col text-center">
-                        <p class="border-bottom  p-3">
+                    <div class="col text-center border-bottom pb-3 pt-1">
+                        <p>
                             Il nostro team è qui per supportarti in ogni passo del percorso.
                         </p>
                     </div>
