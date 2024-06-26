@@ -10,18 +10,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
+use App\Models\User;
 
 
-class OrderShippedMd extends Mailable
+class OrderAdminMd extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(
-        public Order $order,
-    ) {
+    public function __construct(public Order $order, public User $user)
+    {
     }
 
     /**
@@ -30,11 +30,11 @@ class OrderShippedMd extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            subject: 'Order Admin Md',
             replyTo: [
                 new Address($this->order->customer_email, $this->order->customer_name . $this->order->customer_lastname),
             ],
-            from: new Address('noreply@deliveboo.com', 'Giacome Marongiu'),
-            subject: 'Order Shipped Md',
+            from: new Address('noreply@deliveboo.com', 'Mario Broi'),
         );
     }
 
@@ -44,7 +44,7 @@ class OrderShippedMd extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.order-shipped-md',
+            markdown: 'mail.order-admin-md',
         );
     }
 
