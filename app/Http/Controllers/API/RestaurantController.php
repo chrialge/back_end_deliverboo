@@ -22,7 +22,7 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::with('dishes', 'types')->where('slug', $slug)->get();
 
-        if ($restaurant) {
+        if (count($restaurant) > 0) {
             return response()->json([
                 'success' => true,
                 'response' => $restaurant,
@@ -38,7 +38,7 @@ class RestaurantController extends Controller
     public function filter(Request $request)
     {
         $types = $request->query('types');
-        
+
         // $types = [1,2];
         // Accesso al primo elemento -> E' un array non ua stringa
         //$firstType = $types[0];
