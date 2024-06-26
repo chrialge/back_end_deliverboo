@@ -18,7 +18,7 @@
                         {{-- <th scope="col">id</th> --}}
                         <th scope="col" class="bg-dark text-white py-3">Nome</th>
                         {{-- <th scope="col">slug</th> --}}
-                        <th scope="col" class="bg-dark text-white py-3">Immagine</th>
+                        {{-- <th scope="col" class="bg-dark text-white py-3">Immagine</th> --}}
                         {{-- <th scope="col">Ingredienti</th> --}}
                         <th scope="col" class="bg-dark text-white py-3">Prezzo</th>
                         <th scope="col" class="bg-dark text-white py-3">Visibile</th>
@@ -29,9 +29,11 @@
                 <tbody>
                     @forelse ($dishes as $dish)
                         <tr class="">
-                            {{-- <td>{{ $dish->id }}</td> --}}
+
                             <td scope="row">{{ $dish->name }}</td>
-                            {{-- <td scope="row">{{ $dish->slug }}</td> --}}
+                            {{-- 
+                            <td>{{ $dish->id }}</td>
+                            <td scope="row">{{ $dish->slug }}</td>
                             <td>
                                 @if (Str::contains($dish->image, ['https://', 'http://']))
                                     <img width="140" src="{{ $dish->image }}" alt="Image of dish: {{ $dish->title }}">
@@ -40,7 +42,7 @@
                                         alt="{{ $dish->title ? "Image of dish: $dish->title" : "don't image of the dish" }}">
                                 @endif
                             </td>
-                            {{-- <td>{{ $dish->ingredients }}</td> --}}
+                             <td>{{ $dish->ingredients }}</td> --}}
                             <td>{{ $dish->price }}</td>
                             <td>{{ $dish->visibility == 1 ? 'Si' : 'No' }}</td>
                             <td scope="row d-flex gap-2 flex-wrap">
