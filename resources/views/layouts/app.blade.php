@@ -36,7 +36,7 @@
                     <div class="logo">
                         <h2 class="mb-0">
                             <i class="fa-solid fa-utensils"></i>
-                            DeliveBoo for work
+                            DeliveBoo work
                         </h2>
                     </div>
                 </a>
