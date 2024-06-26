@@ -60,10 +60,17 @@ class RestaurantController extends Controller
                 ->whereIn('types.id', $types)
                 ->groupBy('restaurants.id')
                 ->havingRaw('COUNT(types.id) =' . count($types))->paginate(6);
-            return response()->json([
-                'success' => true,
-                'received_data' => $restaurants,
-            ]);
+            if (count($restaurants) > 0) {
+                return response()->json([
+                    'success' => true,
+                    'received_data' => $restaurants,
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'received_data' => "Non c'e nessun ristorante che corrisponde con le tipologie richieste"
+                ]);
+            }
         } else {
             return response()->json([
                 'success' => false,

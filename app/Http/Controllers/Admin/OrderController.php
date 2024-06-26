@@ -6,7 +6,9 @@ use App\Models\Order;
 use App\Http\Requests\Admin\Order\StoreOrderRequest;
 use App\Http\Requests\Admin\Order\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
+use App\Mail\OrderAdminMd;
 use App\Mail\OrderShippedMd;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -122,9 +124,11 @@ class OrderController extends Controller
                     'price_per_unit' => $dish['object']['price'],
                 ]);
             }
-
-            // Mail::to($val_data['customer_email'])->send(new OrderShippedMd($order));
-            // Mail::to('chrialge99@gmail.com')->send(new OrderShippedMd($order));
+            $restaurant = Restaurant::find($val_data['restaurant_id']);
+            $email = $restaurant->user->email;
+            Mail::to($val_data['customer_email'])->send(new OrderShippedMd($order));
+            $user = $restaurant->user;
+            Mail::to($email)->send(new OrderAdminMd($order, $user));
 
             return response()->json([
                 'success' => true,

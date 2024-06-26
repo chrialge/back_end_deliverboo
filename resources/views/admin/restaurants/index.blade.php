@@ -45,6 +45,8 @@
                             </td>
                             <td scope="row">{{ $restaurant->address }}</td>
                             <td scope="row">{{ $restaurant->vat_number }}</td>
+                            <td scope="row">{{ $restaurant->user->email }}</td>
+
                             <td scope="row">
 
                                 <a href="{{ route('admin.restaurants.show', $restaurant) }}" class="btn btn-dark">
