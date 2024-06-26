@@ -12,7 +12,7 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::with('dishes', 'types')->orderByDesc('id')->paginate(8); //da passare anche orders in futuro
+        $restaurants = Restaurant::with('dishes', 'types')->orderByDesc('id')->paginate(6); //da passare anche orders in futuro
         return response()->json([
             'success' => true,
             'restaurants' => $restaurants,
@@ -59,7 +59,7 @@ class RestaurantController extends Controller
                 ->join('types', 'restaurant_type.type_id', '=', 'types.id')
                 ->whereIn('types.id', $types)
                 ->groupBy('restaurants.id')
-                ->havingRaw('COUNT(types.id) =' . count($types))->paginate(8);
+                ->havingRaw('COUNT(types.id) =' . count($types))->paginate(6);
             return response()->json([
                 'success' => true,
                 'received_data' => $restaurants,
