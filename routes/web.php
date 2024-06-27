@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
@@ -29,12 +30,12 @@ Route::get('/mailable', function () {
     return new App\Mail\OrderShippedMd($order->last());
 });
 
-
 Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/charts', [ChartController::class, 'index'])->name('chart');
         Route::resource('/dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
         // Route::resource('/restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
         Route::resource('/orders', OrderController::class)->parameters(['orders' => 'order:slug']);
