@@ -7,7 +7,7 @@
                 <h1 class="primary_text">Order ID: {{ $order->id }}</h1>
             </div>
 
-            <a href="{{ route('admin.orders.index') }}" class="btn text-light" style="background-color: #8e79f8;">
+            <a href="{{ url()->previous() }}" class="btn text-light" style="background-color: #8e79f8;">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
         </div>

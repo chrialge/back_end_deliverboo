@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
-use App\Models\User;
+use App\Models\Restaurant;
 
 
 class OrderAdminMd extends Mailable
@@ -20,7 +20,7 @@ class OrderAdminMd extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Order $order, public User $user)
+    public function __construct(public Order $order, public Restaurant $restaurant)
     {
     }
 

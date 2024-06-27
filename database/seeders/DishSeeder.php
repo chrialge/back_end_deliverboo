@@ -18,19 +18,96 @@ class DishSeeder extends Seeder
     {
         $faker = Faker::create('it_IT');
 
-        $dishNames = [
-            'Pizza Margherita', 'Lasagna', 'Spaghetti Carbonara', 'Risotto ai Funghi', 'Fettuccine Alfredo',
-            'Tiramisù', 'Gelato', 'Bruschetta', 'Panna Cotta', 'Ravioli di Ricotta', 'Arancini',
-            'Parmigiana di Melanzane', 'Polenta', 'Ossobuco', 'Saltimbocca alla Romana', 'Pasta alla Norma',
-            'Zuppa di Pesce', 'Cannoli Siciliani', 'Bistecca alla Fiorentina', 'Gnocchi di Patate'
+        $dishes = [
+            [
+                "name" => 'Pizza Margherita',
+                "img" => "img/pizza.jpg"
+            ],
+            [
+                "name" => 'Lasagna',
+                "img" => 'img/lasagna.webp'
+            ],
+            [
+                "name" => 'Spaghetti Carbonara',
+                "img" => 'img/carbonara.webp'
+            ],
+            [
+                "name" => 'Risotto ai Funghi',
+                "img" => 'img/risotto-ai-funghi.jpeg'
+            ],
+            [
+                "name" => 'Fettuccine Alfredo',
+                "img" => 'img/fettucine.jpg'
+            ],
+            [
+                "name" => 'Tiramisù',
+                "img" => 'img/tiramisu.jpg'
+            ],
+            [
+                "name" => 'Gelato',
+                "img" => 'img/gelato.jpg'
+            ],
+            [
+                "name" => 'Bruschetta',
+                "img" => 'img/bruschetta.jpg'
+            ],
+            [
+                "name" => 'Panna Cotta',
+                "img" => 'img/panna-cotta.jpg'
+            ],
+            [
+                "name" => 'Ravioli di Ricotta',
+                "img" => 'img/ravioli.jpg'
+            ],
+            [
+                "name" => 'Arancini',
+                "img" => 'img/arancini.jpg'
+            ],
+            [
+                "name" => 'Parmigiana di Melanzane',
+                "img" => 'img/parmigiana.jpg'
+            ],
+            [
+                "name" => 'Polenta',
+                "img" => 'img/polenta.jpg'
+            ],
+            [
+                "name" => 'Ossobuco',
+                "img" => 'img/ossobuco.webp'
+            ],
+            [
+                "name" => 'Saltimbocca alla Romana',
+                "img" => 'img/saltimbocca.jpg'
+            ],
+            [
+                "name" => 'Pasta alla Norma',
+                "img" => 'img/pasta-alla-norma.webp'
+            ],
+            [
+                "name" => 'Zuppa di Pesce',
+                "img" => 'img/zuppa-di-pesce.jpg'
+            ],
+            [
+                "name" => 'Cannoli Siciliani',
+                "img" => 'img/cannoli.jpg'
+            ],
+            [
+                "name" => 'Bistecca alla Fiorentina',
+                "img" => 'img/fiorentina.jpg'
+            ],
+            [
+                "name" => 'Gnocchi di Patate',
+                "img" => 'img/gnocchi.jpg'
+            ],
+
         ];
         for ($i = 1; $i <= 20; $i++) {
-            foreach ($dishNames as $key => $name) {
+            foreach ($dishes as $dish) {
                 $newDish = new Dish();
-                $newDish->name = $name;
-                $newDish->slug = Str::slug($name, '-');
+                $newDish->name = $dish['name'];
+                $newDish->slug = Str::slug($dish['name'], '-');
                 $newDish->restaurant_id = $i;
-                $newDish->image = $faker->imageUrl(600, 300, 'Dish', true, $name, true, 'jpg');
+                $newDish->image = $dish['img'];
                 $newDish->ingredients = $faker->words(6, true);
                 $newDish->price = $faker->randomFloat(2, 5, 20);  // Prezzo compreso tra 5 e 20 euro
                 $newDish->visibility = $faker->boolean;

@@ -1,16 +1,16 @@
 <x-mail::message>
-    # Mail for user
-    Salve, grazie per aver fatto l'ordine Sign. {{ $user->name }} {{ $user->lastname }}
+    # {{ $restaurant->name }}
+    Ordine : #{{ $order->id }}
 
-    Ordine:
+    Giorno e Ora: {{ $order->created_at }}
 
-    giorno e ora: {{ $order->created_at }}
-
+    Piatti:
     @foreach ($order->dishes as $dish)
         {{ $dish->name }} - Quantità: {{ $dish->pivot->quantity }}
-        Prezzo per unità: €{{ $dish->pivot->price_per_unit }}
     @endforeach
 
-    Thanks,<br>
-    {{ config('app.name') }}
+    Totale Pagamento : {{ number_format($order->total_price, 2, '.', '') }} €
+
+    Grazie, da {{ config('app.name') }}
+
 </x-mail::message>
