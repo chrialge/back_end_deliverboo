@@ -30,7 +30,7 @@ class OrderSeeder extends Seeder
             $newOrder->customer_note = 'Ben cotta';
             $newOrder->total_price = $faker->randomFloat(2, 5, 300);
             $newOrder->status = rand(0, 2);
-            $newOrder->created_at = $faker->dateTimeThisYear();
+            // $newOrder->created_at = $faker->dateTimeThisYear();
             $newOrder->save();
             for ($i = 0; $i < 3; $i++) {
                 $dish_id = rand(1, 20);
