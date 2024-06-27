@@ -1,39 +1,35 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Chart</h1>
+    <div class="container">
+        <h1>Grafici</h1>
+        <div class="row">
+            <div class="col-6">
+                <form action="{{ route('admin.charts.index') }}" method="get">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Seleziona un anno</label>
+                        <select class="form-select form-select-lg" name="year" id="year">
+                            <option {{ $selectedYear == '2024' ? 'selected' : '' }} value="2024">2024</option>
+                            <option {{ $selectedYear == '2023' ? 'selected' : '' }} value ="2023">2023</option>
+                            <option {{ $selectedYear == '2022' ? 'selected' : '' }} value="2022">2022</option>
+                            <option {{ $selectedYear == '2021' ? 'selected' : '' }} value="2021">2021</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Seleziona
+                    </button>
+                </form>
+                <!-- /year -->
 
-    <div>
-        <canvas id="myChart"></canvas>
+                <div>
+                    {!! $chartjs->render() !!}
+                </div>
+            </div>
+        </div>
+
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-
-    <div style="width:75%;">
-        {!! $chartjs->render() !!}
-    </div>
-    {{-- <script src="path/to/chartjs/dist/chart.umd.js"></script> --}} {{-- NON FUNZIONA --}}
 @endsection
