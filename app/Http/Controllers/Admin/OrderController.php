@@ -9,12 +9,15 @@ use App\Http\Controllers\Controller;
 use App\Mail\OrderAdminMd;
 use App\Mail\OrderShippedMd;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Dish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Braintree\Gateway;
+
 
 class OrderController extends Controller
 {
@@ -23,8 +26,23 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('id', 'desc')->paginate(8);
-        return view('admin.orders.index', ['orders' => $orders]);
+        $user = Auth::user();
+
+        // verifica se l'utente ha (un) ristorante/i associato/i
+        if ($user->restaurants()->exists()) {
+            // LO prendo
+            $restaurant = $user->restaurants()->first();
+            //recupero
+            $orders = Order::where('restaurant_id', $restaurant->id)->orderByDesc('id')->get();
+            //Mostro gli ordini associati all'utente
+            return view('admin.orders.index', compact('orders'));
+        } else {
+            // Nel caso non ci siano ristoranti associati, lo reindirizzo ai dishes
+            $restaurant = $user->restaurants()->first();
+            return view('admin.dishes.index', [
+                'dishes' => Dish::where('restaurant_id', $restaurant->id)->orderByDesc('id')->paginate(6)
+            ]);
+        }
     }
 
     /**
@@ -151,11 +169,11 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //dd($order);
-        /*         if (Gate::allows('order-checker', $order)) {
-         */
-        return view('admin.orders.show', compact('order'));
-        /*         }
-                abort(403, "Don't try to enter into another order"); */
+        if (Gate::allows('order-checker', $order)) {
+
+            return view('admin.orders.show', compact('order'));
+        }
+        abort(403, "Don't try to enter into another order");
     }
 
     /**

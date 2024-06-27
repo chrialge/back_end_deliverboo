@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Dish;
 use App\Models\Order;
-
 use App\Models\Restaurant;
 
 // use Illuminate\Support\Facades\Gate;
@@ -34,6 +33,11 @@ class AuthServiceProvider extends ServiceProvider
             dd($restaurant, $order);
             return $restaurant->id === $order->restaurant_id;
         }); */
+
+        Gate::define('order-checker', function (User $user, Order $order) {
+            $restaurant = $user->restaurants()->first();
+            return $restaurant->id === $order->restaurant_id;
+        });
 
         Gate::define('dish-checker', function (User $user, Dish $dish) {
             $restaurant = $user->restaurants()->first();

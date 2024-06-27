@@ -63,6 +63,6 @@
             </table>
         </div>
 
-        {{ $orders->links('pagination::bootstrap-5') }}
+      // {{--  {{ $orders->links('pagination::bootstrap-5') }} --}}
     </div>
 @endsection
