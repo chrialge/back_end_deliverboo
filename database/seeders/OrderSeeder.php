@@ -30,7 +30,7 @@ class OrderSeeder extends Seeder
             $newOrder->customer_note = 'Ben cotta';
             $newOrder->total_price = $faker->randomFloat(2, 5, 300);
             $newOrder->status = rand(0, 2);
-            $stop_date = '2021g-09-30 20:24:00';
+            $stop_date = '2021-09-30 20:24:00';
             $stop_date = date('Y-m-d H:i:s', strtotime($stop_date . "+$i day"));
             $newOrder->created_at = $stop_date;
             $newOrder->save();
