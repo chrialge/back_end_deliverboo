@@ -37,7 +37,7 @@ class ChartController extends Controller
         $chartjs = app()->chartjs
             ->name('pieChartTest') /* Nome grafico */
             ->type('bar') /* tipo di grafico */
-            ->size(['width' => 100, 'height' => 100]) /* dimensioni */
+            ->size(['width' => 50, 'height' => 50]) /* dimensioni */
             ->labels(['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']) /* etichette */
             ->datasets([
                 [
@@ -49,6 +49,6 @@ class ChartController extends Controller
             ])
             ->options([]);
 
-        return view('admin.charts.index', compact('chartjs'));
+        return view('admin.charts.index', compact('chartjs','selectedYear'));
     }
 }
