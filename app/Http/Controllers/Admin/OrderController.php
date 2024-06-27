@@ -54,7 +54,7 @@ class OrderController extends Controller
             'customer_name' => 'required|min:3',
             'customer_lastname' => 'required|min:3',
             'customer_address' => 'required|min:6',
-            'customer_phone_number' => 'required|integer',
+            'customer_phone_number' => 'required|string|min:3|max:20',
             'customer_email' => 'required|email',
             'customer_note' => 'nullable|',
             'total_price' => 'required|numeric',
