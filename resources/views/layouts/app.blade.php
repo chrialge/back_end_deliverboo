@@ -53,8 +53,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link primary_text fs-5 header_link "
-                                href="http://localhost:5174/">{{ __('Ordina') }}</a>
+                            <a class="nav-link primary_text fs-5 header_link " href="http://localhost:5174/"
+                                target="_blank">{{ __('Ordina') }}</a>
                         </li>
                     </ul>
                     <!-- /home link -->
