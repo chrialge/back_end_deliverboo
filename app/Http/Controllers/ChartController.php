@@ -9,8 +9,9 @@ use Carbon\Carbon;
 
 class ChartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        dd($request->input('year'));
         $user = Auth::id();
         $restaurant = Restaurant::with('dishes', 'types', 'orders')->where('user_id', $user)->get();
         //dd($restaurant);
