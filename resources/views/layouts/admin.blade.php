@@ -76,6 +76,14 @@
                                 {{ __('Storico Ordini') }}</a>
                         </li>
                         <!-- /restaurants link -->
+
+                        <li class="nav-item">
+                            <a class="nav-link primary_text fs-5 header_link "
+                                href="{{ route('admin.charts.index') }}">
+                                {{ __('Statistiche') }}</a>
+                        </li>
+                        <!-- /stats -->
+
                     </ul>
                     <!-- /nav -->
 
