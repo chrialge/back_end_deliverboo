@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Order;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-
+use Faker\Factory as Faker;
 
 class OrderSeeder extends Seeder
 {
@@ -14,36 +14,23 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        // Nomi finti
-        $fake_names = [
-            "John Doe",
-            "Jane Smith",
-            "Michael Johnson",
-            "Emily Brown",
-            "Robert Davis",
-            "Sarah Wilson",
-            "William Moore",
-            "Emma Taylor",
-            "David Anderson",
-            "Olivia Martinez"
-        ];
+        $faker = Faker::create('it_IT');
 
-        // Prezzi finti con massimo due decimali
-        $fake_prices = [586.47, 312.29, 145.13, 859.92, 492.68, 722.04, 64.38, 777.71, 379.81, 25.55];
-
-        // Creazione di 20 ordini finti
-        for ($i = 0; $i < 20; $i++) {
+        // Creazione di 200 ordini finti
+        for ($i = 0; $i < 200; $i++) {
             $newOrder = new Order();
-            $name= $fake_names[array_rand($fake_names)];
-            $newOrder->customer_name = $name;
-            $newOrder->customer_lastname = 'Algeri';
+            $newOrder->restaurant_id = $faker->numberBetween(1, 20);
+            $newOrder->customer_name = $faker->firstName();
+            $newOrder->customer_lastname = $faker->lastname();
+            $name = $newOrder->customer_name . ' ' . $newOrder->customer_lastname;
             $newOrder->slug = Str::slug($name, '-');
-            $newOrder->customer_address = 'Via dei Frassini 7/D';
-            $newOrder->customer_phone_number = '3200133882';
-            $newOrder->customer_email = 'christian@example.it';
+            $newOrder->customer_address = 'Via ' . $faker->streetName . ' ' . $faker->numberBetween(1, 100);
+            $newOrder->customer_phone_number = '340' . $faker->randomNumber(7, true);
+            $newOrder->customer_email = 'ciao' . $i . '@ciao.it';
             $newOrder->customer_note = 'Ben cotta';
-            $newOrder->total_price = $fake_prices[array_rand($fake_prices)];
+            $newOrder->total_price = $faker->randomFloat(2, 5, 300);
             $newOrder->status = rand(0, 2);
+            $newOrder->created_at = $faker->dateTimeThisYear();
             $newOrder->save();
         }
     }
