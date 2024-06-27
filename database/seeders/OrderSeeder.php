@@ -32,6 +32,15 @@ class OrderSeeder extends Seeder
             $newOrder->status = rand(0, 2);
             $newOrder->created_at = $faker->dateTimeThisYear();
             $newOrder->save();
+            for ($i = 0; $i < 3; $i++) {
+                $dish_id = rand(1, 20);
+                $quantity = rand(1, 5);
+                $price_per_unit = rand(5, 20);
+                $newOrder->dishes()->attach($dish_id, [
+                    "quantity" => $quantity,
+                    "price_per_unit" => $price_per_unit
+                ]);
+            }
         }
     }
 }
