@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 use function Pest\Laravel\json;
 
@@ -12,7 +14,9 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::with('dishes', 'types')->orderByDesc('id')->paginate(6); //da passare anche orders in futuro
+        $restaurants = Restaurant::with('dishes', 'types')->whereHas('dishes')->orderByDesc('id')->paginate(6);
+
+
         return response()->json([
             'success' => true,
             'restaurants' => $restaurants,
@@ -58,6 +62,7 @@ class RestaurantController extends Controller
                 ->join('restaurant_type', 'restaurants.id', '=', 'restaurant_type.restaurant_id')
                 ->join('types', 'restaurant_type.type_id', '=', 'types.id')
                 ->whereIn('types.id', $types)
+                ->whereHas('dishes')
                 ->groupBy('restaurants.id')
                 ->havingRaw('COUNT(types.id) =' . count($types))->paginate(6);
             if (count($restaurants) > 0) {
