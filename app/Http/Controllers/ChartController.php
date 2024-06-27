@@ -11,8 +11,8 @@ class ChartController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->input('year'));
         $user = Auth::id();
+        $selectedYear = $request->input('year', 2024);
         $restaurant = Restaurant::with('dishes', 'types', 'orders')->where('user_id', $user)->get();
         //dd($restaurant);
         $orders = Restaurant::with('dishes', 'types', 'orders')->where('user_id', $user)->get()->pluck('orders')->flatten();;
@@ -20,25 +20,16 @@ class ChartController extends Controller
         //dd($orders->first()->created_at);
 
         $months = [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0,
         ];
 
         foreach ($orders as $order) {
-            //dd($order->created_at->format('m'));
+            //dd($order->created_at->format('Y'));
             for ($i = 0; $i < count($months); $i++) {
-                if (intval($order->created_at->format('m')) == $i + 1) {
-                    $months[$i]++;
+                if (intval($order->created_at->format('Y')) == $selectedYear) {
+                    if (intval($order->created_at->format('m')) == $i + 1) {
+                        $months[$i]++;
+                    }
                 }
             }
         }
@@ -51,8 +42,8 @@ class ChartController extends Controller
             ->datasets([
                 [
                     'label' => 'Ordini',
-                    'backgroundColor' => ['#FF6384', '#36A2EB', '#F9CC85'], /* colore lable 1, colore lable 2 */
-                    'hoverBackgroundColor' => ['#FF6384', '#36A2EB', '#F9CC85'],
+                    'backgroundColor' => ['#4e7d84', '#f918e8', '#01610c', '#594b56', '#072ff6', '#1d2fc6', '#71f45b', '#5be5dc', '#4cf456', '#510008', '#65339e', '#b5268b'], /* colore lable 1, colore lable 2 */
+                    'hoverBackgroundColor' => ['#FF6384'],
                     'data' => $months /* percentuale lable 1,  percentuale lable 1  */
                 ]
             ])
