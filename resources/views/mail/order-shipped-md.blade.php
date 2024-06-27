@@ -1,5 +1,5 @@
 <x-mail::message>
-    # Mail for client
+    # Deliveboo
     Salve, grazie per aver fatto l'ordine Sign. {{ $order->customer_name }} {{ $order->customer_lastname }}
 
     giorno e ora: {{ $order->created_at }}
@@ -10,9 +10,9 @@
     @endforeach
 
 
-    Totale Pagamento : {{ $order->total_price }} €
+    Totale Pagamento : {{ number_format($order->total_price, 2, '.', '') }} €
 
 
-    Thanks
-    {{ config('app.name') }}
+    Grazie da {{ config('app.name') }}
+
 </x-mail::message>

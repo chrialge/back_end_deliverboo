@@ -7,7 +7,7 @@
                 <h1 class="primary_text">Piatto: {{ $dish->name }}</h1>
             </div>
 
-            <a href="{{ route('admin.dishes.index') }}" class="btn text-light" style="background-color: #8e79f8;">
+            <a href="{{ url()->previous() }}" class="btn text-light" style="background-color: #8e79f8;">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
         </div>
@@ -38,8 +38,11 @@
             <div class="image_restaurant">
                 @if (Str::contains($dish->image, ['https://', 'http://']))
                     <img width="100%" src="{{ $dish->image }}" alt="Image of dish: {{ $dish->title }}">
+                @elseif (Str::contains($dish->image, 'img'))
+                    <img width="100%" src="{{ url($dish->image) }}"
+                        alt="{{ $dish->title ? "Image of dish: $dish->title" : 'Image not available' }}">
                 @else
-                    <img width="100% src="{{ asset('storage/' . $dish->image) }}"
+                    <img width="100%" src="{{ asset('storage/' . $dish->image) }}"
                         alt="{{ $dish->title ? "Image of dish: $dish->title" : 'Image not available' }}">
                 @endif
             </div>

@@ -127,8 +127,7 @@ class OrderController extends Controller
             $restaurant = Restaurant::find($val_data['restaurant_id']);
             $email = $restaurant->user->email;
             Mail::to($val_data['customer_email'])->send(new OrderShippedMd($order));
-            $user = $restaurant->user;
-            Mail::to($email)->send(new OrderAdminMd($order, $user));
+            Mail::to($email)->send(new OrderAdminMd($order, $restaurant));
 
             return response()->json([
                 'success' => true,
