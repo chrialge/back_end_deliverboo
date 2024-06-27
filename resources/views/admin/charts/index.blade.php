@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <dic class="container">
+    <div class="container">
         <h1>Grafici</h1>
 
         <form action="{{ route('admin.charts.index') }}" method="get">
@@ -24,7 +24,7 @@
         <div>
             {!! $chartjs->render() !!}
         </div>
-    </dic>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
