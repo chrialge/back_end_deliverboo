@@ -32,7 +32,7 @@
 
     <div id="app">
 
-        <nav class="navbar navbar-expand-md light_shadow p-0 mb-5">
+        <nav class="navbar navbar-expand-lg light_shadow py-3 mb-5">
 
             <div class="container">
 
@@ -77,6 +77,7 @@
                                 {{ __('Storico Ordini') }}</a>
                         </li>
                         <!-- /restaurants link -->
+
 
                         <li class="nav-item">
                             <a class="nav-link primary_text fs-5 header_link pt-4 pb-3"

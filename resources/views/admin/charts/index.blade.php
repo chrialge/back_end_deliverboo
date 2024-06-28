@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container pb-5">
 
         <h1 class="py-5">Statistiche</h1>
-        <div class="row">
-            <div class="col p-2 d-flex justify-content-center flex-column">
+        <div class="row row-cols-1  row-cols-lg-2 flex-lg-nowrap gap-2">
+            <div class="col d-flex justify-content-center flex-column">
                 <p>
                     Benenuto nella pagina delle statistiche, da qua puoi controllare il numero di ordini mensili del tuo
                     ristorante anno dopo anno
@@ -36,12 +36,12 @@
                 </div>
 
             </div>
-            <div class="col ms-4 d-flex flex-column">
+            <div class="col d-flex flex-column" style="aspect-ratio: 1;">
 
-                <div>
-                    {!! $chartprofits->render() !!}
 
-                </div>
+                {!! $chartprofits->render() !!}
+
+
             </div>
             <!-- /.col-6 -->
         </div>

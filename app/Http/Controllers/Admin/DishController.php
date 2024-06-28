@@ -31,7 +31,9 @@ class DishController extends Controller
         if ($restaurant) {
             return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->paginate(10), 'count' => $count]);
         } else {
-            return redirect()->back()->with('message', "Non hai l'autorizzazione per accedere a questa pagina");
+
+            return redirect()->back()->with('message', "Accesso negato");
+
         }
         // take restaurants of the user current
     }
@@ -77,6 +79,7 @@ class DishController extends Controller
         $dish = Dish::create($val_data);
 
         return to_route('admin.dishes.index')->with('message', "Hai creato $dish->name");
+
     }
 
     /**

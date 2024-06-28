@@ -28,7 +28,7 @@
 
     <div id="app">
 
-        <nav class="navbar navbar-expand-md light_shadow py-0">
+        <nav class="navbar navbar-expand-md light_shadow py-3">
 
             <div class="container">
 
