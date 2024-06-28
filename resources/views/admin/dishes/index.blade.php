@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="d-flex align-items-center justify-content-between pb-3">
-            <h1>Piatti {{ $count[0]['piatti'] }}</h1>
+            <h1>Piatti: {{ $count[0]['piatti'] }}</h1>
             <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">
                 Aggiungi Piatto
             </a>
@@ -102,7 +102,7 @@
                     @empty
 
                         <tr class="">
-                            <td>Nessun piatto disponibile! 😭😭😭😭😭</td>
+                            <td colspan="4">Nessun piatto disponibile!</td>
                         </tr>
                     @endforelse
 

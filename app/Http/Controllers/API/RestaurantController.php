@@ -34,7 +34,7 @@ class RestaurantController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'response' => '404 Sorry nothing found here!',
+                'response' => '404 Nessuna corrispondenza trovata',
             ]);
         }
     }

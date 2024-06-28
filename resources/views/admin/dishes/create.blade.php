@@ -20,9 +20,9 @@
             <!-- Input for name-->
             <div class="mb-3">
                 <label for="name" class="form-label">Nome <span class="text-secondary">*</span></label>
-                <input onkeyup="check_name()" type="text" class="form-control @error('name') is-invalid @enderror"
-                    name="name" id="name" aria-describedby="nameHelper" placeholder="name"
-                    value="{{ old('name') }}" required />
+                <input onkeyup="hide_name_error()" onblur="check_name()" type="text"
+                    class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                    aria-describedby="nameHelper" value="{{ old('name') }}" required />
 
                 <small id="name_error" class="small_invisible">Il nome deve essere di almeno tre caratteri</small>
 
@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
-                    id="image" aria-describedby="imageHelper" placeholder="image" value="{{ old('image') }}" />
+                    id="image" aria-describedby="imageHelper" value="{{ old('image') }}" />
                 @error('image')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -46,12 +46,12 @@
                 <label for="price" class="form-label">Prezzo <span class="text-secondary">*</span></label>
                 <input type="number" step="0.01" min="0.00"
                     class="form-control @error('price') is-invalid @enderror" name="price" id="price"
-                    aria-describedby="priceHelper" placeholder="price" value="{{ old('price') }}" required
+                    aria-describedby="priceHelper" value="{{ old('price') }}" required onkeyup="hide_price_error()"
                     onkeyup="check_price()" />
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-                <small id="price_error" class="small_invisible">Il prezzo deve essere un numero non negativo!</small>
+                <small id="price_error" class="small_invisible">Il prezzo deve un numero maggiore o uguale a 0</small>
             </div>
 
             <!-- Input for Visibility -->
@@ -67,10 +67,11 @@
             <!--Input for ingredients-->
             <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredienti <span class="text-secondary">*</span></label>
-                <textarea onkeyup="check_ingredients()" class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" id="ingredients"
-                    rows="5" required>{{ old('ingredients') }}</textarea>
+                <textarea onblur="check_ingredients()" onkeyup="hide_ingredients_error()" class="form-control @error('ingredients') is-invalid @enderror"
+                    name="ingredients" id="ingredients" rows="5" required>{{ old('ingredients') }}</textarea>
 
-                <small id="ingredients_error" class="small_invisible">Inserisci una breve descrizione di almeno 10 caratteri</small>
+                <small id="ingredients_error" class="small_invisible">Inserisci una breve descrizione di almeno 10
+                    caratteri</small>
 
 
                 @error('ingredients')
@@ -78,7 +79,8 @@
                 @enderror
             </div>
 
-            <button onclick="check_types()" id="dish-submit-button" class="btn btn-primary" type="submit">Aggiungi piatto</button>
+            <button onclick="check_types()" id="dish-submit-button" class="btn btn-primary" type="submit">Aggiungi
+                piatto</button>
 
         </form>
 
