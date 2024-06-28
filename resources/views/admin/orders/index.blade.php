@@ -55,7 +55,7 @@
                     @empty
 
                         <tr class="">
-                            <td scope="row">Nessun ordine! 😭😭😭😭😭</td>
+                            <td colspan="4">Non hai ancora ricevuto nessun ordine! </td>
                         </tr>
                     @endforelse
 
@@ -63,6 +63,6 @@
             </table>
         </div>
 
-      // {{--  {{ $orders->links('pagination::bootstrap-5') }} --}}
+      {{--  {{ $orders->links('pagination::bootstrap-5') }} --}}
     </div>
 @endsection

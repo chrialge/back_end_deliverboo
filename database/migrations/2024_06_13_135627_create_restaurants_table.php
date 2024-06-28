@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('slug', 150);
-            $table->string('phone_number', 30);
+            $table->string('phone_number', 30)->nullable();
             $table->string('image')->nullable();
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('vat_number', 11);
             $table->timestamps();
         });

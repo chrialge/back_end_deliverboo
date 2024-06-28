@@ -101,7 +101,7 @@
                     @empty
 
                         <tr class="">
-                            <td>Nessun piatto disponibile! 😭😭😭😭😭</td>
+                            <td colspan="4">Nessun piatto disponibile!</td>
                         </tr>
                     @endforelse
 
