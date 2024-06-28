@@ -97,7 +97,7 @@
                     <div class="primary_text">
                         Piatti ordinati:
                     </div>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled mb-0">
                         @foreach ($order->dishes as $dish)
                             <li>{{ $dish->name }} - Quantità: {{ $dish->pivot->quantity }} - Prezzo per unità:
                                 €{{ $dish->pivot->price_per_unit }}</li>
