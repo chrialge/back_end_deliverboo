@@ -1,7 +1,13 @@
 function isNumber(value) {
     return typeof value === 'number' && !isNaN(value);
 }
+/* 1-FUNZIONI DI VALIDAZIONE
+   2-FUNZIONI NASCONDI-ERRORE
+   3-CHECKER PER IL FORM
+*/
 
+
+// 1 FUNZIONI DI VALIDAZIONE
 //name
 function check_name() {
     // Prendo l'elemento dell'errore
@@ -87,20 +93,24 @@ let check_pw = function check_pw() {
     let confirmPassword = document.getElementById('password-confirm').value;
 
     // Verifico se la password non è vuota e se le password coincidono
-    if (password !== "" && password === confirmPassword) {
+    if (confirmPassword === "") {
         errorElement.classList.remove("small_visible");
         errorElement.classList.add("small_invisible");
         input.style.borderColor = "";
-
+        return true;
+    } else if (password !== "" && password === confirmPassword) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
         return true;
     } else {
         errorElement.classList.remove("small_invisible");
         errorElement.classList.add("small_visible");
         input.style.borderColor = "red";
-
         return false;
     }
 };
+
 
 //vat number checker
 let check_vat_number = function check_vat_number() {
@@ -216,3 +226,89 @@ document.getElementById('register-submit-button').addEventListener('click', func
 
 
 
+// 2 FUNZIONE NASCONDI ERRORE
+// Funzione per nascondere l'errore del nome
+function hide_name_error() {
+    let errorElement = document.getElementById("name_error");
+    let input = document.getElementById("name");
+
+    if (input.value.length >= 3) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
+    }
+}
+
+// Funzione per nascondere l'errore del cognome
+function hide_last_name_error() {
+    let errorElement = document.getElementById("last_name_error");
+    let input = document.getElementById("last_name");
+
+    if (input.value.length >= 3) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
+    }
+}
+
+// Funzione per nascondere l'errore dell'email
+function hide_email_error() {
+    let errorElement = document.getElementById("email_error");
+    let input = document.getElementById("email");
+
+    if (input.value.length >= 3 && input.value.includes('@')) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
+    }
+}
+
+// Funzione per nascondere l'errore della password
+function hide_password_error() {
+    let errorElement = document.getElementById("password_error");
+    let input = document.getElementById("password-confirm");
+    let password = document.getElementById('password').value;
+    let confirmPassword = document.getElementById('password-confirm').value;
+
+    if (password !== "" && password === confirmPassword) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
+    }
+}
+
+// Funzione per nascondere l'errore del numero di partita IVA
+function hide_vat_number_error() {
+    let errorElement = document.getElementById("vat_number_error");
+    let vatElement = document.getElementById('vat_number');
+    let vatNumberStr = vatElement.value;
+
+    if (vatNumberStr.length === 11 && isNumber(parseInt(vatNumberStr)) && (parseInt(vatNumberStr) > 0)) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        vatElement.style.borderColor = "";
+    }
+}
+
+// Funzione per nascondere l'errore del nome del ristorante
+function hide_name_restaurant_error() {
+    let errorElement = document.getElementById("name_restaurant_error");
+    let input = document.getElementById("name_restaurant");
+
+    if (input.value.length >= 3) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
+    }
+}
+
+// Funzione per nascondere l'errore dei tipi selezionati
+function hide_types_error() {
+    let selectedCheckboxes = document.querySelectorAll('input[name="types[]"]:checked');
+    let errorElement = document.getElementById("types_error");
+
+    if (selectedCheckboxes.length > 0) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+    }
+}/*  */

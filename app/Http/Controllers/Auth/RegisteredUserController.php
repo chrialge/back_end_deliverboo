@@ -42,8 +42,8 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'image' => 'image|nullable',
             'name_restaurant' => 'required|min:3|max:50',
-            'phone_number' => 'required|min:3|max:20',
-            'address' => 'required',
+            'phone_number' => 'nullable',
+            'address' => 'nullable',
             'vat_number' => 'required|min:11|max:11',
             'types' => 'required|exists:types,id'
         ]);
