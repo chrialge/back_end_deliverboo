@@ -102,13 +102,13 @@
             <div class="container py-5">
 
                 <h3 class="text-center pt-5">
-                    Unisciti alla Delive<span class="primary_text">boo</span> Community
+                    Unisciti alla Delive<span class="primary_text">Boo</span> Community
                 </h3>
 
                 <div class="row pt-3 row-cols-1 row-cols-md-3 d-flex gx-2">
                     <div class="col text-center border-bottom pb-3 pt-1" style="max-height: 85px">
                         <p>
-                            Iscriviti oggi e diventa parte di Delive<span class="primary_text">boo</span> network.
+                            Iscriviti oggi e diventa parte di Delive<span class="primary_text">Boo</span> network.
                         </p>
                     </div>
                     <div class="col text-center border-bottom pb-3 pt-1">
@@ -135,12 +135,12 @@
                     Pronto a portare il tuo ristorante al livello successivo?
                     <br>
                     Fai clic sul pulsante qui sotto per registrarti e iniziare a mostrare i tuoi piatti deliziosi su
-                    Delive<span class="primary_text">boo</span>!
+                    Delive<span class="primary_text">Boo</span>!
                 </p>
                 <a href="{{ route('register') }}" class="button-85 my-2">Registrati qui</a>
             </div>
             <h5 class="text-center py-5">
-                Grazie per aver scelto Delive<span class="primary_text">boo</span>. Creiamo insieme esperienze
+                Grazie per aver scelto Delive<span class="primary_text">Boo</span>. Creiamo insieme esperienze
                 culinarie
                 indimenticabili!
             </h5>
