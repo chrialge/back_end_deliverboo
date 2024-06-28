@@ -4,11 +4,10 @@
     <div class="container py-5">
         <div class="header d-flex align-items-center justify-content-between">
             <div class="left_header">
-                <h1 class="primary_text">Order ID: {{ $order->id }}</h1>
             </div>
 
             <a href="{{ url()->previous() }}" class="btn text-light" style="background-color: #8e79f8;">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Torna agli ordini
             </a>
         </div>
 
@@ -97,7 +96,7 @@
                     <div class="primary_text">
                         Piatti ordinati:
                     </div>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled mb-0">
                         @foreach ($order->dishes as $dish)
                             <li>{{ $dish->name }} - Quantità: {{ $dish->pivot->quantity }} - Prezzo per unità:
                                 €{{ $dish->pivot->price_per_unit }}</li>

@@ -8,7 +8,7 @@
             </div>
 
             <a href="{{ url()->previous() }}" class="btn text-light" style="background-color: #8e79f8;">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Torna ai piatti
             </a>
         </div>
         <div class="row">
