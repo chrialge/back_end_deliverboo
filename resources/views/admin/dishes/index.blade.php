@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="d-flex align-items-center justify-content-between pb-3">
-            <h1>Piatti</h1>
+            <h1>Piatti {{ $count[0]['piatti'] }}</h1>
             <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">
                 Aggiungi Piatto
             </a>
@@ -22,7 +22,7 @@
                         {{-- <th scope="col">Ingredienti</th> --}}
                         <th scope="col" class="bg-dark text-white py-3">Prezzo</th>
                         <th scope="col" class="bg-dark text-white py-3">Visibile</th>
-                        <th scope="col" class="bg-dark text-white py-3">Azioni</th>
+                        <th scope="col" class="bg-dark text-white py-3 text-end pe-sm-5">Azioni</th>
 
                     </tr>
                 </thead>
@@ -45,7 +45,7 @@
                              <td>{{ $dish->ingredients }}</td> --}}
                             <td>{{ $dish->price }}</td>
                             <td>{{ $dish->visibility == 1 ? 'Si' : 'No' }}</td>
-                            <td scope="row d-flex gap-2 flex-wrap">
+                            <td scope="row" class="text-end ">
 
                                 <a href="{{ route('admin.dishes.show', $dish) }}" class="btn btn-dark mb-1">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -71,15 +71,16 @@
                                         role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="modalTitleId-{{ $dish->id }}">
-                                                    Attenzione!!⚡⚡ Cancellerai: {{ $dish->name }}
+                                                <h5 class="modal-title text-center" id="modalTitleId-{{ $dish->id }}">
+                                                    Attenzione!! <br>
+                                                    Cancellerai: {{ $dish->name }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body text-start">
                                                 Stai per cancellare questo dato. Questa operazione sarà
-                                                DISTRUTTIVA E IRRECUPERABILE!💣💣💣
+                                                DISTRUTTIVA E IRRECUPERABILE!
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -89,7 +90,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">
-                                                        Confirm
+                                                        Conferma
                                                     </button>
                                                 </form>
                                             </div>
