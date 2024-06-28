@@ -33,7 +33,7 @@ class OrderController extends Controller
             // LO prendo
             $restaurant = $user->restaurants()->first();
             //recupero
-            $orders = Order::where('restaurant_id', $restaurant->id)->orderByDesc('id')->get();
+            $orders = Order::where('restaurant_id', $restaurant->id)->orderByDesc('created_at')->get();
             //Mostro gli ordini associati all'utente
             return view('admin.orders.index', compact('orders'));
         } else {
