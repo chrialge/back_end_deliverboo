@@ -94,22 +94,29 @@ class ChartController extends Controller
 
         $chartjs = app()->chartjs
             ->name('ordini') /* Nome grafico */
-            ->type('bar') /* tipo di grafico */
-            ->size(['width' => 50, 'height' => 30]) /* dimensioni */
+            ->type('line') /* tipo di grafico */
+            /* dimensioni */
             ->labels(['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']) /* etichette */
             ->datasets([
                 [
                     'label' => 'Ordini',
-                    'backgroundColor' => ['#4e7d84', '#f918e8', '#01610c', '#594b56', '#072ff6', '#1d2fc6', '#71f45b', '#5be5dc', '#4cf456', '#510008', '#65339e', '#b5268b'], /* colore lable 1, colore lable 2 */
+                    'backgroundColor' => ['#9AD0F5'],
+                    'fill' => true,
+                    'borderColor' => ['#36A2EB'], /* colore lable 1, colore lable 2 */
                     'data' => $months /* percentuale lable 1,  percentuale lable 1  */
                 ],
             ])
-            ->options([]);
+            ->options([
+                'responsive' => false,
+                "pointBackgroundColor" => '#fff',
+                "radius" => 7,
+                "width" => '100%'
+
+            ]);
 
         $chartprofits = app()->chartjs
             ->name('profitti')
-            ->type('pie')
-            ->size(['width' => 50, 'height' => 30]) /* dimensioni */
+            ->type('pie')/* dimensioni */
             ->labels(['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'])
             ->datasets([
                 [
@@ -118,12 +125,13 @@ class ChartController extends Controller
                     'data' => $profits /* percentuale lable 1,  percentuale lable 1  */
                 ]
             ])
-            ->options([]);
+            ->options([
+                'responsive' => true,
+            ]);
 
 
 
 
         return view('admin.charts.index', compact('chartjs', 'chartprofits', 'selectedYear', 'totalYear'));
-
     }
 }
