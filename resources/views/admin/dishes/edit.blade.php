@@ -24,6 +24,7 @@
                 <label for="name" class="form-label">
                     Nome <span class="text-secondary">*</span>
                 </label>
+
                 <input onkeyup="hide_name_error()" onblur="check_name()" type="text"
                     class="form-control @error('name') is-invalid @enderror" name="name" id="name"
                     aria-describedby="nameHelper" value="{{ old('name', $dish->name) }}" required />
@@ -40,6 +41,7 @@
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
+
                     id="image" aria-describedby="imageHelper" 
                     value="{{ old('image', $dish->image) }}" />
                 @error('image')
@@ -75,8 +77,10 @@
             <!--Input for ingredients-->
             <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredienti <span class="text-secondary">*</span></label>
+
                 <textarea onblur="check_ingredients()" onkeyup="hide_ingredients_error()"
                     class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" id="ingredients" rows="5">{{ old('ingredients', $dish->ingredients) }}</textarea>
+
 
                 <small id="ingredients_error" class="small_invisible">Inserisci una breve descrizione di almeno 10
                     caratteri</small>
@@ -87,7 +91,7 @@
                 @enderror
             </div>
 
-            <button id="dish-submit-button" class="btn btn-warning" type="submit">Salva</button>
+            <button id="dish-submit-button" class="btn btn-dark" type="submit">Salva</button>
         </form>
 
         <script src="{{ asset('js/dish-checker.js') }}"></script>

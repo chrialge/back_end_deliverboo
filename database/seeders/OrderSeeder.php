@@ -34,11 +34,11 @@ class OrderSeeder extends Seeder
             $newOrder->slug = Str::slug($name, '-');
             $newOrder->customer_address = 'Via ' . $faker->streetName . ' ' . $faker->numberBetween(1, 100);
             $newOrder->customer_phone_number = '340' . $faker->randomNumber(7, true);
-            $newOrder->customer_email = 'ciao' . $i . '@ciao.it';
+            $newOrder->customer_email = $newOrder->customer_name . '.' . $newOrder->customer_lastname . '@gmail.com';
             $newOrder->customer_note = 'Ben cotta';
             $newOrder->total_price = $faker->randomFloat(2, 5, 40);
             $newOrder->status = rand(0, 2);
-            
+
             //genero una data nel range che mi interessa
             $stop_date = $faker->dateTimeBetween($start_date, $now);
 
