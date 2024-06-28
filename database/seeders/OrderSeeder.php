@@ -17,7 +17,7 @@ class OrderSeeder extends Seeder
         $faker = Faker::create('it_IT');
 
         // Creazione di 200 ordini finti
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 2000; $i++) {
             $newOrder = new Order();
             $newOrder->restaurant_id = $faker->numberBetween(1, 20);
             $newOrder->customer_name = $faker->firstName();
@@ -28,7 +28,7 @@ class OrderSeeder extends Seeder
             $newOrder->customer_phone_number = '340' . $faker->randomNumber(7, true);
             $newOrder->customer_email = 'ciao' . $i . '@ciao.it';
             $newOrder->customer_note = 'Ben cotta';
-            $newOrder->total_price = $faker->randomFloat(2, 5, 300);
+            $newOrder->total_price = $faker->randomFloat(2, 5, 40);
             $newOrder->status = rand(0, 2);
             $stop_date = '2021-09-30 20:24:00';
             $stop_date = date('Y-m-d H:i:s', strtotime($stop_date . "+$i day"));
