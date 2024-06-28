@@ -38,8 +38,8 @@ class OrderSeeder extends Seeder
             $newOrder->customer_note = 'Ben cotta';
             $newOrder->total_price = $faker->randomFloat(2, 5, 40);
             $newOrder->status = rand(0, 2);
-
-            // Genera una data casuale dal 2021 in poi
+            
+            //genero una data nel range che mi interessa
             $stop_date = $faker->dateTimeBetween($start_date, $now);
 
             $newOrder->created_at = $stop_date;
