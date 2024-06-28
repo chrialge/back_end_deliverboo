@@ -28,16 +28,19 @@
                 <!-- /year -->
 
                 <p class="pt-5">
-                    Il totale delle vendite per l'anno {{ $selectedYear }} ammonta a: {{ $totalMonthlySales }}€
-                </p>
-                <p>
-                    Il totale delle vendite complessivo ammonta a: {{ $totalSales }}€
-                </p>
 
-            </div>
-            <div class="col ms-4">
+                    Il totale delle vendite per l'anno {{ $selectedYear }} ammonta a: {{ $totalYear }}€
+                </p>
                 <div>
                     {!! $chartjs->render() !!}
+                </div>
+
+            </div>
+            <div class="col ms-4 d-flex flex-column">
+
+                <div>
+                    {!! $chartprofits->render() !!}
+
                 </div>
             </div>
             <!-- /.col-6 -->
