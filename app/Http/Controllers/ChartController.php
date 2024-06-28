@@ -18,6 +18,7 @@ class ChartController extends Controller
         $selectedYear = $request->input('year', 2024);
         /* recupero i ristoranti con dishes, types e orders*/
         $restaurant = Restaurant::with('dishes', 'types', 'orders')->where('user_id', $user)->get();
+
         /* recupero l'id del ristorante */
         $restaurant_id = $restaurant[0]['id'];
         /* recupero gli ordini */
@@ -35,10 +36,10 @@ class ChartController extends Controller
         // creao un array dove racchiude i profitti di ogni mese dell'anno selezionato
         $profits = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-
         foreach ($orders as $order) {
 
             for ($i = 0; $i < count($months); $i++) {
+
                 if ($i ==  0 && $order['mese'] == 1) {
                     $months[$i] = $order['ordini'];
                     $profits[$i] = $order['guadagno'];
@@ -121,6 +122,8 @@ class ChartController extends Controller
 
 
 
+
         return view('admin.charts.index', compact('chartjs', 'chartprofits', 'selectedYear', 'totalYear'));
+
     }
 }

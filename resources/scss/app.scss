@@ -103,14 +103,15 @@
     display: none;
 }
 
-.col{
+.col {
     @media(max-width: 1000px) {
         width: 100%;
     }
 }
 
-.page_item, .page_current {
-    
+.page_item,
+.page_current {
+
     padding: 0.5rem 1.1rem;
     margin: 0.5rem 0.5rem;
     border-radius: 0.5rem;
@@ -122,14 +123,16 @@
 }
 
 .page_item:hover {
-    background-color: rgba(109, 72, 178, 1)!important;
+    background-color: rgba(109, 72, 178, 1) !important;
     color: white;
     transition: 0.3s;
 }
-.page_item:hover .page_link{
+
+.page_item:hover .page_link {
     color: white;
 }
-.page_item:hover .active_page{
+
+.page_item:hover .active_page {
     color: white;
 }
 

@@ -28,6 +28,7 @@
                 <!-- /year -->
 
                 <p class="pt-5">
+
                     Il totale delle vendite per l'anno {{ $selectedYear }} ammonta a: {{ $totalYear }}€
                 </p>
                 <div>
@@ -39,6 +40,7 @@
 
                 <div>
                     {!! $chartprofits->render() !!}
+
                 </div>
             </div>
             <!-- /.col-6 -->

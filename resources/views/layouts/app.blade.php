@@ -28,13 +28,13 @@
 
     <div id="app">
 
-        <nav class="navbar navbar-expand-md light_shadow py-3">
+        <nav class="navbar navbar-expand-md light_shadow py-0">
 
             <div class="container">
 
                 <a class="navbar-brand d-flex align-items-center p-0" href="{{ url('/') }}">
                     <div class="logo">
-                        <h2 class="mb-0">
+                        <h2 class="m-0">
                             <i class="fa-solid fa-utensils"></i>
                             DeliveBoo work
                         </h2>
@@ -53,7 +53,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link primary_text fs-5 header_link " href="http://localhost:5174/"
+                            <a class="nav-link primary_text fs-5 header_link pt-4 pb-3" href="http://localhost:5174/"
                                 target="_blank">{{ __('Ordina') }}</a>
                         </li>
                     </ul>
@@ -64,22 +64,23 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link primary_text fs-5 header_link "
+                                <a class="nav-link primary_text fs-5 header_link pt-4 pb-3"
                                     href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             <!-- /login link -->
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link primary_text fs-5 header_link  ms-3"
+                                    <a class="nav-link primary_text fs-5 header_link pt-4 pb-3"
                                         href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                                 <!-- /register link -->
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle primary_text fs-5 header_link "
-                                    href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" v-pre>
+                                <a id="navbarDropdown"
+                                    class="nav-link dropdown-toggle primary_text fs-5 header_link pt-4 pb-3" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
                                 <!-- /dropdwn nav -->

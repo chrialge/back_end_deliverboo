@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Faker\Factory as Faker;
+
 
 class OrderSeeder extends Seeder
 {
@@ -16,24 +18,34 @@ class OrderSeeder extends Seeder
     {
         $faker = Faker::create('it_IT');
 
-        // Creazione di 200 ordini finti
+        // Data e ora attuali
+        $now = Carbon::now();
+
+        // Data di inizio del 2021
+        $start_date = Carbon::parse('2021-01-01');
+
+        // Ciclo per creare ordini finti
         for ($i = 0; $i < 1000; $i++) {
             $newOrder = new Order();
             $newOrder->restaurant_id = $faker->numberBetween(1, 20);
             $newOrder->customer_name = $faker->firstName();
-            $newOrder->customer_lastname = $faker->lastname();
+            $newOrder->customer_lastname = $faker->lastName();
             $name = $newOrder->customer_name . ' ' . $newOrder->customer_lastname;
             $newOrder->slug = Str::slug($name, '-');
             $newOrder->customer_address = 'Via ' . $faker->streetName . ' ' . $faker->numberBetween(1, 100);
             $newOrder->customer_phone_number = '340' . $faker->randomNumber(7, true);
             $newOrder->customer_email = 'ciao' . $i . '@ciao.it';
             $newOrder->customer_note = 'Ben cotta';
-            $newOrder->total_price = $faker->randomFloat(2, 5, 300);
+            $newOrder->total_price = $faker->randomFloat(2, 5, 40);
             $newOrder->status = rand(0, 2);
-            $stop_date = '2021g-09-30 20:24:00';
-            $stop_date = date('Y-m-d H:i:s', strtotime($stop_date . "+$i day"));
+            
+            //genero una data nel range che mi interessa
+            $stop_date = $faker->dateTimeBetween($start_date, $now);
+
             $newOrder->created_at = $stop_date;
             $newOrder->save();
+
+            // Collega piatti casuali all'ordine
             for ($index = 0; $index < 3; $index++) {
                 $dish_id = rand(1, 20);
                 $quantity = rand(1, 5);
