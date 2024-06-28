@@ -29,24 +29,24 @@
             </div>
             <div class="col-6 py-5">
                 <div class="price d-flex align-items-center gap-2">
-                    <h4 class="primary_text">
+                    <p class="primary_text">
                         Prezzo:
-                    </h4>
-                    <span>{{ $dish->price }}</span>
+                    </p>
+                    <span class="mb-3">{{ $dish->price }}</span>
                 </div>
 
-                <div class="visibility d-flex gap-2">
-                    <h4 class="primary_text">
+                <div class="visibility d-flex align-items-center gap-2">
+                    <p class="primary_text">
                         Visibile:
-                    </h4>
-                    <span>{{ $dish->visibility == 0 ? 'Sì' : 'No' }}</span>
+                    </p>
+                    <span class="mb-3">{{ $dish->visibility == 1 ? 'Sì' : 'No' }}</span>
                 </div>
 
-                <div class="ingredients  py-4">
-                    <h4 class="primary_text">
+                <div class="ingredients d-flex align-items-center gap-2">
+                    <p class="primary_text">
                         Ingredienti:
-                    </h4>
-                    <span>{{ $dish->ingredients }}</span>
+                    </p>
+                    <span class="mb-3">{{ $dish->ingredients }}</span>
                 </div>
             </div>
         </div>
