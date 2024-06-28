@@ -26,9 +26,10 @@ class DishController extends Controller
         // dd($user->restaurants());
         $restaurant = $user->restaurants()->where('user_id', $user->id)->first();
         // dd($restaurant);
-
+        $count = Dish::selectraw('count(*) piatti')->where('restaurant_id', $restaurant->id)->get();
+        // dd($count);
         if ($restaurant) {
-            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->paginate(10)]);
+            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->paginate(10), 'count' => $count]);
         } else {
             return redirect()->back()->with('message', "Sorry you haven't restaurants registered");
         }
