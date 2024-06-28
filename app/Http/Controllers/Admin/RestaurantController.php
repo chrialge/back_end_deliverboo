@@ -27,7 +27,7 @@ class RestaurantController extends Controller
         // dd($restaurant);
 
         if ($restaurant) {
-            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderByDesc('id')->get()]);
+            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->get()]);
         } else {
             return redirect()->back()->with('message', "Sorry you haven't restaurants registered");
         }
