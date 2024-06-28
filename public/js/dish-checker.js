@@ -1,3 +1,9 @@
+/* 1-FUNZIONI DI VALIDAZIONE
+   2-FUNZIONI NASCONDI-ERRORE
+   3-CHECKER PER IL FORM
+*/
+
+// 1 FUNZIONI DI VALIDAZIONE
 const checkbox = document.getElementById('visibility-toggle');
 //Imposto dei valori di default
 /* checkbox.checked = false;
@@ -6,12 +12,12 @@ checkbox.value = '0';
 console.log('Prima del ckick', checkbox.value);
 checkbox.addEventListener('change', function () {
     if (this.checked) {
-        
+
         this.value = '1'; // Imposta il valore a 1 se la checkbox è selezionata
         console.log('Dopo ckick', checkbox.value);
     }
     if ((!this.checked)) {
-        
+
         this.value = '0'; // Imposta il valore a 0 se la checkbox non è selezionata
         console.log('Dopo ckick', checkbox.value);
     }
@@ -89,6 +95,43 @@ function check_ingredients() {
         input.style.borderColor = "red";
 
         return false;
+    }
+}
+
+// 2 CANCELLA-ERRORE
+// Funzione per nascondere l'errore del nome
+function hide_name_error() {
+    let errorElement = document.getElementById("name_error");
+    let input = document.getElementById("name");
+
+    if (input.value.length >= 3) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
+    }
+}
+
+// Funzione per nascondere l'errore del prezzo
+function hide_price_error() {
+    let errorElement = document.getElementById("price_error");
+    let priceElement = document.getElementById("price");
+    let price = parseFloat(priceElement.value);
+
+    if (!isNaN(price) && price >= 0) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        priceElement.style.borderColor = "";
+    }
+}
+
+function hide_ingredients_error() {
+    let errorElement = document.getElementById("ingredients_error");
+    let input = document.getElementById("ingredients");
+
+    if (input.value.length >= 10) {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
     }
 }
 

@@ -31,7 +31,7 @@ class DishController extends Controller
         if ($restaurant) {
             return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->paginate(10), 'count' => $count]);
         } else {
-            return redirect()->back()->with('message', "Sorry you haven't restaurants registered");
+            return redirect()->back()->with('message', "Non hai l'autorizzazione per accedere a questa pagina");
         }
         // take restaurants of the user current
     }
@@ -76,7 +76,7 @@ class DishController extends Controller
         //Creating new istance
         $dish = Dish::create($val_data);
 
-        return to_route('admin.dishes.index')->with('message', "You have created $dish->name");
+        return to_route('admin.dishes.index')->with('message', "Hai creato $dish->name");
     }
 
     /**
@@ -88,7 +88,7 @@ class DishController extends Controller
         if (Gate::allows('dish-checker', $dish)) {
             return view('admin.dishes.show', compact('dish'));
         }
-        abort(403, "Don't try to enter into another dish");
+        abort(403, "Non hai l'autorizzazione per accedere a questa pagina");
     }
 
     /**
@@ -99,7 +99,7 @@ class DishController extends Controller
         if (Gate::allows('dish-checker', $dish)) {
             return view('admin.dishes.edit', compact('dish'));
         }
-        abort(403, "Don't try to enter into another dish");
+        abort(403, "Non hai l'autorizzazione per accedere a questa pagina");
     }
 
     /**
@@ -137,7 +137,7 @@ class DishController extends Controller
                 'visibility' => $visibility,
             ]);
 
-            return to_route('admin.dishes.index')->with('message', "You have updated $dish->name");
+            return to_route('admin.dishes.index')->with('message', "Hai modificato  $dish->name");
         }
     }
 
@@ -153,7 +153,7 @@ class DishController extends Controller
                 Storage::disk('public')->delete($dish->image);
             }
             $dish->delete();
-            return redirect()->back()->with('message', "You have delete $dish->name");
+            return redirect()->back()->with('message', "Hai cancellato $dish->name");
         }
     }
 }

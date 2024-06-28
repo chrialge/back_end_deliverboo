@@ -66,8 +66,7 @@
                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                 value="{{ old('email') }}" required autocomplete="email">
 
-                            <span id="email_error" class="small_invisible" style="color: red;">L'email deve essere di almeno
-                                3 caratteri e contenere una chiocciola (@).</span>
+                            <span id="email_error" class="small_invisible" style="color: red;">Inserisci una mail valida.</span>
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -144,7 +143,7 @@
                         </label>
 
                         <div class="col-md-6">
-                            <input type="number" class="form-control @error('phone_number') is-invalid @enderror"
+                            <input type="text" class="form-control @error('phone_number') is-invalid @enderror"
                                 name="phone_number" id="phone_number" aria-describedby="phone_numberHelper"
                                 value="{{ old('phone_number') }}"  />
                             @error('phone_number')
@@ -192,7 +191,7 @@
                         </label>
 
                         <div class="col-md-6">
-                            <input type="number" minlength="11" maxlength="11"
+                            <input type="text" minlength="11" maxlength="11"
                                 class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                                 id="vat_number" aria-describedby="vat_numberHelper" value="{{ old('vat_number') }}"
                                 required onkeyup="hide_vat_number_error()" onblur='check_vat_number()' />
