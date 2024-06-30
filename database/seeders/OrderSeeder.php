@@ -27,7 +27,7 @@ class OrderSeeder extends Seeder
         // Ciclo per creare ordini finti
         for ($i = 0; $i < 1000; $i++) {
             $newOrder = new Order();
-            $newOrder->restaurant_id = $faker->numberBetween(1, 20);
+            $newOrder->restaurant_id = $faker->numberBetween(1, 10);
             $newOrder->customer_name = $faker->firstName();
             $newOrder->customer_lastname = $faker->lastName();
             $name = $newOrder->customer_name . ' ' . $newOrder->customer_lastname;

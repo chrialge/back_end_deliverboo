@@ -20,12 +20,56 @@ class RestaurantSeeder extends Seeder
         $faker = Faker::create('it_IT');
 
         $restaurantNames = [
-            [
+            /* [
                 'name' => 'Ossi di seppia',
                 'user_id' => 1,
                 'image' => 'https://media-cdn.tripadvisor.com/media/photo-f/06/13/cd/d5/venite-a-provare-le-nostre.jpg',
                 'types' => [
                     5, 9
+                ]
+            ],
+
+            [
+                'name' => 'Ristorante Il Ponte',
+                'user_id' => 3,
+                'image' => 'https://media-cdn.tripadvisor.com/media/photo-s/06/70/4e/17/il-ponte.jpg',
+                'types' => [
+                    1, 9
+                ]
+            ],
+            [
+                'name' => 'La Taverna',
+                'user_id' => 5,
+                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ22du8dJ7MnFL-mDQmH5qSI3kTqA-zC9-fiw&s',
+                'types' => [
+                    6, 7, 10
+                    ]
+                    
+                    ], 
+                    [
+                        'name' => 'Ristorante La Pergola',
+                        'user_id' => 6,
+                        'image' => 'https://www.positanonews.it/photogallery_new/images/2017/02/foto-ristorante-la-pergola-3174634.660x368.jpg',
+                        'types' => [
+                    1, 9
+                    ]
+                    ],
+                                [
+                'name' => 'Rio',
+                'user_id' => 11,
+                'image' => 'https://www.galluraoggi.it/wp-content/uploads/2022/04/IMG20220506200418-scaled.jpg',
+                'types' => [
+                    15, 18
+                ]
+            ],
+                    */
+            [
+                'name' => 'Kebab Mesopotamia',
+                'user_id' => 8,
+                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNweYNZM49AkebHWfHzAScNO1zhIsg2IbAzQ&s',
+                'types' => [
+                    1,
+                    6
                 ]
             ],
             [
@@ -37,51 +81,12 @@ class RestaurantSeeder extends Seeder
                 ]
             ],
             [
-                'name' => 'Ristorante Il Ponte',
-                'user_id' => 3,
-                'image' => 'https://media-cdn.tripadvisor.com/media/photo-s/06/70/4e/17/il-ponte.jpg',
-                'types' => [
-                    1, 9
-                ]
-            ],
-            [
                 'name' => 'Pizzeria Bella Napoli',
                 'user_id' => 4,
                 'image' => 'https://media-cdn.tripadvisor.com/media/photo-s/03/f9/35/44/bella-napoli.jpg',
                 'types' => [
-                    1, 9
-                ]
-            ],
-            [
-                'name' => 'La Taverna',
-                'user_id' => 5,
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ22du8dJ7MnFL-mDQmH5qSI3kTqA-zC9-fiw&s',
-                'types' => [
-                    6, 7, 10
-                ]
-            ],
-            [
-                'name' => 'Ristorante La Pergola',
-                'user_id' => 6,
-                'image' => 'https://www.positanonews.it/photogallery_new/images/2017/02/foto-ristorante-la-pergola-3174634.660x368.jpg',
-                'types' => [
-                    1, 9
-                ]
-            ],
-            [
-                'name' => 'Ristorante Al Dente',
-                'user_id' => 7,
-                'image' => 'https://media-cdn.tripadvisor.com/media/photo-s/06/40/8d/f8/front.jpg',
-                'types' => [
-                    1, 7
-                ]
-            ],
-            [
-                'name' => 'Kebab Mesopotamia',
-                'user_id' => 8,
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNweYNZM49AkebHWfHzAScNO1zhIsg2IbAzQ&s',
-                'types' => [
-                    1, 6
+                    1,
+                    9
                 ]
             ],
             [
@@ -89,7 +94,8 @@ class RestaurantSeeder extends Seeder
                 'user_id' => 9,
                 'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfUuphkHQxSsUgEWRIPe2KZf-0v4FTg1YOgQ&s',
                 'types' => [
-                    2, 11
+                    2,
+                    11
                 ]
             ],
             [
@@ -97,23 +103,20 @@ class RestaurantSeeder extends Seeder
                 'user_id' => 10,
                 'image' => 'https://c8.alamy.com/compit/f4r6fh/la-londra-chinatown-canton-ristorante-cinese-f4r6fh.jpg',
                 'types' => [
-                    2, 12, 13
+                    2,
+                    12,
+                    13
                 ]
             ],
-            [
-                'name' => 'Rio',
-                'user_id' => 11,
-                'image' => 'https://www.galluraoggi.it/wp-content/uploads/2022/04/IMG20220506200418-scaled.jpg',
-                'types' => [
-                    15, 18
-                ]
-            ],
+
             [
                 'name' => "Yane's",
                 'user_id' => 12,
                 'image' => 'https://cdn.foodiestrip.com/restaurant_image/5d0b51661fc7117164fa6c14/images/1280x853/yane%E2%80%99s-churros-&-tapas-ristorante-localit%C3%A0-renella1570437013257.jpg',
                 'types' => [
-                    14, 16, 17
+                    14,
+                    16,
+                    17
                 ]
             ],
             [
@@ -145,7 +148,8 @@ class RestaurantSeeder extends Seeder
                 'user_id' => 16,
                 'image' => 'https://truerefrigeration.co.uk/wp-content/uploads/2022/11/IMG_0559_Edit.jpg',
                 'types' => [
-                    4, 5
+                    4,
+                    5
                 ]
             ],
             [
@@ -153,7 +157,8 @@ class RestaurantSeeder extends Seeder
                 'user_id' => 17,
                 'image' => 'https://www.lucianopignataro.it/wp-content/uploads/2013/04/campana-ingresso.jpg',
                 'types' => [
-                    5, 9
+                    5,
+                    9
                 ]
             ],
             [
