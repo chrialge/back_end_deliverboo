@@ -101,7 +101,7 @@ class DishSeeder extends Seeder
             ],
 
         ];
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             foreach ($dishes as $dish) {
                 $newDish = new Dish();
                 $newDish->name = $dish['name'];
