@@ -185,8 +185,11 @@ let check_types = function check_types() {
     }
 };
 
+let registerButton = document.getElementById('register-submit-button')
+let buttonValue = false;
 //Verifico che tutti i checker vadano bene
-document.getElementById('register-submit-button').addEventListener('click', function (event) {
+registerButton.addEventListener('click', function (event) {
+
     // Controllo del nome
     if (!check_name()) {
         event.preventDefault();
@@ -203,8 +206,20 @@ document.getElementById('register-submit-button').addEventListener('click', func
     }
 
     // Controllo della password
-    if (!check_pw()) {
+    let password = document.getElementById('password').value;
+    let confirmPassword = document.getElementById('password-confirm').value;
+    let errorElement = document.getElementById("password_error");
+    let input = document.getElementById("password-confirm");
+
+    if (password === "" || confirmPassword === "" || password !== confirmPassword) {
+        errorElement.classList.remove("small_invisible");
+        errorElement.classList.add("small_visible");
+        input.style.borderColor = "red";
         event.preventDefault();
+    } else {
+        errorElement.classList.remove("small_visible");
+        errorElement.classList.add("small_invisible");
+        input.style.borderColor = "";
     }
 
     // Controllo del nome del ristorante
@@ -221,8 +236,8 @@ document.getElementById('register-submit-button').addEventListener('click', func
     if (!check_vat_number()) {
         event.preventDefault();
     }
+    registerButton
 });
-
 
 
 
