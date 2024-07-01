@@ -112,36 +112,38 @@ class DishController extends Controller
     {
         if (Gate::allows('dish-checker', $dish)) {
 
-            //Validation
+            // Validation
             $val_data = $request->validated();
 
             // true se la checkbox è selezionata, false altrimenti
             $visibility = $request->has('visibility');
 
-
-            //dd($visibility);
-            //if($val_data->)
-            //Creating a slug content
+            // Creo slug
             $slug = Str::slug($val_data['name'], '-');
             $val_data['slug'] = $slug;
 
             if ($request->has('image')) {
-
                 if ($dish->image) {
                     Storage::disk('public')->delete($dish->image);
                 }
                 $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
             }
 
-
-            //Updating new istance
-
+            // Updating the dish
             $dish->update([
+                'name' => $val_data['name'],
+                'slug' => $val_data['slug'],
+                //Prendo l'immagine esistente se non la cambio
+                'image' => $val_data['image'] ?? $dish->image, 
                 'visibility' => $visibility,
+                'ingredients' => $val_data['ingredients'],
+                'price' => $val_data['price']
             ]);
 
-            return to_route('admin.dishes.index')->with('message', "Hai modificato  $dish->name");
+            return to_route('admin.dishes.index')->with('message', "Hai modificato  {$dish->name}");
         }
+
+        return to_route('admin.dishes.index')->with('error', 'Non sei autorizzato a modificare questo piatto');
     }
 
 
