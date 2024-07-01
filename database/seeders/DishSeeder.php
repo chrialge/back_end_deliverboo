@@ -59,7 +59,7 @@ class DishSeeder extends Seeder
                 "name" => 'Ravioli di Ricotta',
                 "img" => 'img/ravioli.jpg'
             ],
-            [
+/*               [
                 "name" => 'Arancini',
                 "img" => 'img/arancini.jpg'
             ],
@@ -75,7 +75,7 @@ class DishSeeder extends Seeder
                 "name" => 'Ossobuco',
                 "img" => 'img/ossobuco.webp'
             ],
-            [
+           [
                 "name" => 'Saltimbocca alla Romana',
                 "img" => 'img/saltimbocca.jpg'
             ],
@@ -87,7 +87,7 @@ class DishSeeder extends Seeder
                 "name" => 'Zuppa di Pesce',
                 "img" => 'img/zuppa-di-pesce.jpg'
             ],
-            [
+           [
                 "name" => 'Cannoli Siciliani',
                 "img" => 'img/cannoli.jpg'
             ],
@@ -98,7 +98,7 @@ class DishSeeder extends Seeder
             [
                 "name" => 'Gnocchi di Patate',
                 "img" => 'img/gnocchi.jpg'
-            ],
+            ], */
 
         ];
         for ($i = 1; $i <= 10; $i++) {
