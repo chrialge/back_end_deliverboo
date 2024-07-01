@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'test8@admin.com',
             'test9@admin.com',
             'test10@admin.com',
-            'test11@admin.com',
+/*             'test11@admin.com',
             'test12@admin.com',
             'test13@admin.com',
             'test14@admin.com',
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
             'test17@admin.com',
             'test18@admin.com',
             'test19@admin.com',
-            'test20@admin.com',
+            'test20@admin.com', */
         ];
 
         foreach ($userEmails as $key => $email) {
