@@ -5,7 +5,7 @@
         <h2 class="fs-4 text-secondary my-4">
             Ciao {{ Auth::user()->name }} !
         </h2>
-        <p>Informazioni sul tuo account:</p>
+        <h5>Informazioni sul tuo account:</h5>
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
@@ -25,8 +25,40 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- /.card-body -->
                 </div>
+                <!-- /.card -->
             </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
+
+        <h5 class="pt-4">Informazioni sul tuo ristorante:</h5>
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="py-1">
+                                Nome: {{ $restaurant->name }}
+                            </li>
+                            <li class="py-1">
+                                Numero di telefono: {{ $restaurant->phone_number }}
+                            </li>
+                            <li class="py-1">
+                                Indirizzo: {{ $restaurant->address }}
+                            </li>
+                            <li class="py-1">
+                                Partita IVA: {{ $restaurant->vat_number }}
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
     </div>
 @endsection
