@@ -46,7 +46,7 @@
                 <label for="price" class="form-label">Prezzo <span class="text-secondary">*</span></label>
                 <input type="number" step="0.01" min="0.00"
                     class="form-control @error('price') is-invalid @enderror" name="price" id="price"
-                    aria-describedby="priceHelper" value="{{ old('price') }}" required onkeyup="hide_price_error()"
+                    aria-describedby="priceHelper" value="{{ old('price') }}" required onkeyup="hide_price_error(),check_price()"
                     onblur="check_price()" />
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>

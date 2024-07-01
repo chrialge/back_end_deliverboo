@@ -52,7 +52,7 @@
             <!-- Input for price-->
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo <span class="text-secondary">*</span></label>
-                <input onkeyup="hide_price_error()" onblur="check_price()" type="number" step="0.01" min="0.00"
+                <input onkeyup="hide_price_error(),check_price()" onblur="check_price(),hide_price_error()" type="number" step="0.01" min="0.00"
                     class="form-control @error('price') is-invalid @enderror" name="price" id="price"
                     aria-describedby="priceHelper" value="{{ old('price', $dish->price) }}" required />
 
