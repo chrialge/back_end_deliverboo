@@ -59,7 +59,7 @@
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
                                 <a class="nav-link primary_text fs-5 header_link pt-4 pb-3"
-                                    href="http://localhost:5173/" target="_blank">{{ __('Ordina') }} </a>
+                                    href="http://localhost:5174/" target="_blank">{{ __('Ordina') }} </a>
                             </li>
                         </ul>
                         <!-- /home link -->
