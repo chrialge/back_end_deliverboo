@@ -16,7 +16,7 @@
                         <label for="year" class="form-label">Seleziona un anno</label>
                         <select class="form-select form-select-lg" name="year" id="year">
                             <option {{ $selectedYear == 'lastmonths' ? 'selected' : '' }} value="lastmonths">
-                                l'ultimi 12 mesi
+                                Ultimi 12 mesi
                             </option>
                             <option {{ $selectedYear == '2024' ? 'selected' : '' }} value="2024">2024</option>
                             <option {{ $selectedYear == '2023' ? 'selected' : '' }} value ="2023">2023</option>

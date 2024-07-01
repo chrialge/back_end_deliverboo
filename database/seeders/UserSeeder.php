@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -28,7 +29,7 @@ class UserSeeder extends Seeder
             'test8@admin.com',
             'test9@admin.com',
             'test10@admin.com',
-/*             'test11@admin.com',
+            /*             'test11@admin.com',
             'test12@admin.com',
             'test13@admin.com',
             'test14@admin.com',
@@ -44,7 +45,14 @@ class UserSeeder extends Seeder
             $newUser = new User();
             $newUser->name = $faker->firstName();
             $newUser->last_name = $faker->lastname();
-            $newUser->email = $email;
+            $name = Str::slug($newUser->name);
+
+            $lastname = Str::slug($newUser->last_name, '_');
+            $checkEmail = User::where('name', $name)->where('last_name', $lastname)->count();
+            if ($checkEmail) {
+                $newUser->email = $name . '.' . $lastname . $checkEmail + 1 . '@gmail.com';
+            }
+            $newUser->email = $name . '.' . $lastname . '@gmail.com';
             $newUser->password = Hash::make('password');
             $newUser->save();
         }
