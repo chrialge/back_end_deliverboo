@@ -137,20 +137,36 @@ function hide_ingredients_error() {
 
 
 //verifiche prima di inviare il form
-document.getElementById('dish-submit-button').addEventListener('click', function (event) {
-    // Controllo del nome
-    if (!check_name()) {
-        event.preventDefault();
-    }
+function check_types() {
+    document.getElementById('dish-submit-button').addEventListener('click', function (event) {
 
-    // Controllo del prezzo
-    if (!check_price()) {
-        event.preventDefault();
-    }
 
-    // Controllo degli ingredienti
-    if (!check_ingredients()) {
-        event.preventDefault();
-    }
 
-});
+        var clickLimit = 1; //Max number of clicks
+        if (check_types >= clickLimit) {
+
+            return false;
+        }
+        else {
+            check_types++
+            // Controllo del nome
+            event.preventDefault(event);
+            if (!check_name()) {
+                event.preventDefault();
+            }
+
+            // Controllo del prezzo
+            if (!check_price()) {
+                event.preventDefault();
+            }
+
+            // Controllo degli ingredienti
+            if (!check_ingredients()) {
+                event.preventDefault();
+            }
+            return true;
+        }
+
+    });
+}
+

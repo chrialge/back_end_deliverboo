@@ -41,9 +41,7 @@
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
-
-                    id="image" aria-describedby="imageHelper" 
-                    value="{{ old('image', $dish->image) }}" />
+                    id="image" aria-describedby="imageHelper" value="{{ old('image', $dish->image) }}" />
                 @error('image')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -52,9 +50,9 @@
             <!-- Input for price-->
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo <span class="text-secondary">*</span></label>
-                <input onkeyup="hide_price_error(),check_price()" onblur="check_price(),hide_price_error()" type="number" step="0.01" min="0.00"
-                    class="form-control @error('price') is-invalid @enderror" name="price" id="price"
-                    aria-describedby="priceHelper" value="{{ old('price', $dish->price) }}" required />
+                <input onkeyup="hide_price_error(),check_price()" onblur="check_price(),hide_price_error()" type="number"
+                    step="0.01" min="0.00" class="form-control @error('price') is-invalid @enderror" name="price"
+                    id="price" aria-describedby="priceHelper" value="{{ old('price', $dish->price) }}" required />
 
                 <small id="price_error" class="small_invisible">Il prezzo deve essere un numero non negativo!</small>
 
@@ -91,7 +89,8 @@
                 @enderror
             </div>
 
-            <button id="dish-submit-button" class="btn btn-dark" type="submit">Salva</button>
+            <button onclick="return check_types()" id="dish-submit-button" class="btn btn-dark"
+                type="submit">Salva</button>
         </form>
 
         <script src="{{ asset('js/dish-checker.js') }}"></script>
