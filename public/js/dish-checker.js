@@ -137,7 +137,7 @@ function hide_ingredients_error() {
 
 
 //verifiche prima di inviare il form
-function check_types() {
+/* function check_types() {
     document.getElementById('dish-submit-button').addEventListener('click', function (event) {
 
 
@@ -168,5 +168,24 @@ function check_types() {
         }
 
     });
-}
+} */
+
+//verifiche prima di inviare il form
+document.getElementById('dish-submit-button').addEventListener('click', function (event) {
+    // Controllo del nome
+    if (!check_name()) {
+        event.preventDefault();
+    }
+
+    // Controllo del prezzo
+    if (!check_price()) {
+        event.preventDefault();
+    }
+
+    // Controllo degli ingredienti
+    if (!check_ingredients()) {
+        event.preventDefault();
+    }
+
+});
 

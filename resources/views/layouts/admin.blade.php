@@ -101,7 +101,7 @@
                             <!-- /login link -->
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link pt-4 pb-3"
+                                    <a class="nav-link primary_text fs-5 header_link pt-4 pb-3"
                                         href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                                 <!-- /register link -->
