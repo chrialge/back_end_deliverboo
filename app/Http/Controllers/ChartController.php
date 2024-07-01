@@ -146,8 +146,6 @@ class ChartController extends Controller
         $chartjs = app()->chartjs
             ->name('orp$profitsini') /* Nome grafico */
             ->type('line') /* tipo di grafico */
-            /* dimensioni */
-            ->size(['width' => 400, 'height' => 200])
             ->labels($months) /* etichette */
             ->datasets([
                 [
@@ -159,17 +157,14 @@ class ChartController extends Controller
                 ],
             ])
             ->options([
-                'responsive' => false,
+                'responsive' => true,
                 "pointBackgroundColor" => '#fff',
-                "radius" => 7,
-                "width" => '100%'
-
             ]);
 
         // grafico profitti
         $chartprofits = app()->chartjs
             ->name('profitti')
-            ->type('pie')/* dimensioni */
+            ->type('pie')
             ->labels($months)
             ->datasets([
                 [
@@ -181,9 +176,6 @@ class ChartController extends Controller
             ->options([
                 'responsive' => true,
             ]);
-
-
-
 
         return view('admin.charts.index', compact('chartjs', 'chartprofits', 'selectedYear', 'totalYear'));
     }
