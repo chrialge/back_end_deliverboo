@@ -164,12 +164,16 @@ class ChartController extends Controller
         // grafico profitti
         $chartprofits = app()->chartjs
             ->name('profitti')
-            ->type('pie')
+            ->type('bar')
             ->labels($months)
             ->datasets([
                 [
                     'label' => 'Profitti',
-                    'backgroundColor' => ['#4e7d84', '#f918e8', '#01610c', '#594b56', '#072ff6', '#1d2fc6', '#71f45b', '#5be5dc', '#4cf456', '#510008', '#65339e', '#b5268b'], /* colore lable 1, colore lable 2 */
+                    'fill' => true,
+                    'borderWidth' => 2,
+                    'borderColor' => ['#0B6E4F'],
+                    'borderRadius' => 3,
+                    'backgroundColor' => ['#6BBF59'], /* colore lable 1, colore lable 2 */
                     'data' => $profits /* percentuale lable 1,  percentuale lable 1  */
                 ]
             ])

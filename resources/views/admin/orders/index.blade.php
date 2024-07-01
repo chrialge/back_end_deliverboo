@@ -1,10 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container p-0 p-sm-2">
+    <div class="container p-sm-2">
+        <div class="pb-3">
+            <h3>Ristorante:</h3>
+            <h1>{{ $restaurant->name }}</h1>
+        </div>
         <div class="d-flex align-items-center justify-content-between pb-3">
             <h1>Ordini</h1>
-            <div>Ristorante: {{ $restaurant->name }}</div>
             <div></div>
         </div>
 
