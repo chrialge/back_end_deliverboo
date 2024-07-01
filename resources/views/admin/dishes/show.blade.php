@@ -42,11 +42,11 @@
                     <span class="mb-3">{{ $dish->visibility == 1 ? 'Sì' : 'No' }}</span>
                 </div>
 
-                <div class="ingredients d-flex align-items-center gap-2">
-                    <p class="primary_text">
+                <div class="ingredients align-items-center gap-2">
+                    <div class="primary_text">
                         Ingredienti:
-                    </p>
-                    <span class="mb-3">{{ $dish->ingredients }}</span>
+                    </div>
+                    <p class="mb-3">{{ $dish->ingredients }}</p>
                 </div>
             </div>
         </div>
