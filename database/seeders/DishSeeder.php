@@ -110,7 +110,7 @@ class DishSeeder extends Seeder
                 $newDish->image = $dish['img'];
                 $newDish->ingredients = $faker->words(6, true);
                 $newDish->price = $faker->randomFloat(2, 5, 20);  // Prezzo compreso tra 5 e 20 euro
-                $newDish->visibility = $faker->boolean;
+                $newDish->visibility = $faker->boolean(70);
                 $newDish->save();
             }
         }
