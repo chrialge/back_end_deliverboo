@@ -12,59 +12,13 @@
         </div>
 
         <div class="row">
-            <div class="col">
-
-                <h3> Dettagli cliente</h3>
-
-                <div class="price d-flex align-items-center flex-wrap gap-2">
-                    <div class="primary_text">
-                        Nome Cliente:
-                    </div>
-                    <span>{{ $order->customer_name }}</span>
-                </div>
-                <!-- /name -->
-
-                <div class="price d-flex align-items-center flex-wrap gap-1">
-                    <div class="primary_text">
-                        Cognome Cliente:
-                    </div>
-                    <span>{{ $order->customer_lastname }}</span>
-                </div>
-                <!-- /surname -->
-
-                <div class="price d-flex align-items-center flex-wrap gap-2">
-                    <div class="primary_text">
-                        Indirzzo Cliente:
-                    </div>
-                    <span>{{ $order->customer_address }}</span>
-                </div>
-                <!-- /adress -->
-
-                <div class="price d-flex align-items-center flex-wrap gap-2">
-                    <div class="primary_text">
-                        Numero Telefonico Cliente:
-                    </div>
-                    <span>{{ $order->customer_phone_number }}</span>
-                </div>
-                <!-- /phone number -->
-
-                <div class="price d-flex align-items-center flex-wrap gap-2">
-                    <div class="primary_text">
-                        Email Cliente:
-                    </div>
-                    <span>{{ $order->customer_email }}</span>
-                </div>
-                <!-- /email -->
-
-            </div>
-            <!-- /.col -->
-            <div class="col">
+            <div class="col-12 col-lg-6 my-5">
 
                 <h3>Dettagli Ordine</h3>
 
                 @foreach ($dateTime = explode(' ', $order->created_at) as $tim)
                     @if ($loop->index == 0)
-                        <div class="price d-flex align-items-center flex-wrap gap-1">
+                        <div class="price d-flex align-items-center flex-wrap my-1">
                             <div class="primary_text">
                                 Data
                             </div>
@@ -74,7 +28,7 @@
                     @endif
 
                     @if ($loop->index == 1)
-                        <div class="price d-flex align-items-center flex-wrap gap-1">
+                        <div class="price d-flex align-items-center flex-wrap my-1">
                             <div class="primary_text">
                                 Ora
                             </div>
@@ -84,7 +38,7 @@
                     @endif
                 @endforeach
 
-                <div class="price d-flex align-items-center gap-2">
+                <div class="price d-flex align-items-center my-2">
                     <div class="primary_text">
                         Totale ordine:
                     </div>
@@ -105,7 +59,7 @@
                 </div>
                 <!-- /ordine -->
 
-                <div class="price d-flex align-items-center flex-wrap gap-2">
+                <div class="price d-flex align-items-center flex-wrap my-2">
                     <div class="primary_text">
                         Note del Cliente:
                     </div>
@@ -115,6 +69,53 @@
 
             </div>
             <!-- /.col -->
+            <div class="col-12 col-lg-6 my-5">
+
+                <h3> Dettagli cliente</h3>
+
+                <div class="price d-flex align-items-center flex-wrap my-2">
+                    <div class="primary_text">
+                        Nome Cliente:
+                    </div>
+                    <span> {{ $order->customer_name }}</span>
+                </div>
+                <!-- /name -->
+
+                <div class="price d-flex align-items-center flex-wrap my-2">
+                    <div class="primary_text">
+                        Cognome Cliente:
+                    </div>
+                    <span> {{ $order->customer_lastname }}</span>
+                </div>
+                <!-- /surname -->
+
+                <div class="price d-flex align-items-center flex-wrap my-2">
+                    <div class="primary_text">
+                        Indirzzo Cliente:
+                    </div>
+                    <span>{{ $order->customer_address }}</span>
+                </div>
+                <!-- /adress -->
+
+                <div class="price d-flex align-items-center flex-wrap my-2">
+                    <div class="primary_text">
+                        Numero Telefonico Cliente:
+                    </div>
+                    <span>{{ $order->customer_phone_number }}</span>
+                </div>
+                <!-- /phone number -->
+
+                <div class="price d-flex align-items-center flex-wrap my-2">
+                    <div class="primary_text">
+                        Email Cliente:
+                    </div>
+                    <span>{{ $order->customer_email }}</span>
+                </div>
+                <!-- /email -->
+
+            </div>
+            <!-- /.col -->
+
         </div>
         <!-- /.row -->
 

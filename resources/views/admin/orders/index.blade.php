@@ -39,14 +39,6 @@
                                     <td>{{ $time = substr($dateTime[1], 0, -3) }}</td>
                                 @endif
                             @endforeach
-
-                            {{-- <td>{{ $order->customer_address }}</td>
-                            <td>{{ $order->customer_phone_number }}</td>
-                            <td>{{ $order->slug }}</td>
-                            <td>{{ $order->customer_email }}</td>
-                            <td>{{ $order->customer_note }}</td>
-                            <td>{{ $order->total_price }}</td>
-                            <td>{{ $order->status }}</td>  --}}
                             <td scope="row" class="text-end">
                                 <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-dark">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -64,6 +56,5 @@
             </table>
         </div>
 
-        // {{--  {{ $orders->links('pagination::bootstrap-5') }} --}}
     </div>
 @endsection
