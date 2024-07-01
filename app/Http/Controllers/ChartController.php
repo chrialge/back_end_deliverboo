@@ -22,14 +22,14 @@ class ChartController extends Controller
         $dateMinus12 = $dateMinus12->format('Y-m-d H:i:s');
         // dd($date, $dateMinus12);
 
-
-
         /* recupero lo user id */
         $user = Auth::id();
         /* recupero l'anno selezionato dal form della pagina index */
         $selectedYear = $request->input('year', 'lastmonths');
         /* recupero i ristoranti con dishes, types e orders*/
         $restaurant = Restaurant::with('dishes', 'types', 'orders')->where('user_id', $user)->get();
+
+        $restaurant_name = $restaurant[0]['name'];
         /* recupero l'id del ristorante */
         $restaurant_id = $restaurant[0]['id'];
 
@@ -177,6 +177,6 @@ class ChartController extends Controller
                 'responsive' => true,
             ]);
 
-        return view('admin.charts.index', compact('chartjs', 'chartprofits', 'selectedYear', 'totalYear'));
+        return view('admin.charts.index', compact('chartjs', 'chartprofits', 'selectedYear', 'totalYear', 'restaurant_name'));
     }
 }
