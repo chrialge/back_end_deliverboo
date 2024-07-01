@@ -4,6 +4,8 @@
     <div class="container p-0 p-sm-2">
         <div class="d-flex align-items-center justify-content-between pb-3">
             <h1>Ordini</h1>
+            <div>Ristorante: {{ $restaurant->name }}</div>
+            <div></div>
         </div>
 
         @include('partials.session')
