@@ -185,8 +185,11 @@ let check_types = function check_types() {
     }
 };
 
+let registerButton = document.getElementById('register-submit-button')
+let buttonValue = false;
 //Verifico che tutti i checker vadano bene
-document.getElementById('register-submit-button').addEventListener('click', function (event) {
+registerButton.addEventListener('click', function (event) {
+
     // Controllo del nome
     if (!check_name()) {
         event.preventDefault();
@@ -233,8 +236,8 @@ document.getElementById('register-submit-button').addEventListener('click', func
     if (!check_vat_number()) {
         event.preventDefault();
     }
+    registerButton
 });
-
 
 
 
