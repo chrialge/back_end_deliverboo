@@ -11,6 +11,6 @@
 
     Totale Pagamento : {{ number_format($order->total_price, 2, '.', '') }} €
 
-    Grazie, da {{ config('app.name') }}
+    Grazie da {{ config('app.name') }}
 
 </x-mail::message>

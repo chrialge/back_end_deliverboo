@@ -18,7 +18,7 @@
 
                 @foreach ($dateTime = explode(' ', $order->created_at) as $tim)
                     @if ($loop->index == 0)
-                        <div class="price d-flex align-items-center flex-wrap my-1">
+                        <div class="price d-flex align-items-center flex-wrap my-1 gap-2">
                             <div class="primary_text">
                                 Data
                             </div>

@@ -48,7 +48,7 @@
                     @empty
 
                         <tr class="">
-                            <td scope="row">Non c'è stato ancora nessun ordine!</td>
+                            <td scope="row" colspan="4">Non c'è stato ancora nessun ordine!</td>
                         </tr>
                     @endforelse
 

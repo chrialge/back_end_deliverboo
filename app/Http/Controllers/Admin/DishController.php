@@ -59,7 +59,15 @@ class DishController extends Controller
             $val_data['image'] = Storage::disk('public')->put('uploads/images', $val_data['image']);
         }
         //Creating a slug content
-        $slug = Str::slug($val_data['name'], '-');
+        $slug_checker = Dish::where('name', $val_data['name'])->count();
+
+        // se ci sono corrispondenze si crea uno slug uunivoco
+        if ($slug_checker >= 1) {
+
+            $slug = $val_data['name'] . '-' . $slug_checker + 1;
+        } else {
+            $slug = $val_data['name'];
+        }
         $val_data['slug'] = $slug;
 
         // take user current
@@ -67,6 +75,7 @@ class DishController extends Controller
 
         // take restaurants of the user current
         $restaurant = $user->restaurants()->where('user_id', $user->id)->first();
+
 
         // try result of restaurants id=1
         // dd($restaurants->find(1)->id);
@@ -77,7 +86,7 @@ class DishController extends Controller
 
         //Creating new istance
         $dish = Dish::create($val_data);
-
+        // dd($dish, $val_data);
         return to_route('admin.dishes.index')->with('message', "Hai creato $dish->name");
     }
 
@@ -86,7 +95,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //dd($dish);
+        // dd($dish);
         if (Gate::allows('dish-checker', $dish)) {
             return view('admin.dishes.show', compact('dish'));
         }
@@ -118,8 +127,15 @@ class DishController extends Controller
             $visibility = $request->has('visibility');
 
             //Creating a slug content
+            $slug_checker = Dish::where('name', $val_data['name'])->count();
 
-            $slug = Str::slug($val_data['name'], '-');
+            if ($slug_checker >= 1) {
+
+                $slug = $val_data['name'] . '-' . $slug_checker + 1;
+            } else {
+                $slug = $val_data['name'];
+            }
+
             $val_data['slug'] = $slug;
 
             if ($request->has('image')) {
