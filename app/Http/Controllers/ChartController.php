@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use DateTime;
+use Illuminate\Support\Arr;
 
 
 class ChartController extends Controller
@@ -68,7 +69,7 @@ class ChartController extends Controller
                 if ($i ==  0 && $order['mese'] == 1) {
                     $numberOrder[$i] = $order['ordini'];
 
-                    $profits[$i] = $order['guadagno'];
+                    $profits[$i] = $order['guadagno'] . " $";
                     $totalYear += $order['guadagno'];
                 } else if ($i == 1 && $order['mese'] == 2) {
                     $numberOrder[$i] = $order['ordini'];
@@ -155,7 +156,8 @@ class ChartController extends Controller
                     'backgroundColor' => ['#9AD0F5'],
                     'fill' => true,
                     'borderColor' => ['#36A2EB'], /* colore lable 1, colore lable 2 */
-                    'data' => $numberOrder /* percentuale lable 1,  percentuale lable 1  */
+                    'data' => $numberOrder,
+                    /* percentuale lable 1,  percentuale lable 1  */
                 ],
             ])
             ->options([
@@ -169,13 +171,18 @@ class ChartController extends Controller
         // grafico profitti
         $chartprofits = app()->chartjs
             ->name('profitti')
-            ->type('pie')/* dimensioni */
+            ->type('bar')/* dimensioni */
             ->labels($months)
             ->datasets([
                 [
                     'label' => 'Profitti',
-                    'backgroundColor' => ['#4e7d84', '#f918e8', '#01610c', '#594b56', '#072ff6', '#1d2fc6', '#71f45b', '#5be5dc', '#4cf456', '#510008', '#65339e', '#b5268b'], /* colore lable 1, colore lable 2 */
-                    'data' => $profits /* percentuale lable 1,  percentuale lable 1  */
+                    'backgroundColor' => ['#00cc33'],
+                    'borderWidth' => 1,
+                    'borderRadius' => 2,
+                    'borderColor' => ['#00671a'],  /* colore lable 1, colore lable 2 */
+                    'data' => $profits,
+
+                    /* percentuale lable 1,  percentuale lable 1  */
                 ]
             ])
             ->options([
