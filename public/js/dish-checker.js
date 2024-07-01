@@ -144,27 +144,48 @@ function check_types() {
 
         var clickLimit = 1; //Max number of clicks
         if (check_types >= clickLimit) {
+            // Controllo del nome
 
-            return false;
+            if (!check_name()) {
+                event.preventDefault();
+                return true;
+            }
+
+            // Controllo del prezzo
+            else if (!check_price()) {
+                event.preventDefault();
+                return true;
+            }
+
+            // Controllo degli ingredienti
+            else if (!check_ingredients()) {
+                event.preventDefault();
+                return true;
+            } else {
+                return false
+            }
+            ;
         }
         else {
             check_types++
             // Controllo del nome
-            event.preventDefault(event);
             if (!check_name()) {
                 event.preventDefault();
+                return false;
             }
 
             // Controllo del prezzo
             if (!check_price()) {
                 event.preventDefault();
+                return false;
             }
 
             // Controllo degli ingredienti
             if (!check_ingredients()) {
                 event.preventDefault();
+                return false;
             }
-            return true;
+
         }
 
     });
