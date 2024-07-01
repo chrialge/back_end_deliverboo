@@ -3,11 +3,11 @@
 @section('content')
     <div class="container p-sm-2">
         <div class="pb-3">
-            <h3>Ristorante:</h3>
+            <h3 class="text-violet">Ristorante:</h3>
             <h1>{{ $restaurant->name }}</h1>
         </div>
         <div class="d-flex align-items-center justify-content-between pb-3">
-            <h1>Ordini</h1>
+            <h2><span class="text-violet">Ordini:</span> {{ $count }}</h2>
             <div></div>
         </div>
 
@@ -64,6 +64,6 @@
             </table>
         </div>
 
-        // {{--  {{ $orders->links('pagination::bootstrap-5') }} --}}
+        {{ $orders->links('pagination::bootstrap-5') }}
     </div>
 @endsection

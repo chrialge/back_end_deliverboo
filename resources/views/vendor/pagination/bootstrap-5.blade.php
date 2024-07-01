@@ -1,6 +1,6 @@
 @if ($paginator->hasPages())
     <nav class="d-flex justify-items-center justify-content-between">
-        <div class="d-flex justify-content-between flex-fill d-sm-none">
+        <div class="d-flex justify-content-between flex-fill d-md-none">
             <ul class="pagination">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
@@ -43,7 +43,7 @@
             </ul>
         </div>
 
-        <div class="d-none flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-between">
+        <div class="d-none flex-md-fill d-md-flex align-items-sm-center justify-content-sm-between">
             <div>
                 <p class="small text-muted">
                     {!! __('da') !!}
@@ -70,7 +70,8 @@
                     @endif
 
                     {{-- Pagination Elements --}}
-                    @foreach ($elements as $element)
+
+                    @foreach (array_chunk($elements[0], 4, true) as $element)
                         {{-- "Three Dots" Separator --}}
                         @if (is_string($element))
                             <li class="page_item disabled" aria-disabled="true"><span
@@ -78,6 +79,7 @@
                         @endif
 
                         {{-- Array Of Links --}}
+                        {{-- @dd($element) --}}
                         @if (is_array($element))
                             @foreach ($element as $page => $url)
                                 @if ($page == $paginator->currentPage())
@@ -93,6 +95,8 @@
                             @endforeach
                         @endif
                     @endforeach
+
+
 
                     {{-- Next Page Link --}}
                     @if ($paginator->hasMorePages())

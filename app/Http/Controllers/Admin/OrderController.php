@@ -32,9 +32,12 @@ class OrderController extends Controller
             // LO prendo
             $restaurant = $user->restaurants()->first();
             //recupero
-            $orders = Order::where('restaurant_id', $restaurant->id)->orderByDesc('created_at')->get();
+            $count = $orders = Order::where('restaurant_id', $restaurant->id)->count();
+            $orders = Order::where('restaurant_id', $restaurant->id)->orderByDesc('created_at')->paginate(22);
             //Mostro gli ordini associati all'utente
-            return view('admin.orders.index', compact('orders', 'restaurant'));
+
+
+            return view('admin.orders.index', compact('orders', 'restaurant', 'count'));
         } else {
             // Nel caso non ci siano ristoranti associati, lo reindirizzo ai dishes
             $restaurant = $user->restaurants()->first();

@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
         <div class="pb-3">
-            <h3>Ristorante:</h3>
+            <h3 class="text-violet">Ristorante:</h3>
             <h1>{{ $restaurant->name }}</h1>
         </div>
         <div class="d-flex align-items-center justify-content-between pb-3">
-            <h2>Piatti: {{ $count[0]['piatti'] }}</h2>
+            <h2><span class="text-violet">Piatti:</span> {{ $count[0]['piatti'] }}</h2>
 
             <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">
                 Aggiungi Piatto
