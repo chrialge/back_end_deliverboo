@@ -31,7 +31,7 @@ class DishController extends Controller
         }
         // dd($count);
         if ($restaurant) {
-            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->paginate(10), 'count' => $count]);
+            return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->paginate(10), 'count' => $count], compact('restaurant'));
         } else {
             return redirect()->back()->with('message', "Accesso negato");
         }
@@ -135,7 +135,7 @@ class DishController extends Controller
                 'name' => $val_data['name'],
                 'slug' => $val_data['slug'],
                 //Prendo l'immagine esistente se non la cambio
-                'image' => $val_data['image'] ?? $dish->image, 
+                'image' => $val_data['image'] ?? $dish->image,
                 'visibility' => $visibility,
                 'ingredients' => $val_data['ingredients'],
                 'price' => $val_data['price']

@@ -7,10 +7,12 @@
         <div class="row row-cols-1  row-cols-lg-2 flex-lg-nowrap gap-2">
             <div class="col col-md-2 col-sm-1 d-flex flex-column">
 
-                <p>
+                <div>
                     Benenuto nella pagina delle statistiche, da qua puoi controllare il numero di ordini mensili del tuo
                     ristorante anno dopo anno
-                </p>
+                </div>
+
+                <div class="py-2">Ristorante: {{ $restaurant_name }}</div>
 
                 <form action="{{ route('admin.charts.index') }}" method="get">
                     @csrf

@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Braintree\Gateway;
 
-
 class OrderController extends Controller
 {
     /**
@@ -35,7 +34,7 @@ class OrderController extends Controller
             //recupero
             $orders = Order::where('restaurant_id', $restaurant->id)->orderByDesc('created_at')->get();
             //Mostro gli ordini associati all'utente
-            return view('admin.orders.index', compact('orders'));
+            return view('admin.orders.index', compact('orders', 'restaurant'));
         } else {
             // Nel caso non ci siano ristoranti associati, lo reindirizzo ai dishes
             $restaurant = $user->restaurants()->first();
