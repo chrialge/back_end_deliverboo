@@ -46,8 +46,8 @@
                 <label for="price" class="form-label">Prezzo <span class="text-secondary">*</span></label>
                 <input type="number" step="0.01" min="0.00"
                     class="form-control @error('price') is-invalid @enderror" name="price" id="price"
-                    aria-describedby="priceHelper" value="{{ old('price') }}" required onkeyup="hide_price_error(),check_price()"
-                    onblur="check_price()" />
+                    aria-describedby="priceHelper" value="{{ old('price') }}" required
+                    onkeyup="hide_price_error(),check_price()" onblur="check_price()" />
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -67,8 +67,9 @@
             <!--Input for ingredients-->
             <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredienti <span class="text-secondary">*</span></label>
-                <textarea onblur="check_ingredients()" onkeyup="hide_ingredients_error()" class="form-control @error('ingredients') is-invalid @enderror"
-                    name="ingredients" id="ingredients" rows="5" required>{{ old('ingredients') }}</textarea>
+                <textarea onblur="check_ingredients()" onkeyup="hide_ingredients_error()"
+                    class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" id="ingredients" rows="5"
+                    required>{{ old('ingredients') }}</textarea>
 
                 <small id="ingredients_error" class="small_invisible">Inserisci una breve descrizione di almeno 10
                     caratteri</small>
@@ -79,7 +80,7 @@
                 @enderror
             </div>
 
-            <button onclick="check_types()" id="dish-submit-button" class="btn btn-primary" type="submit">Aggiungi
+            <button onclick="return check_types();" id="dish-submit-button" class="btn btn-primary" type="submit">Aggiungi
                 piatto</button>
 
         </form>
