@@ -26,14 +26,14 @@ class DishController extends Controller
         // dd($user->restaurants());
         $restaurant = $user->restaurants()->where('user_id', $user->id)->first();
         // dd($restaurant);
-        $count = Dish::selectraw('count(*) piatti')->where('restaurant_id', $restaurant->id)->get();
+        if ($restaurant->dishes() != null) {
+            $count = Dish::selectraw('count(*) piatti')->where('restaurant_id', $restaurant->id)->get();
+        }
         // dd($count);
         if ($restaurant) {
             return view('admin.dishes.index', ['dishes' => Dish::where('restaurant_id', $restaurant->id)->orderBy('name')->paginate(10), 'count' => $count]);
         } else {
-
             return redirect()->back()->with('message', "Accesso negato");
-
         }
         // take restaurants of the user current
     }
@@ -79,7 +79,6 @@ class DishController extends Controller
         $dish = Dish::create($val_data);
 
         return to_route('admin.dishes.index')->with('message', "Hai creato $dish->name");
-
     }
 
     /**
@@ -118,7 +117,8 @@ class DishController extends Controller
             // true se la checkbox è selezionata, false altrimenti
             $visibility = $request->has('visibility');
 
-            // Creo slug
+            //Creating a slug content
+
             $slug = Str::slug($val_data['name'], '-');
             $val_data['slug'] = $slug;
 
@@ -130,6 +130,7 @@ class DishController extends Controller
             }
 
             // Updating the dish
+
             $dish->update([
                 'name' => $val_data['name'],
                 'slug' => $val_data['slug'],
@@ -145,7 +146,6 @@ class DishController extends Controller
 
         return to_route('admin.dishes.index')->with('error', 'Non sei autorizzato a modificare questo piatto');
     }
-
 
     /**
      * Remove the specified resource from storage.

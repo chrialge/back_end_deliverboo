@@ -13,10 +13,8 @@
                 <thead class="bg-dark">
                     <tr class="">
                         <th scope="col" class="bg-dark text-white py-3">Cliente</th>
-
                         <th scope="col" class="bg-dark text-white py-3">Data</th>
                         <th scope="col" class="bg-dark text-white py-3">Ora</th>
-
                         {{-- <th scope="col" class="bg-dark text-white py-3">Indirizzo</th>
                         <th scope="col" class="bg-dark text-white py-3">Telefono</th> --}}
                         <th scope="col" class="bg-dark text-white py-3 text-end">Azioni</th>
@@ -37,8 +35,6 @@
                                 @endif
                             @endforeach
 
-
-
                             {{-- <td>{{ $order->customer_address }}</td>
                             <td>{{ $order->customer_phone_number }}</td>
                             <td>{{ $order->slug }}</td>
@@ -55,7 +51,7 @@
                     @empty
 
                         <tr class="">
-                            <td scope="row">Nessun ordine! 😭😭😭😭😭</td>
+                            <td scope="row">Non c'è stato ancora nessun ordine!</td>
                         </tr>
                     @endforelse
 
